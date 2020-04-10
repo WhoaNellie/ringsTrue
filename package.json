@@ -5,7 +5,8 @@
   "main": "apiKeys.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "mon": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,7 @@
   },
   "homepage": "https://github.com/WhoaNellie/ringsTrue#readme",
   "dependencies": {
+    "axios": "^0.19.2",
     "compression": "^1.7.4",
     "express": "^4.17.1",
     "mongoose": "^5.9.7",
