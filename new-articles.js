@@ -11,8 +11,7 @@ const db = require("./models");
 
 let uristring =
     process.env.MONGODB_URI ||
-    process.env.MONGOLAB_URI ||
-    keys.mongoURI;
+    process.env.MONGOLAB_URI
 let newsKey = process.env.news_key;
 let scrapeKey = process.env.scrape_key;
 
