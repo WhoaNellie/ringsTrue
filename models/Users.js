@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const SALT_WORK_FACTOR = 10;
-const keys = require("../apiKeys.js");
 
 const Schema = mongoose.Schema;
 
