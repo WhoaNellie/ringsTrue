@@ -33,7 +33,7 @@ app.use(passport.session());
 app.use(require("./routes/api-routes.js"));
 app.use(require("./routes/html-routes.js"));
 
-var uristring =
+let uristring =
     process.env.MONGODB_URI ||
     process.env.MONGOLAB_URI ||
     keys.mongoURI;

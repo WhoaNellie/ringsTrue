@@ -2,8 +2,12 @@ const mongoose = require("mongoose");
 const axios = require("axios");
 const db = require("./models");
 const keys = require("./apiKeys.js");
+let uristring =
+    process.env.MONGODB_URI ||
+    process.env.MONGOLAB_URI ||
+    keys.mongoURI;
 
-mongoose.connect(keys.mongoURI, {
+mongoose.connect(uristring, {
     useNewUrlParser: true,
     useFindAndModify: false
   });
