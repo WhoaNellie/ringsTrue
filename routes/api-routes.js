@@ -1,65 +1,48 @@
 const express = require("express");
-const axios = require("axios");
+const mongoose = require('mongoose');
+
+const User = require("../models/Users");
 const db = require("../models");
 const keys = require("../apiKeys.js");
 
-const router = express.Router();
+let uristring =
+    process.env.MONGODB_URI ||
+    process.env.MONGOLAB_URI ||
+    keys.mongoURI;
 
-router.get("/api/articles", async function (req, res) {
-    let articleLinks = [];
-    let articleData = [];
-
-    axios({
-        url: `https://newsapi.org/v2/top-headlines?country=us&apiKey=${keys.news}`,
-        method: "get"
-    }).then(async (response) => {
-        let articles = response.data.articles;
-        for (let i = 0; i < Math.min(articles.length, 20); i++) {
-            articleLinks.push(articles[i].url);
-        }
-
-        try {
-            for (let i = 0; i < articleLinks.length; i++) {
-                let text = await axios({
-                    "method": "GET",
-                    "url": "https://aylien-text.p.rapidapi.com/extract",
-                    "headers": {
-                        "content-type": "application/octet-stream",
-                        "x-rapidapi-host": "aylien-text.p.rapidapi.com",
-                        "x-rapidapi-key": keys.scrape
-                    },
-                    "params": {
-                        "url": articleLinks[i]
-                    }
-                })
-                articleData.push({
-                    id: i,
-                    headline: articles[i].title,
-                    image: articles[i].urlToImage,
-                    text: text.data.article,
-                    network: articles[i].source.name
-                })
-            }
-        } catch (err) {
-            console.log(err, "scraper");
-        }
-
-        res.send(articleData);
-
-    }).catch((err) => {
-        console.log(err, "newsapi");
-    })
-
+mongoose.connect(uristring, {
+    useNewUrlParser: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true
 });
 
-router.put("/api/articles", function (req, res) {
-    for (let i = 0; i < Math.min(req.body.length, 20); i++) {
-        db.Article.updateOne({
-            "id": req.body[i].id
-        }, {
-            $set: req.body[i]
-        })
-    }
-})
+const router = express.Router();
+
+router.post("/api/register", (req, res) => {
+    let newUser = new User(req.body);
+
+    newUser.save(function (err) {
+        if (err) throw err;
+
+        // fetch user and test password verification
+        User.findOne({
+            username: 'testun'
+        }, function (err, user) {
+            if (err) throw err;
+
+            // test a matching password
+            user.comparePassword('testpw', function (err, isMatch) {
+                if (err) throw err;
+                console.log('testpw:', isMatch); // -> Password123: true
+            });
+
+            // test a failing password
+            user.comparePassword('123Password', function (err, isMatch) {
+                if (err) throw err;
+                console.log('123Password:', isMatch); // -> 123Password: false
+            });
+        });
+    });
+});
 
 module.exports = router;

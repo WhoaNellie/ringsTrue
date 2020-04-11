@@ -1,15 +1,20 @@
 const mongoose = require("mongoose");
 const axios = require("axios");
+
 const db = require("./models");
 const keys = require("./apiKeys.js");
+
 let uristring =
     process.env.MONGODB_URI ||
     process.env.MONGOLAB_URI ||
     keys.mongoURI;
+let newsKey = process.env.news_key || keys.news;
+let scrapeKey = process.env.scrape_key || keys.scrape;
 
 mongoose.connect(uristring, {
     useNewUrlParser: true,
-    useFindAndModify: false
+    useFindAndModify: false,
+    useUnifiedTopology: true
   });
 
 async function getArticles() {
@@ -17,7 +22,7 @@ async function getArticles() {
     let articleData = [];
 
     axios({
-        url: `https://newsapi.org/v2/top-headlines?country=us&apiKey=${keys.news}`,
+        url: `https://newsapi.org/v2/top-headlines?country=us&apiKey=${newsKey}`,
         method: "get"
     }).then(async (response) => {
         let articles = response.data.articles;
@@ -33,7 +38,7 @@ async function getArticles() {
                     "headers": {
                         "content-type": "application/octet-stream",
                         "x-rapidapi-host": "aylien-text.p.rapidapi.com",
-                        "x-rapidapi-key": keys.scrape
+                        "x-rapidapi-key": scrapeKey
                     },
                     "params": {
                         "url": articleLinks[i]
