@@ -2,7 +2,12 @@ const mongoose = require("mongoose");
 const axios = require("axios");
 
 const db = require("./models");
-const keys = require("./apiKeys.js");
+
+let keys;
+
+if(!process.env){
+    keys = require("./apiKeys.js");
+}
 
 let uristring =
     process.env.MONGODB_URI ||

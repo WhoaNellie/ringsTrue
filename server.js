@@ -30,32 +30,3 @@ mongoose.connect(uristring, {
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}!`);
 });
-
-// let User = require("./models/Users");
-
-// let testUser = new User({
-//     username: "testun",
-//     password: "testpw",
-//     dailyRated: 0
-// });
-
-// testUser.save(function(err) {
-//     if (err) throw err;
-
-//     // fetch user and test password verification
-//     User.findOne({ username: 'testun' }, function(err, user) {
-//         if (err) throw err;
-
-//         // test a matching password
-//         user.comparePassword('testpw', function(err, isMatch) {
-//             if (err) throw err;
-//             console.log('testpw:', isMatch); // -> Password123: true
-//         });
-
-//         // test a failing password
-//         user.comparePassword('123Password', function(err, isMatch) {
-//             if (err) throw err;
-//             console.log('123Password:', isMatch); // -> 123Password: false
-//         });
-//     });
-// });

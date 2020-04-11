@@ -10,12 +10,8 @@ const schema = new Schema({
         type: String
     },
     ratings: [{
-        accuracy: {
-            type: Number
-        },
-        nutrality: {
-            type: Number
-        }
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Rating"
     }]
 });
 
