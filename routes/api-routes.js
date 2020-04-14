@@ -18,13 +18,39 @@ mongoose.connect(uristring, {
     useUnifiedTopology: true
 });
 
-router.post("/api/register", (req, res) => {
-    let newUser = new User(req.body);
-
-    newUser.save(function (err) {
-        if (err) throw err;
-    });
+router.post("/api/register", async (req, res) => {
+    try{
+        let newUser = new User(req.body);
+        let result = await newUser.save();
+        res.send(result);
+    }catch (err){
+        res.status(500).send(err);
+    } 
 });
+
+router.post("/api/login", async (req, res) => {
+    try{
+        let user = await User.findOne({ username: req.body.username }).exec();
+
+        if(!user){
+            console.log("bad un");
+            return res.status(400).send({ message: "The username not registered" });
+        }
+
+        user.comparePassword(req.body.password, (err, match) => {
+            if(!match) {
+                res.status(400).send({ message: "The password is invalid" });
+                return;
+            }
+            res.send({ message: "Logged in" });
+            console.log("success?");
+        });
+
+        
+    }catch(err){
+        res.status(500).send(err);
+    }
+})
 
 router.post("/api/rating", function (req, res) {
     db.Rating.create(req.body).then(function (response) {

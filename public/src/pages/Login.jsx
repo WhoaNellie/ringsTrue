@@ -11,6 +11,8 @@ function Login(){
         axios.post("/api/login", {
             username: profState.username,
             password: profState.password
+        }).then( (response) => {
+            console.log(response.message);
         })
     }
 
