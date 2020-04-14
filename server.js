@@ -3,8 +3,11 @@ const logger = require("morgan");
 const mongoose = require("mongoose");
 const compression = require("compression");
 
-const keys = require("./apiKeys.js");
-
+const keys = null;
+ 
+if(!process.env.PORT){
+  keys = require("./apiKeys.js");
+}
 const PORT = process.env.PORT || 3000;
 const app = express();
 
