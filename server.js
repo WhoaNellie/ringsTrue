@@ -5,7 +5,7 @@ const compression = require("compression");
 
 const keys = null;
  
-if(!process.env.PORT){
+if(!process.env.MONGODB_URI){
   keys = require("./apiKeys.js");
 }
 const PORT = process.env.PORT || 3000;
