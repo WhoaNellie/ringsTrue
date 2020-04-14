@@ -18,10 +18,10 @@ function Login(){
 
     return (
         <main>
-        <label for="username">Username</label>
+        <label htmlFor="username">Username</label>
             <input type="text" id="username" onChange={() => setProfState( {...profState, username: document.getElementById("username").value})}/>
 
-            <label for="password">Password</label>
+            <label htmlFor="password">Password</label>
             <input type="password" id="password" onChange={() => setProfState( {...profState, password: document.getElementById("password").value})}/>
 
             <button id="login" onClick={() => loginUser()}>Login</button>

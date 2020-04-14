@@ -9,7 +9,6 @@ import Nav from './components/Nav';
 import Registration from "./pages/Registration";
 import Login from './pages/Login';
 
-
 function App(){
     return (
         <div className="wrap">

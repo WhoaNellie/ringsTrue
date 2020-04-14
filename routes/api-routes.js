@@ -3,10 +3,10 @@ const mongoose = require('mongoose');
 
 const User = require("../models/Users");
 const db = require("../models");
-const keys = null;
+let keys = null;
  
 if(!process.env.MONGODB_URI){
-  keys = require("./apiKeys.js");
+  keys = require("../apiKeys.js");
 }
 
 const router = express.Router();

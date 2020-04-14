@@ -5,15 +5,14 @@ const webpack = require('webpack-stream');
 sass.compiler = require('node-sass');
 
 function css() {
-    return gulp.src('./sass/**/*.scss')
+    return gulp.src('./public/src/sass/**/*.scss')
         .pipe(sass().on('error', sass.logError))
-        .pipe(gulp.dest('./css'));
+        .pipe(gulp.dest('./public/css'));
 };
 
 function react() {
     return gulp.src('./public/src/index.jsx')
         .pipe(webpack({
-            watch: true,
             module: {
                 rules: [{
                     test: /\.(js|jsx)$/,
@@ -44,7 +43,7 @@ function react() {
 
 function watch() {
     gulp.watch("./public/src/**/*.jsx", react);
-    gulp.watch('./public/sass/**/*.scss', css);
+    gulp.watch('./public/src/sass/**/*.scss', css);
 };
 
 exports.default = gulp.series(css, react, watch);

@@ -3,7 +3,7 @@ const logger = require("morgan");
 const mongoose = require("mongoose");
 const compression = require("compression");
 
-const keys = null;
+let keys = null;
  
 if(!process.env.MONGODB_URI){
   keys = require("./apiKeys.js");
