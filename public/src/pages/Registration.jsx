@@ -23,7 +23,7 @@ function Registration(){
             <label htmlFor="password">Password</label>
             <input type="password" id="password" onChange={() => setProfState( {...profState, password: document.getElementById("password").value})}/>
 
-            <button id="resgister" onClick={() => registerUser()}>Register</button>
+            <button id="register" onClick={() => registerUser()}>Register</button>
         </main>
     )
 }

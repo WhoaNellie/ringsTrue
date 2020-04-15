@@ -46,7 +46,7 @@ router.post("/api/login", async (req, res) => {
                 res.status(400).send({ message: "The password is invalid" });
                 return;
             }
-            res.send({ message: "Logged in" });
+            res.status(200).send({dailyRated: user.dailyRated});
             console.log("success?");
         });
 

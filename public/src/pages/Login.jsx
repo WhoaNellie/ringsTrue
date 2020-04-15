@@ -1,28 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useContext} from 'react';
 import axios from 'axios';
+import { UserContext } from '../App';
+import { useHistory } from 'react-router-dom';
 
 function Login(){
-    const [profState, setProfState] = useState({
+    let history = useHistory();
+    const [inputState, setInputState] = useState({
         username: "",
         password: ""
     });
 
+    const [userState, setUserState] = useContext(UserContext);
+
     function loginUser(){
         axios.post("/api/login", {
-            username: profState.username,
-            password: profState.password
+            username: inputState.username,
+            password: inputState.password
         }).then( (response) => {
-            console.log(response.message);
+            if(response.status === 200){
+                setUserState({
+                    loggedIn: true, 
+                    dailyRated: response.data.dailyRated});
+                history.push("/")
+            }
         })
     }
 
     return (
         <main>
         <label htmlFor="username">Username</label>
-            <input type="text" id="username" onChange={() => setProfState( {...profState, username: document.getElementById("username").value})}/>
+            <input type="text" id="username" onChange={() => setInputState( {...inputState, username: document.getElementById("username").value})}/>
 
             <label htmlFor="password">Password</label>
-            <input type="password" id="password" onChange={() => setProfState( {...profState, password: document.getElementById("password").value})}/>
+            <input type="password" id="password" onChange={() => setInputState( {...inputState, password: document.getElementById("password").value})}/>
 
             <button id="login" onClick={() => loginUser()}>Login</button>
         </main>
