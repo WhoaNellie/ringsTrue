@@ -3,12 +3,6 @@ const axios = require("axios");
 
 const db = require("./models");
 
-// let keys;
-
-// if(!process.env){
-//     keys = require("./apiKeys.js");
-// }
-
 let uristring =
     process.env.MONGODB_URI ||
     process.env.MONGOLAB_URI
@@ -52,6 +46,7 @@ async function getArticles() {
                     id: i,
                     headline: articles[i].title,
                     image: articles[i].urlToImage,
+                    description: articles[i].description,
                     text: text.data.article,
                     network: articles[i].source.name
                 })

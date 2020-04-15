@@ -12,6 +12,9 @@ const schema = new Schema({
     image: {
         type: String
     },
+    description:{
+        type: String
+    },
     text: {
         type: String
     },

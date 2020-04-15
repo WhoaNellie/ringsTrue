@@ -5,7 +5,6 @@ import Articles from '../components/Articles';
 
 function Homepage(){
     const Login = useContext(UserContext);
-    console.log(Login);
     return(
     <main>
         {Login[0].loggedIn ? <Articles/>:<RorL/>} 

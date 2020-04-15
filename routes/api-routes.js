@@ -22,6 +22,12 @@ mongoose.connect(uristring, {
     useUnifiedTopology: true
 });
 
+router.get("/api/articles", (req, res) => {
+    db.Article.find({}).then((articles) => {
+        res.send(articles);
+    })
+})
+
 router.post("/api/register", async (req, res) => {
     try{
         let newUser = new User(req.body);
@@ -56,7 +62,7 @@ router.post("/api/login", async (req, res) => {
     }
 })
 
-router.post("/api/rating", function (req, res) {
+router.post("/api/rating", (req, res) => {
     db.Rating.create(req.body).then(function (response) {
         console.log(response);
     }).catch(function (err) {
@@ -64,7 +70,7 @@ router.post("/api/rating", function (req, res) {
     })
 });
 
-router.get("/api/network", function (req, res) {
+router.get("/api/network", (req, res) => {
     res.json(db.Network.findOne({
         name: req.body.name
     }).populate('ratings').exec(function (err, ratings) {
