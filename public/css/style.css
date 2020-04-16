@@ -8,7 +8,7 @@ input {
   padding: 5%;
   text-align: center;
   position: relative;
-  border-radius: 50px;
+  border-radius: 35px;
   background: #ffffff;
   box-shadow: 20px 20px 60px #d9d9d9, -20px -20px 60px #ffffff; }
   .card.collapsed {
@@ -25,6 +25,7 @@ input {
     position: absolute;
     bottom: 5%;
     right: 8%;
+    width: 80px;
     border-radius: 15px;
     background-color: purple;
     box-shadow: 4px 4px 5px -1px rgba(0, 0, 0, 0.28);
@@ -32,3 +33,11 @@ input {
     color: white;
     padding: 1% 5%;
     z-index: 1; }
+  .card .rate-button {
+    border-radius: 15px;
+    background-color: green;
+    box-shadow: 4px 4px 5px -1px rgba(0, 0, 0, 0.28);
+    padding: 1% 5%;
+    z-index: 1;
+    position: relative;
+    color: white; }

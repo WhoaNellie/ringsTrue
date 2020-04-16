@@ -1,35 +1,48 @@
 import React, { useEffect, useContext, useState } from "react";
 import { UserContext } from "../App";
 import axios from "axios";
+import { Doughnut } from 'react-chartjs-2';
 
 function Articles() {
   const [articleState, setArticleState] = useState({
     rated: [],
-    read: [],
     articleArr: [],
   });
   const Login = useContext(UserContext);
 
+  function addRated(id){
+    // articleState.rated.push(id);
+    setArticleState({...articleState, rated:[...articleState.rated, id]});
+  }
+
   useEffect(() => {
     axios.get("/api/articles").then((articles) => {
-      setArticleState({ ...articleState, articleArr: articles.data });
-      // for(let i = 0; i < 5 - Login[0].dailyRated; i++){
-      //     cardArr.push(<Card article={articleArr[i]}/>);
-      //     setArticleState({...articleState, shown: articleState.shown.push(i)});
-      // }
+        let articleArr = [];
+        let idArr = [];
+        //get random article ids
+
+        while(articleArr.length < 6-Login[0].dailyRated){
+            let randID = Math.floor(Math.random()*20);
+            if(!articleState.rated.includes(randID) && !idArr.includes(randID)){
+                articleArr.push(articles.data[randID]);
+                idArr.push(randID);
+            }
+        }
+        setArticleState({ ...articleState, articleArr: articleArr });
     });
   }, []);
 
   return (
     <React.Fragment>
-      {articleState.articleArr.map((article) => {
-        return <Card article={article} />;
-      })}
+        <RatingModal/>
+        {articleState.articleArr.map((article) => {
+            return <Card article={article} addRated={() => addRated(article.id)} key={article.id}/>;
+        })}
     </React.Fragment>
   );
 }
 
-function Card({ article }) {
+function Card({ article, addRated }) {
   const [cardState, setCardState] = useState({
     height: "collapsed",
   });
@@ -49,9 +62,34 @@ function Card({ article }) {
         </button>
       )}
 
-      <button className="rateButton">Rate</button>
+      <button className="rate-button" onClick={addRated}>Rate</button>
     </div>
   );
+}
+
+function RatingModal(){
+    const [chartState, setChartState] = useState({
+        labels: ['Neutrality', 'Accuracy'],
+        datasets: [{
+            data: [60, 40],
+            backgroundColor: [
+                "#008000",
+                "#FFFFFF"
+            ]
+        },{
+            data: [60, 40],
+            backgroundColor: [
+                "#800080",
+                "#FFFFFF"
+            ]
+        }]
+    });
+
+    return(
+        <div className="modal rating">
+            <Doughnut data={chartState}/>
+        </div>
+    )
 }
 
 export default Articles;
