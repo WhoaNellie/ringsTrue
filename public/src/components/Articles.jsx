@@ -52,7 +52,7 @@ function Articles() {
       <Modal 
       isShowing={isShowing}
       setIsShowing={setIsShowing}
-      headline={articleState.activeArticle.headline}
+      article={articleState.activeArticle}
       />
     </React.Fragment>
   );

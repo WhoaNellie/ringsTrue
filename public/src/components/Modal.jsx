@@ -2,7 +2,7 @@ import React, { useEffect, useContext, useState } from "react";
 import ReactDOM from "react-dom";
 import { Doughnut } from 'react-chartjs-2';
 
-function Modal({isShowing, setIsShowing, headline}) {
+function Modal({isShowing, setIsShowing, article}) {
     const modalRoot = document.createElement('div');
     modalRoot.setAttribute('id', 'modal-root');
     document.body.append(modalRoot);      
@@ -90,6 +90,11 @@ function Modal({isShowing, setIsShowing, headline}) {
           });
     }
 
+    let headline = article.headline;
+    if(article.headline.length > 40){
+        headline = `${article.headline.substring(0,40)}...`;
+    }
+    
     if(isShowing) {
         return ReactDOM.createPortal(
             <React.Fragment>
