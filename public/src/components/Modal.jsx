@@ -28,13 +28,13 @@ function Modal({isShowing, setIsShowing, headline}) {
       
 
     function calcChart(val, chart){
-        let curData = chartState.datasets;
+        let curData = chartState.datasets[chart];
 
-        curData[chart].data = [val, 100-val];
+        curData.data = [val, 100-val];
 
         let curDataSet = chartState.datasets;
 
-        curDataSet[0] = curData;
+        curDataSet[chart] = curData;
 
         setChartState({...chartState, datasets: curDataSet});
     }
@@ -42,7 +42,7 @@ function Modal({isShowing, setIsShowing, headline}) {
     if(isShowing) {
         return ReactDOM.createPortal(
             <React.Fragment>
-            <div className="mask"></div>
+            <div className="mask" onClick={() => setIsShowing(false)}></div>
             <aside className="modal rating">
                     <h3>How Do You Rate "{headline}"?</h3>
     
