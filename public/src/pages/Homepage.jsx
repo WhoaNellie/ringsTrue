@@ -7,8 +7,8 @@ function Homepage(){
     const Login = useContext(UserContext);
     return(
     <main>
-        {/* {Login[0].loggedIn ? <Articles/>:<RorL/>}  */}
-        <Articles/>
+        {Login[0].loggedIn ? <Articles/>:<RorL/>} 
+        {/* <Articles/> */}
     </main>
     )
 }

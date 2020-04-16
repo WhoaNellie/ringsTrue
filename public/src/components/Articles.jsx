@@ -1,42 +1,59 @@
 import React, { useEffect, useContext, useState } from "react";
-import { UserContext } from "../App";
 import axios from "axios";
-import { Doughnut } from 'react-chartjs-2';
+
+import { UserContext } from "../App";
+import Modal from "./Modal";
+// import { useModal } from "./useModal";
 
 function Articles() {
-  const [articleState, setArticleState] = useState({
-    rated: [],
-    articleArr: [],
-  });
-  const Login = useContext(UserContext);
+    const Login = useContext(UserContext);
+    const [articleState, setArticleState] = useState({
+        rated: [],
+        activeArticle: {headline:""},
+        articleArr: [],
+    });
+    const [isShowing, setIsShowing] = useState(false);
+    
 
-  function addRated(id){
-    setArticleState({...articleState, rated:[...articleState.rated, id]});
+  function addRated(article) {
+    setArticleState({ ...articleState, rated: [...articleState.rated, article.id], activeArticle: article});
+    setIsShowing(true);
   }
 
   useEffect(() => {
     axios.get("/api/articles").then((articles) => {
-        let articleArr = [];
-        let idArr = [];
+      let articleArr = [];
+      let idArr = [];
 
-        //get random article ids
-        while(articleArr.length < 6-Login[0].dailyRated){
-            let randID = Math.floor(Math.random()*20);
-            if(!articleState.rated.includes(randID) && !idArr.includes(randID)){
-                articleArr.push(articles.data[randID]);
-                idArr.push(randID);
-            }
+      //get random article ids
+      while (articleArr.length < 6 - Login[0].dailyRated) {
+        let randID = Math.floor(Math.random() * 20);
+        if (!articleState.rated.includes(randID) && !idArr.includes(randID)) {
+          articleArr.push(articles.data[randID]);
+          idArr.push(randID);
         }
-        setArticleState({ ...articleState, articleArr: articleArr });
+      }
+      setArticleState({ ...articleState, articleArr: articleArr });
     });
   }, []);
 
   return (
     <React.Fragment>
-        <RatingModal/>
-        {articleState.articleArr.map((article) => {
-            return <Card article={article} addRated={() => addRated(article.id)} key={article.id}/>;
-        })}
+      {articleState.articleArr.map((article) => {
+        return (
+          <Card
+            article={article}
+            addRated={() => addRated(article)}
+            key={article.id}
+          />
+        );
+      })}
+      <div id="modal-root"></div>
+      <Modal 
+      isShowing={isShowing}
+      setIsShowing={setIsShowing}
+      headline={articleState.activeArticle.headline}
+      />
     </React.Fragment>
   );
 }
@@ -55,59 +72,44 @@ function Card({ article, addRated }) {
       {cardState.height === "collapsed" && (
         <button
           className={`read-button article-${article.id}`}
-          onClick={() => setCardState({height: 'full'})}
+          onClick={() => setCardState({ height: "full" })}
         >
-            Read
+          Read
         </button>
       )}
 
-      <button className="rate-button" onClick={addRated}>Rate</button>
+      <button className="rate-button" onClick={addRated}>
+        Rate
+      </button>
     </div>
   );
 }
 
-function RatingModal(){
-    const [chartState, setChartState] = useState({
-        datasets: [{
-            label: "Accuracy",
-            data: [60, 40],
-            backgroundColor: [
-                "#008000",
-                "#FFFFFF"
-            ]
-        },{
-            label: "Neutrality",
-            data: [60, 40],
-            backgroundColor: [
-                "#800080",
-                "#FFFFFF"
-            ]
-        }]
-    });
+// function RatingModal(props) {
+//   return (
+//     <React.Fragment>
+//       <div className="mask"></div>
+//       <aside className="modal rating">
+//         <h3>{props.title}</h3>
 
-    let options = {
-        events: [],
-        tooltips: {enabled: false},
-        hover: {mode: null},
-      }
+//         <Doughnut data={chartState} options={options} />
 
-    return(
-        <div className="mask">
-            <div className="modal rating">
-                <h3>How would you rate "Insert Article Title here..."?</h3>
+//         <label htmlFor="accuracy">Accuracy</label>
+//         <input id="accuracy" name="accuracy" type="range" min="0" max="100" />
 
-                <Doughnut data={chartState} options={options}/>
+//         <label htmlFor="neutrality">Neutrality</label>
+//         <input
+//           id="neutrality"
+//           name="neutrality"
+//           type="range"
+//           min="0"
+//           max="100"
+//         />
 
-                <label htmlFor="accuracy">Accuracy</label>
-                <input id="accuracy" name="accuracy" type="range" min="0" max="100"/>
-
-                <label htmlFor="neutrality">Neutrality</label>
-                <input id="neutrality" name="neutrality" type="range" min="0" max="100"/>
-
-                <button className="submit">Submit</button>
-            </div>
-        </div>
-    )
-}
+//         <button className="submit">Submit</button>
+//       </aside>
+//     </React.Fragment>
+//   );
+// }
 
 export default Articles;
