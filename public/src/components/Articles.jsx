@@ -92,8 +92,20 @@ function RatingModal(){
       }
 
     return(
-        <div className="modal rating">
-            <Doughnut data={chartState} options={options}/>
+        <div className="mask">
+            <div className="modal rating">
+                <h3>How would you rate "Insert Article Title here..."?</h3>
+
+                <Doughnut data={chartState} options={options}/>
+
+                <label htmlFor="accuracy">Accuracy</label>
+                <input id="accuracy" name="accuracy" type="range" min="0" max="100"/>
+
+                <label htmlFor="neutrality">Neutrality</label>
+                <input id="neutrality" name="neutrality" type="range" min="0" max="100"/>
+
+                <button className="submit">Submit</button>
+            </div>
         </div>
     )
 }
