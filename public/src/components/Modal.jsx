@@ -27,6 +27,18 @@ function Modal({isShowing, setIsShowing, headline}) {
       };
       
 
+    function calcChart(val, chart){
+        let curData = chartState.datasets;
+
+        curData[chart].data = [val, 100-val];
+
+        let curDataSet = chartState.datasets;
+
+        curDataSet[0] = curData;
+
+        setChartState({...chartState, datasets: curDataSet});
+    }
+
     if(isShowing) {
         return ReactDOM.createPortal(
             <React.Fragment>
@@ -37,7 +49,7 @@ function Modal({isShowing, setIsShowing, headline}) {
                     <Doughnut data={chartState} options={options}/>
     
                     <label htmlFor="accuracy">Accuracy</label>
-                    <input id="accuracy" name="accuracy" type="range" min="0" max="100"/>
+                    <input id="accuracy" name="accuracy" type="range" min="0" max="100" onChange={() => calcChart(document.getElementById("accuracy").value, 0)}/>
     
                     <label htmlFor="neutrality">Neutrality</label>
                     <input id="neutrality" name="neutrality" type="range" min="0" max="100"/>
