@@ -11,7 +11,6 @@ function Articles() {
   const Login = useContext(UserContext);
 
   function addRated(id){
-    // articleState.rated.push(id);
     setArticleState({...articleState, rated:[...articleState.rated, id]});
   }
 
@@ -19,8 +18,8 @@ function Articles() {
     axios.get("/api/articles").then((articles) => {
         let articleArr = [];
         let idArr = [];
-        //get random article ids
 
+        //get random article ids
         while(articleArr.length < 6-Login[0].dailyRated){
             let randID = Math.floor(Math.random()*20);
             if(!articleState.rated.includes(randID) && !idArr.includes(randID)){
@@ -69,14 +68,15 @@ function Card({ article, addRated }) {
 
 function RatingModal(){
     const [chartState, setChartState] = useState({
-        labels: ['Neutrality', 'Accuracy'],
         datasets: [{
+            label: "Accuracy",
             data: [60, 40],
             backgroundColor: [
                 "#008000",
                 "#FFFFFF"
             ]
         },{
+            label: "Neutrality",
             data: [60, 40],
             backgroundColor: [
                 "#800080",
@@ -85,9 +85,15 @@ function RatingModal(){
         }]
     });
 
+    let options = {
+        events: [],
+        tooltips: {enabled: false},
+        hover: {mode: null},
+      }
+
     return(
         <div className="modal rating">
-            <Doughnut data={chartState}/>
+            <Doughnut data={chartState} options={options}/>
         </div>
     )
 }
