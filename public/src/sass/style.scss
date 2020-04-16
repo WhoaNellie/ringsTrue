@@ -2,6 +2,45 @@ input{
     border: 1px solid grey;
 }
 
-button{
-    color: red;
+.card{
+    width: 85%;
+    height: 60vh;
+    overflow: hidden;
+    margin: 5% auto;
+    padding: 5%;
+    text-align: center;
+    position: relative;
+
+    border-radius: 50px;
+    background: #ffffff;
+    box-shadow:  20px 20px 60px #d9d9d9, -20px -20px 60px #ffffff;
+
+    h3{
+        font-size: 12pt;
+    }
+
+    img{
+        width: 115%;
+        margin: 0 -10%;
+    }
+
+    .article-text{
+        text-align: left;
+        font-size: 12pt;
+    }
+
+    .read-button{
+        position: absolute;
+        bottom: 5%;
+        right: 8%;
+        border-radius: 15px;
+        background-color: purple;
+        box-shadow: 4px 4px 5px -1px rgba(0,0,0,0.28);
+        box-sizing: border-box;
+        color: white;
+        padding: 1% 5%;
+        z-index: 1;
+    }
 }
+
+
