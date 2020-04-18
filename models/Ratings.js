@@ -3,17 +3,13 @@ const Schema = mongoose.Schema;
 
 const ratingSchema = new Schema({
     network: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Network"
-    },
-    user: {
         type: String
     },
-    ratings: [{
+    rating: [{
         accuracy: {
             type: Number
         },
-        nutrality: {
+        neutrality: {
             type: Number
         }
     }]

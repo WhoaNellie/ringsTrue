@@ -6,13 +6,17 @@ const schema = new Schema({
     name: {
         type: String
     },
-    logo: {
-        type: String
-    },
-    ratings: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Rating"
-    }]
+    rating: [{
+        accuracy: {
+            type: Number
+        },
+        neutrality: {
+            type: Number
+        }
+    }],
+    amount: {
+        type: Number
+    }
 });
 
 const Network = mongoose.model("Network", schema);

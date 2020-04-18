@@ -63,21 +63,62 @@ router.post("/api/login", async (req, res) => {
 })
 
 router.post("/api/rating", (req, res) => {
-    db.Rating.create(req.body).then(function (response) {
-        console.log(response);
+    let rating = {
+        network: mongoose.Types.ObjectId(req.body.network),
+        rating: {
+            accuracy: req.body.accuracy,
+            neutrality: req.body.neutrality
+        }
+    }
+
+    db.Rating.create(rating).then(function (response) {
+        // console.log(response);
+        res.send(response);
     }).catch(function (err) {
         console.log(err);
     })
 });
 
-router.get("/api/network", (req, res) => {
-    res.json(db.Network.findOne({
-        name: req.body.name
-    }).populate('ratings').exec(function (err, ratings) {
-        if (err) throw err;
-
-        console.log("populated", ratings);
-    }))
+router.get("/api/network/:name", (req, res) => {
+    db.Network.findOne({
+        name: req.params.name
+    }).then((network) => {
+        if(network){
+            res.send(network);
+        }else{
+            res.send("none");
+        }
+    })
 });
+
+router.post("/api/network", (req, res) => {
+    db.Network.create({
+        name: req.body.name,
+        rating: {
+            accuracy: 0,
+            neutrality: 0
+        },
+        amount: 0
+    }).then(function (response) {
+        // console.log(response);
+        res.send(response);
+    }).catch(function (err) {
+        console.log(err);
+    })
+})
+
+router.put("/api/network", (req, res) => {
+    console.log(req.body);
+
+    db.Network.updateOne({name: req.body.name}, {
+        $set: {
+            rating: req.body.rating,
+            amount: req.body.amount
+        }
+    }).then(function(network) {
+        console.log(network);
+        res.end();
+    })
+})
 
 module.exports = router;
