@@ -26,7 +26,7 @@ function Articles() {
       let idArr = [];
 
       //get random article ids
-      while (articleArr.length < 6 - Login[0].dailyRated) {
+      while (articleArr.length < articles.data.length) {
         let randID = Math.floor(Math.random() * articles.data.length);
         if (!articleState.rated.includes(randID) && !idArr.includes(randID)) {
           articleArr.push(articles.data[randID]);
@@ -63,9 +63,11 @@ function Card({ article, addRated }) {
     height: "collapsed",
   });
 
-  let newText = article.text.split('\n').map((item, i) => {
-    return <p key={i}>{item}</p>;
-});
+  let newText = article.text.replace(/&#9608;/g, String.fromCharCode("&#9608;"));
+
+
+  newText = newText.split('\n').map((item, i) => {
+    return <p key={i}>{item}</p>;});
 
   return (
     <div className={`card article-${article.id} ${cardState.height}`}>
@@ -90,32 +92,5 @@ function Card({ article, addRated }) {
     </div>
   );
 }
-
-// function RatingModal(props) {
-//   return (
-//     <React.Fragment>
-//       <div className="mask"></div>
-//       <aside className="modal rating">
-//         <h3>{props.title}</h3>
-
-//         <Doughnut data={chartState} options={options} />
-
-//         <label htmlFor="accuracy">Accuracy</label>
-//         <input id="accuracy" name="accuracy" type="range" min="0" max="100" />
-
-//         <label htmlFor="neutrality">Neutrality</label>
-//         <input
-//           id="neutrality"
-//           name="neutrality"
-//           type="range"
-//           min="0"
-//           max="100"
-//         />
-
-//         <button className="submit">Submit</button>
-//       </aside>
-//     </React.Fragment>
-//   );
-// }
 
 export default Articles;
