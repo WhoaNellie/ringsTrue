@@ -27,7 +27,7 @@ function Articles() {
 
       //get random article ids
       while (articleArr.length < 6 - Login[0].dailyRated) {
-        let randID = Math.floor(Math.random() * 20);
+        let randID = Math.floor(Math.random() * articles.data.length);
         if (!articleState.rated.includes(randID) && !idArr.includes(randID)) {
           articleArr.push(articles.data[randID]);
           idArr.push(randID);
@@ -63,11 +63,17 @@ function Card({ article, addRated }) {
     height: "collapsed",
   });
 
+  let newText = article.text.split('\n').map((item, i) => {
+    return <p key={i}>{item}</p>;
+});
+
   return (
     <div className={`card article-${article.id} ${cardState.height}`}>
       <h3>{article.headline}</h3>
       <img src={article.image} alt={article.description} />
-      <div className="article-text">{article.text}</div>
+      
+      
+      <div className="article-text">{newText}</div>
 
       {cardState.height === "collapsed" && (
         <button

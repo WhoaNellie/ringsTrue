@@ -62,22 +62,22 @@ router.post("/api/login", async (req, res) => {
     }
 })
 
-router.post("/api/rating", (req, res) => {
-    let rating = {
-        network: mongoose.Types.ObjectId(req.body.network),
-        rating: {
-            accuracy: req.body.accuracy,
-            neutrality: req.body.neutrality
-        }
-    }
+// router.post("/api/rating", (req, res) => {
+//     let rating = {
+//         network: mongoose.Types.ObjectId(req.body.network),
+//         rating: {
+//             accuracy: req.body.accuracy,
+//             neutrality: req.body.neutrality
+//         }
+//     }
 
-    db.Rating.create(rating).then(function (response) {
-        // console.log(response);
-        res.send(response);
-    }).catch(function (err) {
-        console.log(err);
-    })
-});
+//     db.Rating.create(rating).then(function (response) {
+//         // console.log(response);
+//         res.send(response);
+//     }).catch(function (err) {
+//         console.log(err);
+//     })
+// });
 
 router.get("/api/network/:name", (req, res) => {
     db.Network.findOne({
@@ -119,6 +119,22 @@ router.put("/api/network", (req, res) => {
         console.log(network);
         res.end();
     })
+});
+
+router.get("/api/search/:name", (req, res) => {
+    let cleanText = req.query.text.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+        cleanText = cleanText.trim();
+
+            let cursor = mongoClient.db().collection(`autosuggest${process.env.KMAP_VERSION}`).find({
+                $or: [
+                    {
+                        text:  RegExp('\\b' + cleanText, 'i')
+                    },
+                    {
+                        key: RegExp('\\b' + cleanText, 'i')
+                    }
+                ]
+            });
 })
 
 module.exports = router;

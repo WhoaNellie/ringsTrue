@@ -21,6 +21,14 @@ input {
   .card .article-text {
     text-align: left;
     font-size: 12pt; }
+    .card .article-text p {
+      text-indent: 1.5rem; }
+    .card .article-text p:first-of-type {
+      text-indent: 0; }
+      .card .article-text p:first-of-type::first-letter {
+        font-weight: bold;
+        font-size: 16pt;
+        font-family: serif; }
   .card .read-button {
     position: absolute;
     bottom: 5%;
