@@ -121,20 +121,18 @@ router.put("/api/network", (req, res) => {
     })
 });
 
-router.get("/api/search/:name", (req, res) => {
-    let cleanText = req.query.text.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
-        cleanText = cleanText.trim();
+router.post("/api/search", (req, res) => {
+    console.log(req.body.name);
+    let cleanText = req.body.name.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+    cleanText = cleanText.trim();
 
-            let cursor = mongoClient.db().collection(`autosuggest${process.env.KMAP_VERSION}`).find({
-                $or: [
-                    {
-                        text:  RegExp('\\b' + cleanText, 'i')
-                    },
-                    {
-                        key: RegExp('\\b' + cleanText, 'i')
-                    }
-                ]
-            });
+    db.Network.find(
+            {
+                name:  RegExp('\\b' + cleanText, 'i')
+            }
+    ).then((network) => {
+        res.send(network);
+    })
 })
 
 module.exports = router;

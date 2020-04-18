@@ -26,7 +26,7 @@ function Articles() {
       let idArr = [];
 
       //get random article ids
-      while (articleArr.length < articles.data.length) {
+      while (articleArr.length < 6 - Login[0].dailyRated) {
         let randID = Math.floor(Math.random() * articles.data.length);
         if (!articleState.rated.includes(randID) && !idArr.includes(randID)) {
           articleArr.push(articles.data[randID]);
