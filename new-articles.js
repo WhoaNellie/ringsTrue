@@ -3,17 +3,25 @@ const axios = require("axios");
 
 const db = require("./models");
 
+let keys = null;
+
+if (!process.env.MONGODB_URI) {
+    keys = require("./apiKeys.js");
+}
+
 let uristring =
     process.env.MONGODB_URI ||
-    process.env.MONGOLAB_URI
-let newsKey = process.env.news_key;
-let scrapeKey = process.env.scrape_key;
+    process.env.MONGOLAB_URI ||
+    keys.mongoURI;
+let newsKey = process.env.news_key || keys.news;
+let scrapeKey = process.env.scrape_key || keys.scrape;
+
 
 mongoose.connect(uristring, {
     useNewUrlParser: true,
     useFindAndModify: false,
     useUnifiedTopology: true
-  });
+});
 
 async function getArticles() {
     let articleLinks = [];
@@ -24,12 +32,18 @@ async function getArticles() {
         method: "get"
     }).then(async (response) => {
         let articles = response.data.articles;
+        // console.log(articles.length);
         for (let i = 0; i < Math.min(articles.length, 20); i++) {
-            articleLinks.push(articles[i].url);
+            if (typeof (articles[i].url) === "string") {
+                articleLinks.push(articles[i].url);
+            }
         }
 
-        try {
-            for (let i = 0; i < articleLinks.length; i++) {
+        console.log(articleLinks.length);
+
+        for (let i = 0; i < articleLinks.length; i++) {
+            try {
+
                 let text = await axios({
                     "method": "GET",
                     "url": "https://aylien-text.p.rapidapi.com/extract",
@@ -41,18 +55,31 @@ async function getArticles() {
                     "params": {
                         "url": articleLinks[i]
                     }
-                })
-                articleData.push({
-                    id: i,
-                    headline: articles[i].title,
-                    image: articles[i].urlToImage,
-                    description: articles[i].description,
-                    text: text.data.article,
-                    network: articles[i].source.name
-                })
+                });
+                // console.log(text);
+                if (text.data.article) {
+                    //let cleantext = text.data.article.replace(/\n/g, "<br />");
+                    let cleanHead = articles[i].title.replace(/\-[^-]*$/g, "");
+
+                    let brandVariations = [articles[i].source.name, articles[i].source.name.replace(/\s/g, '')];
+
+                    let filter = new RegExp(`\\b(${brandVariations.join('|')})\\b`, 'gi');
+
+                    let cleanText = text.data.article.replace(filter,"&#9608;&#9608;&#9608;&#9608;");
+
+                    articleData.push({
+                        id: i,
+                        headline: cleanHead,
+                        image: articles[i].urlToImage,
+                        description: articles[i].description,
+                        text: cleanText,
+                        network: articles[i].source.name
+                    });
+                }
+
+            } catch (err) {
+                console.log(err, "scraper");
             }
-        } catch (err) {
-            console.log(err, "scraper");
         }
 
         sendArticles(articleData);

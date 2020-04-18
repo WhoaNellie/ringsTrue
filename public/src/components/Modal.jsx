@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState } from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
 import { Doughnut } from "react-chartjs-2";
