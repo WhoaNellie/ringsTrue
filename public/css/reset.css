@@ -1,0 +1,19 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 104%;
+    font-family: sans-serif;
+    line-height: 1.5;
+    vertical-align: baseline;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
