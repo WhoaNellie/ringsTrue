@@ -2,6 +2,17 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
 import { Doughnut } from "react-chartjs-2";
+// import ReactSlider from 'react-slider';
+// import {
+//   Slider,
+//   SliderInput,
+//   SliderTrack,
+//   SliderTrackHighlight,
+//   SliderHandle,
+//   SliderMarker,
+// } from "@reach/slider";
+// import "@reach/slider/styles.css";
+
 
 function Modal({ isShowing, setIsShowing, article }) {
   let oldDiv = document.getElementById("modal-root");
@@ -142,6 +153,16 @@ function Modal({ isShowing, setIsShowing, article }) {
     headline = `${article.headline.substring(0, 40)}...`;
   }
 
+  let sliderProps = {
+    id:"accuracy",
+    name:"accuracy",
+    type:"range",
+    min:"0",
+    max:"100",
+    value:rangeState.accuracy,
+    onChange:function(event){handleRange(event, "accuracy")}
+  }
+
   if (isShowing) {
     return ReactDOM.createPortal(
       <React.Fragment>
@@ -152,7 +173,9 @@ function Modal({ isShowing, setIsShowing, article }) {
           <Doughnut data={chartState} options={options} />
 
           <label htmlFor="accuracy">Accuracy</label>
-          <input
+         
+         {/* <Slider/> */}
+          {/* <input
             id="accuracy"
             name="accuracy"
             type="range"
@@ -160,7 +183,7 @@ function Modal({ isShowing, setIsShowing, article }) {
             max="100"
             value={rangeState.accuracy}
             onChange={(event) => handleRange(event, "accuracy")}
-          />
+          /> */}
 
           <label htmlFor="neutrality">Neutrality</label>
           <input
@@ -169,7 +192,6 @@ function Modal({ isShowing, setIsShowing, article }) {
             type="range"
             min="0"
             max="100"
-            value={rangeState.neutrality}
             onChange={(event) => handleRange(event, "neutrality")}
           />
 
