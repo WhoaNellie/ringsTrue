@@ -133,6 +133,12 @@ router.post("/api/search", (req, res) => {
     ).then((network) => {
         res.send(network);
     })
+});
+
+router.get("/api/search/:name", (req, res) => {
+    db.Network.findOne({name: req.params.name}).then(network => {
+        res.send(network);
+    })
 })
 
 module.exports = router;

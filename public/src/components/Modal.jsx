@@ -4,6 +4,10 @@ import axios from "axios";
 import { Doughnut } from "react-chartjs-2";
 
 function Modal({ isShowing, setIsShowing, article }) {
+  let oldDiv = document.getElementById("modal-root");
+  if(oldDiv){
+    oldDiv.remove();
+  }
   const modalRoot = document.createElement("div");
   modalRoot.setAttribute("id", "modal-root");
   document.body.append(modalRoot);

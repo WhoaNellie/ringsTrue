@@ -1,9 +1,10 @@
 import React, { useEffect, useContext, useState } from "react";
 import axios from "axios";
+import ReactImageFallback from "react-image-fallback";
 
 import { UserContext } from "../App";
 import Modal from "./Modal";
-// import { useModal } from "./useModal";
+
 
 function Articles() {
     const Login = useContext(UserContext);
@@ -48,12 +49,12 @@ function Articles() {
           />
         );
       })}
-      <div id="modal-root"></div>
       <Modal 
-      isShowing={isShowing}
-      setIsShowing={setIsShowing}
-      article={articleState.activeArticle}
+        isShowing={isShowing}
+        setIsShowing={setIsShowing}
+        article={articleState.activeArticle}
       />
+      
     </React.Fragment>
   );
 }
@@ -72,8 +73,13 @@ function Card({ article, addRated }) {
   return (
     <div className={`card article-${article.id} ${cardState.height}`}>
       <h3>{article.headline}</h3>
-      <img src={article.image} alt={article.description} />
       
+      <ReactImageFallback
+        src={article.image} 
+        fallbackImage="./img/broken.jpg"
+        alt={article.description}
+        initialImage="./img/largeload.gif"
+      />
       
       <div className="article-text">{newText}</div>
 
