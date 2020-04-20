@@ -4,6 +4,7 @@ import RorL from '../components/RorL';
 import Articles from '../components/Articles';
 import Search from '../components/Search';
 import Header from '../components/Header';
+import { CookiesProvider } from 'react-cookie';
 
 function Homepage(){
     const Login = useContext(UserContext);
@@ -11,7 +12,9 @@ function Homepage(){
     <main>
         <Header/>
         <Search/>
-        {Login[0].loggedIn ? <Articles/>:<RorL/>}
+        <CookiesProvider>
+            {Login[0].loggedIn ? <Articles/>:<RorL/>}
+        </CookiesProvider>
     </main>
     )
 }

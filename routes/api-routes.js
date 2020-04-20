@@ -1,6 +1,9 @@
 const express = require("express");
 const mongoose = require('mongoose');
 
+const cookieParser = require('cookie-parser');
+
+
 const User = require("../models/Users");
 const db = require("../models");
 let keys = null;
@@ -22,6 +25,21 @@ mongoose.connect(uristring, {
     useUnifiedTopology: true
 });
 
+router.post("/api/cookie", (req, res) => {
+    // Cookies that have not been signed
+    console.log('Cookies: ', req.signedCookies)
+
+    db.User.findById(req.signedCookies.user).then((user) => {
+        console.log(user);
+        if(user){
+            res.send({dailyRated: user.dailyRated});
+        }
+        else{
+            res.end();
+        }
+    })
+})
+
 router.get("/api/articles", (req, res) => {
     db.Article.find({}).then((articles) => {
         res.send(articles);
@@ -29,13 +47,28 @@ router.get("/api/articles", (req, res) => {
 })
 
 router.post("/api/register", async (req, res) => {
-    try{
-        let newUser = new User(req.body);
-        let result = await newUser.save();
-        res.send(result);
-    }catch (err){
-        res.status(500).send(err);
-    } 
+        try{
+            let oldUser = await db.User.find({username: req.body.username});
+
+            if(oldUser.length === 0){
+                try{
+                    let newUser = new User(req.body);
+                    let result = await newUser.save();
+                    console.log(result);
+                    res.cookie('user', result._id, { signed: true });
+                    res.send(result);
+                        
+                }catch (err){
+                    res.status(500).send(err);
+                } 
+            }else{
+                res.status(401).send({ message: "That Username Has Already Been Taken" });
+                return;
+            }
+        }catch(err){
+            res.status(500).send(err);
+        } 
+        
 });
 
 router.post("/api/login", async (req, res) => {
@@ -52,8 +85,8 @@ router.post("/api/login", async (req, res) => {
                 res.status(400).send({ message: "The password is invalid" });
                 return;
             }
+            res.cookie('user', user._id, { signed: true });
             res.status(200).send({dailyRated: user.dailyRated});
-            console.log("success?");
         });
 
         
@@ -62,22 +95,17 @@ router.post("/api/login", async (req, res) => {
     }
 })
 
-// router.post("/api/rating", (req, res) => {
-//     let rating = {
-//         network: mongoose.Types.ObjectId(req.body.network),
-//         rating: {
-//             accuracy: req.body.accuracy,
-//             neutrality: req.body.neutrality
-//         }
-//     }
-
-//     db.Rating.create(rating).then(function (response) {
-//         // console.log(response);
-//         res.send(response);
-//     }).catch(function (err) {
-//         console.log(err);
-//     })
-// });
+router.get('/logout', function (req, res, next) {
+    if (req.session) {
+      req.session.destroy(function (err) {
+        if (err) {
+          return next(err);
+        } else {
+          return res.redirect('/');
+        }
+      });
+    }
+  });
 
 router.get("/api/network/:name", (req, res) => {
     db.Network.findOne({
