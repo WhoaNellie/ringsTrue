@@ -15,7 +15,6 @@ function App(){
     useEffect(() => {
         if(document.cookie){
             axios.post("/api/cookie", document.cookie).then(res => {
-                console.log(res.data);
                 setUserState({
                     loggedIn: true,
                     dailyRated: res.data.dailyRated

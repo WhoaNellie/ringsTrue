@@ -21,7 +21,6 @@ function Login(){
                 setUserState({
                     loggedIn: true, 
                     dailyRated: response.data.dailyRated});
-                console.log(document.cookie);
                 history.push("/");
             }
         })
