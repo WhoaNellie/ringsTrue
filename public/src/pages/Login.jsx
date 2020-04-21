@@ -32,7 +32,16 @@ function Login(){
             <input type="text" id="username" onChange={() => setInputState( {...inputState, username: document.getElementById("username").value})}/>
 
             <label htmlFor="password">Password</label>
-            <input type="password" id="password" onChange={() => setInputState( {...inputState, password: document.getElementById("password").value})}/>
+            <input 
+            type="password" 
+            id="password" 
+            onChange={() => setInputState( {...inputState, password: document.getElementById("password").value})}
+            onKeyPress={(event) => {
+                if(event.key === "Enter"){
+                    loginUser();
+                }
+            }}
+            />
 
             <button id="login" onClick={() => loginUser()}>Login</button>
         </main>

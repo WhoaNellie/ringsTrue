@@ -19,6 +19,8 @@ let uristring =
     process.env.MONGOLAB_URI ||
     keys.mongoURI;
 
+let cookie_key = process.env.cookie_key || keys.cookie_key;
+
 mongoose.connect(uristring, {
   useNewUrlParser: true,
   useFindAndModify: false,
@@ -29,7 +31,7 @@ const db = mongoose.connection;
 
 //cookies
 app.use(session({
-  secret: 'dragon slice',
+  secret: cookie_key,
   resave: true,
   saveUninitialized: false,
   store: new MongoStore({
@@ -46,7 +48,7 @@ app.use(logger("dev"));
 app.use(compression());
 app.use(express.json());
 app.use(express.static("public"));
-app.use(cookieParser("dragon slice"));
+app.use(cookieParser(cookie_key));
 
 // routes
 app.use(require("./routes/api-routes.js"));

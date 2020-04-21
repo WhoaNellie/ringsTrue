@@ -41,7 +41,15 @@ function Registration(){
             <input type="text" id="username" onChange={() => setProfState( {...profState, username: document.getElementById("username").value})}/>
 
             <label htmlFor="password">Password</label>
-            <input type="password" id="password" onChange={() => setProfState( {...profState, password: document.getElementById("password").value})}/>
+            <input 
+            type="password" 
+            id="password" 
+            onChange={() => setProfState( {...profState, password: document.getElementById("password").value})}
+            onKeyPress={(event) => {
+                if(event.key === "Enter"){
+                    registerUser();
+                }
+            }}/>
 
             <button id="register" onClick={() => registerUser()}>Register</button>
         </main>

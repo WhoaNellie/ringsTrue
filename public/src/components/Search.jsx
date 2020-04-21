@@ -52,7 +52,9 @@ function Search(){
 
     return(
         <div className="search">
-            <input ref={inputEl} type="text" 
+            <input 
+            ref={inputEl} 
+            type="text" 
             className="search__input" 
             placeholder="Find a News Network" 
             onChange={() => setSearchState({
@@ -63,10 +65,24 @@ function Search(){
                     document.getElementById("results").style.display="none";
                 }, 500);
             }} 
-            onFocus={() => {document.getElementById("results").style.display="block"}}/>
+            onFocus={() => {document.getElementById("results").style.display="block"}}
+            onKeyPress={(event) => {
+                if(event.key === "Enter"){
+                    clickSearch(resultState[0]);
+                }
+            }}
+            />
 
             <div className="searchResults" id="results">
-                {resultState.map(result => <SearchEl name={result} inputEl={inputEl} setResultState={setResultState} clickSearch={() => clickSearch(result)}/>)}
+                {resultState.map((result, index) => <SearchEl 
+                    name={result} 
+                    inputEl={inputEl} 
+                    setResultState={setResultState} 
+                    clickSearch={() => clickSearch(result)}
+                    key={index}
+                    />
+                
+                )}
             </div>
 
             {isShowing && <Network
