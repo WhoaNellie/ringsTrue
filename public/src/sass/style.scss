@@ -1,3 +1,7 @@
+*{
+    font-family: 'Manrope', sans-serif;
+}
+
 input{
     border: 1px solid grey;
 }
@@ -18,13 +22,17 @@ input{
         height: 60vh;
     }
 
-    h3{
-        font-size: 12pt;
-    }
-
     img{
         width: 115%;
         margin: 0 -10%;
+    }
+
+    img[src="./img/broken.jpg"]{
+        display: none;
+
+        & + .article-text p:first-of-type{
+            text-indent: 1.5rem!important;
+        }
     }
 
     .article-text{
@@ -107,3 +115,10 @@ input{
     }    
 }
 
+@media only screen and (min-width: 500px){
+    .modal{
+        width: 30%;
+        height: 70vh;
+        flex-direction: row;
+    }
+}

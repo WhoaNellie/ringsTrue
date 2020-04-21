@@ -23,6 +23,12 @@ mongoose.connect(uristring, {
     useUnifiedTopology: true
 });
 
+db.User.updateMany({},{
+    $set: {
+        dailyRated: []
+    }
+})
+
 async function getArticles() {
     let articleLinks = [];
     let articleData = [];
@@ -32,14 +38,12 @@ async function getArticles() {
         method: "get"
     }).then(async (response) => {
         let articles = response.data.articles;
-        // console.log(articles.length);
+
         for (let i = 0; i < Math.min(articles.length, 20); i++) {
             if (typeof (articles[i].url) === "string") {
                 articleLinks.push(articles[i].url);
             }
         }
-
-        console.log(articleLinks.length);
 
         for (let i = 0; i < articleLinks.length; i++) {
             try {
@@ -56,12 +60,12 @@ async function getArticles() {
                         "url": articleLinks[i]
                     }
                 });
-                // console.log(text);
+
                 if (text.data.article) {
-                    //let cleantext = text.data.article.replace(/\n/g, "<br />");
+
                     let cleanHead = articles[i].title.replace(/\-[^-]*$/g, "");
 
-                    let brandVariations = [articles[i].source.name, articles[i].source.name.replace(/\s/g, '')];
+                    let brandVariations = [articles[i].source.name, articles[i].source.name.replace(/\s/g, ''), articles[i].source.name.replace(/\.[^.]*$/gi, "")];
 
                     let filter = new RegExp(`\\b(${brandVariations.join('|')})\\b`, 'gi');
 
@@ -69,7 +73,7 @@ async function getArticles() {
 
                     articleData.push({
                         id: i,
-                        headline: cleanHead,
+                        headline: cleanHead.trim(),
                         image: articles[i].urlToImage,
                         description: articles[i].description,
                         text: cleanText,

@@ -12,7 +12,7 @@ const userSchema = new Schema({
         type: String
     },
     dailyRated: {
-        type: Number
+        type: [Number]
     }
 });
 

@@ -1,6 +1,9 @@
 const express = require("express");
 const mongoose = require('mongoose');
 
+const cookieParser = require('cookie-parser');
+
+
 const User = require("../models/Users");
 const db = require("../models");
 let keys = null;
@@ -22,22 +25,55 @@ mongoose.connect(uristring, {
     useUnifiedTopology: true
 });
 
+//check if login cookie is valid
+router.post("/api/cookie", (req, res) => {
+    console.log('Cookies: ', req.signedCookies)
+
+    db.User.findById(req.signedCookies.user).then((user) => {
+        console.log(user);
+        if(user){
+            res.send({dailyRated: user.dailyRated});
+        }
+        else{
+            res.end();
+        }
+    })
+});
+
+//get scrubbed articles
 router.get("/api/articles", (req, res) => {
     db.Article.find({}).then((articles) => {
         res.send(articles);
     })
 })
 
+//register new user and send cookie
 router.post("/api/register", async (req, res) => {
-    try{
-        let newUser = new User(req.body);
-        let result = await newUser.save();
-        res.send(result);
-    }catch (err){
-        res.status(500).send(err);
-    } 
+        try{
+            let oldUser = await db.User.find({username: req.body.username});
+
+            if(oldUser.length === 0){
+                try{
+                    let newUser = new User(req.body);
+                    let result = await newUser.save();
+                    console.log(result);
+                    res.cookie('user', result._id, { signed: true });
+                    res.send(result);
+                        
+                }catch (err){
+                    res.status(500).send(err);
+                } 
+            }else{
+                res.status(401).send({ message: "That Username Has Already Been Taken" });
+                return;
+            }
+        }catch(err){
+            res.status(500).send(err);
+        } 
+        
 });
 
+//login and send cookie
 router.post("/api/login", async (req, res) => {
     try{
         let user = await User.findOne({ username: req.body.username }).exec();
@@ -52,33 +88,28 @@ router.post("/api/login", async (req, res) => {
                 res.status(400).send({ message: "The password is invalid" });
                 return;
             }
+            res.cookie('user', user._id, { signed: true });
             res.status(200).send({dailyRated: user.dailyRated});
-            console.log("success?");
         });
 
         
     }catch(err){
         res.status(500).send(err);
     }
+});
+
+//update dailyRated
+router.put('/api/rate', (req, res) => {
+    console.log(req.body);
+    console.log(req.signedCookies.user)
+    db.User.updateOne({_id: req.signedCookies.user}, {
+        $set: {
+            dailyRated: req.body.dailyRated
+        }
+    }).then(user => res.end());
 })
 
-// router.post("/api/rating", (req, res) => {
-//     let rating = {
-//         network: mongoose.Types.ObjectId(req.body.network),
-//         rating: {
-//             accuracy: req.body.accuracy,
-//             neutrality: req.body.neutrality
-//         }
-//     }
-
-//     db.Rating.create(rating).then(function (response) {
-//         // console.log(response);
-//         res.send(response);
-//     }).catch(function (err) {
-//         console.log(err);
-//     })
-// });
-
+//get one network by name
 router.get("/api/network/:name", (req, res) => {
     db.Network.findOne({
         name: req.params.name
@@ -91,6 +122,7 @@ router.get("/api/network/:name", (req, res) => {
     })
 });
 
+//create new network
 router.post("/api/network", (req, res) => {
     db.Network.create({
         name: req.body.name,
@@ -107,6 +139,7 @@ router.post("/api/network", (req, res) => {
     })
 })
 
+//update network rating
 router.put("/api/network", (req, res) => {
     console.log(req.body);
 
@@ -121,20 +154,20 @@ router.put("/api/network", (req, res) => {
     })
 });
 
-router.get("/api/search/:name", (req, res) => {
-    let cleanText = req.query.text.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
-        cleanText = cleanText.trim();
+//find all matching networks drom search
+router.post("/api/search", (req, res) => {
+    console.log(req.body.name);
+    let cleanText = req.body.name.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+    cleanText = cleanText.trim();
 
-            let cursor = mongoClient.db().collection(`autosuggest${process.env.KMAP_VERSION}`).find({
-                $or: [
-                    {
-                        text:  RegExp('\\b' + cleanText, 'i')
-                    },
-                    {
-                        key: RegExp('\\b' + cleanText, 'i')
-                    }
-                ]
-            });
-})
+    db.Network.find(
+            {
+                name:  RegExp('\\b' + cleanText, 'i')
+            }
+    ).then((network) => {
+        res.send(network);
+    })
+});
+
 
 module.exports = router;

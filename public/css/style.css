@@ -1,3 +1,6 @@
+* {
+  font-family: 'Manrope', sans-serif; }
+
 input {
   border: 1px solid grey; }
 
@@ -13,11 +16,13 @@ input {
   box-shadow: 20px 20px 60px #d9d9d9, -20px -20px 60px #ffffff; }
   .card.collapsed {
     height: 60vh; }
-  .card h3 {
-    font-size: 12pt; }
   .card img {
     width: 115%;
     margin: 0 -10%; }
+  .card img[src="./img/broken.jpg"] {
+    display: none; }
+    .card img[src="./img/broken.jpg"] + .article-text p:first-of-type {
+      text-indent: 1.5rem !important; }
   .card .article-text {
     text-align: left;
     font-size: 12pt; }
@@ -79,3 +84,9 @@ input {
     border-radius: 15px;
     color: white;
     margin: 1% auto; }
+
+@media only screen and (min-width: 500px) {
+  .modal {
+    width: 30%;
+    height: 70vh;
+    flex-direction: row; } }

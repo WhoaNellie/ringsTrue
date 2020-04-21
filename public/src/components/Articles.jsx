@@ -1,23 +1,44 @@
 import React, { useEffect, useContext, useState } from "react";
 import axios from "axios";
+import ReactImageFallback from "react-image-fallback";
 
 import { UserContext } from "../App";
 import Modal from "./Modal";
-// import { useModal } from "./useModal";
+import Network from "./Network";
 
 function Articles() {
     const Login = useContext(UserContext);
     const [articleState, setArticleState] = useState({
-        rated: [],
+        rated: Login[0].dailyRated,
         activeArticle: {headline:""},
-        articleArr: [],
+        articleArr: []
     });
     const [isShowing, setIsShowing] = useState(false);
+    const [thankYouState, setThankYouState] = useState({
+      showing: false,
+      name: '',
+      rating: [],
+      amount: 0
+    });
+    const [networkShowing, setNetworkShowing] = useState(false);
     
 
-  function addRated(article) {
-    setArticleState({ ...articleState, rated: [...articleState.rated, article.id], activeArticle: article});
+  function showModal(article) {
+    setArticleState({ ...articleState, activeArticle: article});
     setIsShowing(true);
+  }
+
+  function getNetwork(name){
+    axios.get(`/api/network/${name}`).then(res => {
+      console.log(res);
+      setThankYouState({
+        showing: true,
+        name: res.data.name,
+        rating: res.data.rating,
+        amount: res.data.amount
+      });
+      setNetworkShowing(true);
+    })
   }
 
   useEffect(() => {
@@ -26,9 +47,9 @@ function Articles() {
       let idArr = [];
 
       //get random article ids
-      while (articleArr.length < 6 - Login[0].dailyRated) {
+      while (articleArr.length < 5 - Login[0].dailyRated.length) {
         let randID = Math.floor(Math.random() * articles.data.length);
-        if (!articleState.rated.includes(randID) && !idArr.includes(randID)) {
+        if (!Login[0].dailyRated.includes(randID) && !idArr.includes(randID)) {
           articleArr.push(articles.data[randID]);
           idArr.push(randID);
         }
@@ -39,39 +60,62 @@ function Articles() {
 
   return (
     <React.Fragment>
+      {thankYouState.showing && <ThankYouCard 
+      name={thankYouState.name}
+      closeCard={() => setThankYouState({
+        showing: false,
+        name: ''
+      })}
+      getNetwork={getNetwork}/>}
       {articleState.articleArr.map((article) => {
         return (
           <Card
             article={article}
-            addRated={() => addRated(article)}
+            showModal={() => showModal(article)}
             key={article.id}
           />
         );
       })}
-      <div id="modal-root"></div>
       <Modal 
-      isShowing={isShowing}
-      setIsShowing={setIsShowing}
-      article={articleState.activeArticle}
+        isShowing={isShowing}
+        setIsShowing={setIsShowing}
+        articleState={articleState}
+        setArticleState={setArticleState}
+        setThankYouState={setThankYouState}
       />
+      {networkShowing && <Network
+                isShowing={networkShowing}
+                setIsShowing={setNetworkShowing}
+                name={thankYouState.name}
+                rating={thankYouState.rating[0]}
+                amount={thankYouState.amount}
+            />}
+      
     </React.Fragment>
   );
 }
 
-function Card({ article, addRated }) {
+function Card({ article, showModal }) {
   const [cardState, setCardState] = useState({
     height: "collapsed",
   });
 
-  let newText = article.text.split('\n').map((item, i) => {
-    return <p key={i}>{item}</p>;
-});
+  let newText = article.text.replace(/&#9608;/g, String.fromCharCode("&#9608;"));
+
+
+  newText = newText.split('\n').map((item, i) => {
+    return <p key={i}>{item}</p>;});
 
   return (
     <div className={`card article-${article.id} ${cardState.height}`}>
       <h3>{article.headline}</h3>
-      <img src={article.image} alt={article.description} />
       
+      <ReactImageFallback
+        src={article.image} 
+        fallbackImage="./img/broken.jpg"
+        alt={article.description}
+        initialImage="./img/largeload.gif"
+      />
       
       <div className="article-text">{newText}</div>
 
@@ -84,38 +128,24 @@ function Card({ article, addRated }) {
         </button>
       )}
 
-      <button className="rate-button" onClick={addRated}>
+      <button className="rate-button" onClick={showModal}>
         Rate
       </button>
     </div>
   );
 }
 
-// function RatingModal(props) {
-//   return (
-//     <React.Fragment>
-//       <div className="mask"></div>
-//       <aside className="modal rating">
-//         <h3>{props.title}</h3>
+function ThankYouCard({ name, closeCard, getNetwork }){
+  return (
+    <div className={`thankYouCard`}>
+      <h3>Thank you!</h3>
 
-//         <Doughnut data={chartState} options={options} />
+      <p>That article was from <a href="#" onClick={() => getNetwork(name)}>{name}</a>. Did it meet your expectations?</p>
 
-//         <label htmlFor="accuracy">Accuracy</label>
-//         <input id="accuracy" name="accuracy" type="range" min="0" max="100" />
-
-//         <label htmlFor="neutrality">Neutrality</label>
-//         <input
-//           id="neutrality"
-//           name="neutrality"
-//           type="range"
-//           min="0"
-//           max="100"
-//         />
-
-//         <button className="submit">Submit</button>
-//       </aside>
-//     </React.Fragment>
-//   );
-// }
-
+      <button className="rate-button" onClick={closeCard}>
+        X
+      </button>
+    </div>
+  );
+}
 export default Articles;
