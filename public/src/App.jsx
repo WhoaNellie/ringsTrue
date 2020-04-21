@@ -25,7 +25,7 @@ function App(){
 
     const [userState, setUserState] = useState({
         loggedIn: false,
-        dailyRated: 5,
+        dailyRated: [1,2,3,4,5],
         });
     return (
         <div className="wrap">

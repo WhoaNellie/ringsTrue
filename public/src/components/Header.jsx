@@ -7,7 +7,7 @@ function Header(){
     function logOut(){
         setUserState({
             loggedIn: false,
-            dailyRated: 5
+            dailyRated: [1,2,3,4,5]
         });
         document.cookie = "user=''; expires=Thu, 18 Dec 2013 12:00:00 UTC";
     }

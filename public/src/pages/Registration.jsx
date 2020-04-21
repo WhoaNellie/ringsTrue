@@ -17,11 +17,11 @@ function Registration(){
             axios.post("/api/register", {
                 username: profState.username,
                 password: profState.password,
-                dailyRated: 0
+                dailyRated: []
             }).then(res => {
                 setUserState({
                     loggedIn: true,
-                    dailyRated: 0
+                    dailyRated: []
                 });
                 history.push("/");
             }).catch(err => {

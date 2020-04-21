@@ -25,8 +25,8 @@ mongoose.connect(uristring, {
     useUnifiedTopology: true
 });
 
+//check if login cookie is valid
 router.post("/api/cookie", (req, res) => {
-    // Cookies that have not been signed
     console.log('Cookies: ', req.signedCookies)
 
     db.User.findById(req.signedCookies.user).then((user) => {
@@ -38,14 +38,16 @@ router.post("/api/cookie", (req, res) => {
             res.end();
         }
     })
-})
+});
 
+//get scrubbed articles
 router.get("/api/articles", (req, res) => {
     db.Article.find({}).then((articles) => {
         res.send(articles);
     })
 })
 
+//register new user and send cookie
 router.post("/api/register", async (req, res) => {
         try{
             let oldUser = await db.User.find({username: req.body.username});
@@ -71,6 +73,7 @@ router.post("/api/register", async (req, res) => {
         
 });
 
+//login and send cookie
 router.post("/api/login", async (req, res) => {
     try{
         let user = await User.findOne({ username: req.body.username }).exec();
@@ -93,20 +96,20 @@ router.post("/api/login", async (req, res) => {
     }catch(err){
         res.status(500).send(err);
     }
+});
+
+//update dailyRated
+router.put('/api/rate', (req, res) => {
+    console.log(req.body);
+    console.log(req.signedCookies.user)
+    db.User.updateOne({_id: req.signedCookies.user}, {
+        $set: {
+            dailyRated: req.body.dailyRated
+        }
+    }).then(user => res.end());
 })
 
-router.get('/logout', function (req, res, next) {
-    if (req.session) {
-      req.session.destroy(function (err) {
-        if (err) {
-          return next(err);
-        } else {
-          return res.redirect('/');
-        }
-      });
-    }
-  });
-
+//get one network by name
 router.get("/api/network/:name", (req, res) => {
     db.Network.findOne({
         name: req.params.name
@@ -119,6 +122,7 @@ router.get("/api/network/:name", (req, res) => {
     })
 });
 
+//create new network
 router.post("/api/network", (req, res) => {
     db.Network.create({
         name: req.body.name,
@@ -135,6 +139,7 @@ router.post("/api/network", (req, res) => {
     })
 })
 
+//update network rating
 router.put("/api/network", (req, res) => {
     console.log(req.body);
 
@@ -149,6 +154,7 @@ router.put("/api/network", (req, res) => {
     })
 });
 
+//find all matching networks drom search
 router.post("/api/search", (req, res) => {
     console.log(req.body.name);
     let cleanText = req.body.name.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
@@ -163,10 +169,5 @@ router.post("/api/search", (req, res) => {
     })
 });
 
-router.get("/api/search/:name", (req, res) => {
-    db.Network.findOne({name: req.params.name}).then(network => {
-        res.send(network);
-    })
-})
 
 module.exports = router;

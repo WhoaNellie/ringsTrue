@@ -23,6 +23,12 @@ mongoose.connect(uristring, {
     useUnifiedTopology: true
 });
 
+db.User.updateMany({},{
+    $set: {
+        dailyRated: []
+    }
+})
+
 async function getArticles() {
     let articleLinks = [];
     let articleData = [];

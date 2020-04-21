@@ -41,7 +41,7 @@ function Search(){
     function clickSearch(name){
         inputEl.current.value = "";
         setResultState([]);
-        axios.get(`/api/search/${name}`).then(res => {
+        axios.get(`/api/network/${name}`).then(res => {
             console.log(res.data);
             let promNetwork = new Promise((resolve, reject) => resolve(setCurNetwork(res.data)));
             promNetwork.then(() => {
@@ -84,7 +84,7 @@ function Search(){
 
 }
 
-function SearchEl({ name, inputEl, setResultState, clickSearch }){    
+function SearchEl({ name, clickSearch }){    
 
     return(
         <div className="searchResults__result" onClick={clickSearch}>

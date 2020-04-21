@@ -3,13 +3,13 @@ import ReactDOM from "react-dom";
 import { Doughnut } from "react-chartjs-2";
 
 function Network({name, rating, amount, isShowing, setIsShowing}){
-    let oldDiv = document.getElementById("modal-root");
+    let oldDiv = document.getElementById("network-root");
     if(oldDiv){
         oldDiv.remove();
     }
-    const modalRoot = document.createElement("div");
-    modalRoot.setAttribute("id", "modal-root");
-    document.body.append(modalRoot);
+    const networkRoot = document.createElement("div");
+    networkRoot.setAttribute("id", "network-root");
+    document.getElementById("app").append(networkRoot);
     const [chartState, setChartState] = useState({
         datasets: [
             {
@@ -24,26 +24,6 @@ function Network({name, rating, amount, isShowing, setIsShowing}){
               }
         ]
       });
-
-    console.log(rating[0]);
-    // if(rating[0]){
-    //     setChartState({
-    //         datasets: [
-    //             {
-    //                 label: "Accuracy",
-    //                 data: [rating[0].accuracy, 100 - rating[0].accuracy],
-    //                 backgroundColor: ["#008000", "#FFFFFF"],
-    //               },
-    //               {
-    //                 label: "Neutrality",
-    //                 data: [rating.neutrality, 100 - rating.neutrality],
-    //                 backgroundColor: ["#800080", "#FFFFFF"],
-    //               }
-    //         ]
-    //       });
-    // }
-
-    
 
     const options = {
       events: [],
@@ -86,7 +66,7 @@ function Network({name, rating, amount, isShowing, setIsShowing}){
   
           </aside>
         </React.Fragment>,
-        modalRoot
+        networkRoot
       );
     } else {
       return null;
