@@ -38,7 +38,7 @@ function App(){
                     </UserContext.Provider>
                 </Switch>
             </HashRouter>
-
+            <div id="modal-root"></div>
         </div>
     )
 }

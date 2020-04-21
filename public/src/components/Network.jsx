@@ -7,6 +7,7 @@ function Network({name, rating, amount, isShowing, setIsShowing}){
     if(oldDiv){
         oldDiv.remove();
     }
+    
     const networkRoot = document.createElement("div");
     networkRoot.setAttribute("id", "network-root");
     document.getElementById("app").append(networkRoot);

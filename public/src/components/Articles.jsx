@@ -5,6 +5,7 @@ import ReactImageFallback from "react-image-fallback";
 import { UserContext } from "../App";
 import Modal from "./Modal";
 import Network from "./Network";
+import { func } from "prop-types";
 
 function Articles() {
     const Login = useContext(UserContext);
@@ -82,6 +83,7 @@ function Articles() {
         articleState={articleState}
         setArticleState={setArticleState}
         setThankYouState={setThankYouState}
+        key="modal"
       />
       {networkShowing && <Network
                 isShowing={networkShowing}
@@ -134,6 +136,7 @@ function Card({ article, showModal }) {
     </div>
   );
 }
+
 
 function ThankYouCard({ name, closeCard, getNetwork }){
   return (

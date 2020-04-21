@@ -4,13 +4,13 @@ import axios from "axios";
 import { Doughnut } from "react-chartjs-2";
 
 function Modal({ isShowing, setIsShowing, articleState, setArticleState, setThankYouState }) {
-  let oldDiv = document.getElementById("modal-root");
-    if(oldDiv){
-        oldDiv.remove();
-    }
-  const modalRoot = document.createElement("div");
-  modalRoot.setAttribute("id", "modal-root");
-  document.getElementById("app").append(modalRoot);
+  // let oldDiv = document.getElementById("modal-root");
+  //   if(oldDiv){
+  //       oldDiv.remove();
+  //   }
+  // const modalRoot = document.createElement("div");
+  // modalRoot.setAttribute("id", "modal-root");
+  // document.getElementById("app").append(modalRoot);
 
   const [rangeState, setRangeState] = useState({
     accuracy: 50,
@@ -202,11 +202,30 @@ function Modal({ isShowing, setIsShowing, articleState, setArticleState, setThan
           </button>
         </aside>
       </React.Fragment>,
-      modalRoot
+      document.getElementById("modal-root")
     );
   } else {
     return null;
   }
+}
+
+function Range({ name, value, onChange, rangeState}){
+
+  return(
+    <form>
+    <label htmlFor={name}>{name}</label>
+          <input
+            id={name}
+            name={name}
+            type="range"
+            min="0"
+            max="100"
+            value={rangeState[name]}
+            onChange={(event) => handleRange(event, {name})}
+          />
+    </form>
+  )
+
 }
 
 export default Modal;
