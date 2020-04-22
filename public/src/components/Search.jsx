@@ -44,6 +44,7 @@ function Search(){
 
     return(
         <div className="search">
+            <div className="search__bar">
             <input 
             ref={inputEl} 
             type="text" 
@@ -64,8 +65,11 @@ function Search(){
                 }
             }}
             />
+            <button className="search__button" onClick={() => clickSearch(resultState[0])}>Search</button>
+            </div>
+            
 
-            <div className="searchResults" id="results">
+            <div className="results" id="results">
                 {resultState.map((result, index) => <SearchEl 
                     name={result} 
                     inputEl={inputEl} 
@@ -86,7 +90,7 @@ function Search(){
             />}
             
 
-            {/* <button className="search__button" onClick={() => clickME()}>Search</button> */}
+            
         </div>
     )
 
@@ -95,7 +99,7 @@ function Search(){
 function SearchEl({ name, clickSearch }){    
 
     return(
-        <div className="searchResults__result" onClick={clickSearch}>
+        <div className="results__result" onClick={clickSearch}>
         {name}
         </div>
     )

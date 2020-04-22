@@ -8,6 +8,7 @@ import axios from 'axios';
 import Registration from "./pages/Registration";
 import Login from './pages/Login';
 import Homepage from './pages/Homepage';
+import Header from './components/Header';
 
 export const UserContext = createContext();
 
@@ -29,9 +30,11 @@ function App(){
         });
     return (
         <div className="wrap">
+            
             <HashRouter>
                 <Switch>
                     <UserContext.Provider value={[userState, setUserState]}>
+                    <Header/>
                         <Route exact path="/" component={Homepage}/>
                         <Route path="/register" component={Registration}/>
                         <Route path="/login" component={Login}/>

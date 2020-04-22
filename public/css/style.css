@@ -6,7 +6,47 @@
   font-style: normal; }
 
 * {
-  font-family: 'Manrope', sans-serif; }
+  font-family: 'Manrope', sans-serif;
+  font-size: 107%; }
+
+body {
+  background-color: #fdfdfe; }
+
+.search .search__bar {
+  display: inline-flex; }
+  .search .search__bar .search__input {
+    border: 1px solid #966dc2;
+    border-right: none;
+    padding: 0 6vw;
+    width: 75vw;
+    height: 13vw; }
+    .search .search__bar .search__input::placeholder {
+      color: #b091d1;
+      font-weight: bold;
+      letter-spacing: 1px;
+      font-size: 6vw;
+      padding-bottom: 6vw; }
+  .search .search__bar .search__button {
+    width: 25vw;
+    background-color: #629C44;
+    background-image: url("../../img/search.svg");
+    background-repeat: no-repeat;
+    background-size: 30%;
+    background-position: center;
+    color: white;
+    font-weight: bold;
+    text-indent: -9999px; }
+
+.search .results {
+  z-index: 2;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 10px 5px 0px rgba(0, 0, 0, 0.44);
+  width: 100%; }
+  .search .results .results__result {
+    padding: 0.5vw 5.5vw; }
+  .search .results .results__result:hover, .search .results .results__result:focus {
+    background-color: #cab5e0; }
 
 header {
   height: 25vw;
@@ -45,9 +85,6 @@ h1:before {
   width: 20vw;
   height: 20vw;
   display: inline-block; }
-
-input {
-  border: 1px solid grey; }
 
 .card {
   width: 85%;
