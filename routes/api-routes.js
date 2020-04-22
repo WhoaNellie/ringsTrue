@@ -154,7 +154,14 @@ router.put("/api/network", (req, res) => {
     })
 });
 
-//find all matching networks drom search
+router.get("/api/all", (req, res) => {
+    db.Network.find({}).then(data => {
+        res.send(data);
+    }
+    )
+})
+
+//find all matching networks from search
 router.post("/api/search", (req, res) => {
     console.log(req.body.name);
     let cleanText = req.body.name.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
