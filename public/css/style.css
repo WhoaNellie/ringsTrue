@@ -183,6 +183,8 @@ main .cards {
     position: relative;
     background: #ffffff;
     box-shadow: 2px 2px 2px gray, inset 0px -44px 107px -78px #ccb8cc; }
+    main .cards .card h3 {
+      font-size: calc(1rem + 1.5vw); }
     main .cards .card.collapsed {
       height: 60vh; }
     main .cards .card img {
@@ -193,10 +195,11 @@ main .cards {
       main .cards .card img[src="./img/broken.jpg"] + .article-text p:first-of-type {
         text-indent: 1.5rem !important; }
     main .cards .card .article-text {
-      text-align: left;
-      font-size: 12pt; }
+      text-align: left; }
       main .cards .card .article-text p {
-        text-indent: 1.5rem; }
+        text-indent: 1.5rem;
+        font-size: calc(1rem + 0.5vw);
+        line-height: 1.6; }
       main .cards .card .article-text p:first-of-type {
         text-indent: 0; }
         main .cards .card .article-text p:first-of-type::first-letter {
@@ -249,7 +252,7 @@ main .cards {
   background: #ffffff;
   z-index: 3;
   width: 85%;
-  height: 140vw;
+  height: 80vh;
   position: fixed;
   top: 10vh;
   left: calc(15% / 2);
@@ -258,9 +261,10 @@ main .cards {
   padding: 5%;
   text-align: center; }
   .modal h3 {
-    font-size: 5vw; }
+    font-size: calc(0.5rem + 2vw);
+    margin-bottom: 1vh; }
   .modal canvas {
-    margin: -35vw auto;
+    margin: -17vh auto;
     z-index: -1; }
   .modal .submit {
     width: 60%;
@@ -269,7 +273,32 @@ main .cards {
     font-weight: bold;
     letter-spacing: 1px;
     box-shadow: 2px 2px 2px gray;
-    margin: 1% auto; }
+    margin: 2vh auto; }
+  .modal input[type="range"] {
+    display: block;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: #999;
+    border-radius: 5px;
+    width: 100%;
+    height: 2px;
+    outline: 0;
+    margin: 2vh 0; }
+  .modal input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: .3s ease-in-out; }
+  .modal #accuracy::-webkit-slider-thumb {
+    background-color: #629C44; }
+  .modal #neutrality::-webkit-slider-thumb {
+    background-color: #633B8E; }
+  .modal input[type="range"]::-webkit-slider-thumb:active {
+    transform: scale(1); }
+  .modal label {
+    font-size: calc(1rem + 0.5vh); }
 
 @media only screen and (min-width: 500px) {
   .modal {
