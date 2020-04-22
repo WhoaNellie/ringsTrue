@@ -46,7 +46,6 @@ function Network({name, rating, amount, isShowing, setIsShowing}){
         for(let network of res.data){
           totalRatings += network.amount;
         }
-        console.log(totalRatings);
         for(let network of res.data){
           let n = network.amount;
 

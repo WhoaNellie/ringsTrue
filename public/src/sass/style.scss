@@ -1,5 +1,69 @@
+$base-purple: #633B8E;
+$base-green: #629C44;
+$base-yellow: #FFFF90;
+
+@font-face {
+    font-family: "TypoRoundRegularDemo";
+  
+    src: url("./fonts/TypoRoundRegularDemo.woff") format("woff"), /* Modern Browsers */
+      url("./fonts/TypoRoundRegularDemo.woff2") format("woff2"); /* Modern Browsers */
+    font-weight: normal;
+    font-style: normal;
+  }
+
 *{
     font-family: 'Manrope', sans-serif;
+}
+
+header{
+    height: 25vw;
+    padding: 2vw 10vw;
+    margin: 5vw auto;
+    h1{
+        position: absolute;
+        width: 90vw;
+        left: calc(15vw / 2);
+        a{
+            text-decoration: none;
+            position: relative;
+            top: -5vw;
+            left: 2.5vw;
+        
+        span{
+            font-family: "TypoRoundRegularDemo", sans-serif;
+            font-size: 15vw;
+        }
+        .rings{
+            color: $base-purple;
+        }
+        .true{
+            color: $base-green;
+        }
+        } 
+    }
+     
+    .logout{
+        text-decoration: none;
+        color: $base-purple;
+        font-weight: bold;
+        text-align: center;
+
+        width: 25vw;
+        display: block;
+        // margin: 20vw auto 0 auto;
+        position: relative;
+        bottom: -22vw;
+        left: 25vw;
+    }
+    
+}
+
+h1:before{
+    content: "";
+    background-image: url("../../img/rings.svg");
+    width: 20vw;
+    height: 20vw;
+    display: inline-block;
 }
 
 input{

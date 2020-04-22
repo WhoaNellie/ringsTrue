@@ -8,7 +8,6 @@ function Search(){
         query: ""
     });
     const [resultState, setResultState] = useState([]);
-    
 
     useEffect(() => {
         if(searchState.query.trim() != ""){
@@ -21,12 +20,6 @@ function Search(){
             })
         }
     }, [searchState])
-
-    // function clickME(){
-    //     axios.post("/api/search", { name: searchState.query }).then((res) => {
-    //                 console.log(res);
-    //             })
-    // }
 
     const [isShowing, setIsShowing] = useState(false);
     const [curNetwork, setCurNetwork] = useState({
@@ -42,7 +35,6 @@ function Search(){
         inputEl.current.value = "";
         setResultState([]);
         axios.get(`/api/network/${name}`).then(res => {
-            console.log(res.data);
             let promNetwork = new Promise((resolve, reject) => resolve(setCurNetwork(res.data)));
             promNetwork.then(() => {
                 setIsShowing(true);

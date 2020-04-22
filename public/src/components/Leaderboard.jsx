@@ -48,7 +48,7 @@ function Leaderboard() {
 function RankList({ table, ranks, showBody }) {
   if(showBody){
     let lis = [];
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < Math.min(10, ranks.length); i++) {
         lis.push(<li key={`${i}-rank`}>
             {ranks[i].name}
         </li>);

@@ -14,8 +14,8 @@ function Header(){
 
     return(
         <header>
-            <h1><a href="/">ringsTrue</a></h1>
-            {userState.loggedIn && <a href="#" className="logOut" onClick={logOut}>Log Out</a>}
+            <h1><a href="/"><span className="rings">rings</span><span className="true">True</span></a></h1>
+            {userState.loggedIn && <a href="#" className="logout" onClick={logOut}>Log Out</a>}
         </header>
     )
 

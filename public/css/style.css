@@ -1,5 +1,50 @@
+@font-face {
+  font-family: "TypoRoundRegularDemo";
+  src: url("./fonts/TypoRoundRegularDemo.woff") format("woff"), url("./fonts/TypoRoundRegularDemo.woff2") format("woff2");
+  /* Modern Browsers */
+  font-weight: normal;
+  font-style: normal; }
+
 * {
   font-family: 'Manrope', sans-serif; }
+
+header {
+  height: 25vw;
+  padding: 2vw 10vw;
+  margin: 5vw auto; }
+  header h1 {
+    position: absolute;
+    width: 90vw;
+    left: calc(15vw / 2); }
+    header h1 a {
+      text-decoration: none;
+      position: relative;
+      top: -5vw;
+      left: 2.5vw; }
+      header h1 a span {
+        font-family: "TypoRoundRegularDemo", sans-serif;
+        font-size: 15vw; }
+      header h1 a .rings {
+        color: #633B8E; }
+      header h1 a .true {
+        color: #629C44; }
+  header .logout {
+    text-decoration: none;
+    color: #633B8E;
+    font-weight: bold;
+    text-align: center;
+    width: 25vw;
+    display: block;
+    position: relative;
+    bottom: -22vw;
+    left: 25vw; }
+
+h1:before {
+  content: "";
+  background-image: url("../../img/rings.svg");
+  width: 20vw;
+  height: 20vw;
+  display: inline-block; }
 
 input {
   border: 1px solid grey; }
