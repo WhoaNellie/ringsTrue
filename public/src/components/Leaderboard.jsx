@@ -33,7 +33,7 @@ function Leaderboard() {
     <div className="leaderboard">
       <h2>Leaderboard</h2>
 
-      <h3>Accuracy</h3>
+      <h3 className="leaderboard__category--accuracy">Accuracy</h3>
       <RankList table="accuracy" ranks={ranks.accuracyRank} showBody={showBody}/>
 
       <h3>Neutrality</h3>

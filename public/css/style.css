@@ -67,6 +67,8 @@ h1:before {
   .search .search__bar .search__button {
     width: 25vw;
     background-color: #629C44;
+    border: 1px solid #4c7835;
+    border-left: none;
     background-image: url("../../img/search.svg");
     background-repeat: no-repeat;
     background-size: 30%;
@@ -117,6 +119,37 @@ main .reg-or-log {
     font-weight: bold;
     letter-spacing: 1px;
     box-shadow: 2px 2px 2px gray; }
+
+main .leaderboard {
+  margin: 5vw 5vw; }
+  main .leaderboard h2 {
+    text-align: center;
+    letter-spacing: 1px;
+    font-size: 8vw; }
+  main .leaderboard h3 {
+    font-size: 7vw;
+    text-align: center;
+    padding: 2vw 0;
+    margin-top: 5vw;
+    color: white;
+    font-weight: bold;
+    letter-spacing: 1px; }
+  main .leaderboard ol {
+    list-style: none;
+    counter-reset: li-count; }
+    main .leaderboard ol li::before {
+      counter-increment: li-count;
+      content: counter(li-count) ". "; }
+  main .leaderboard .leaderboard__category--accuracy {
+    background-color: #629C44;
+    box-shadow: 2px 2px 2px gray; }
+  main .leaderboard .leaderboard__accuracy--rank {
+    box-shadow: 2px 2px 2px gray; }
+    main .leaderboard .leaderboard__accuracy--rank li {
+      padding: 0.5vw 2.5vw;
+      width: 100%; }
+    main .leaderboard .leaderboard__accuracy--rank li:nth-child(2n+1) {
+      background-color: #eef6e9; }
 
 .card {
   width: 85%;
