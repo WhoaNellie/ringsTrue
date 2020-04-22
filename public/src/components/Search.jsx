@@ -81,7 +81,7 @@ function Search(){
                 )}
             </div>
 
-            {isShowing && <Network
+            {isShowing && curNetwork.name && <Network
                 isShowing={isShowing}
                 setIsShowing={setIsShowing}
                 name={curNetwork.name}
