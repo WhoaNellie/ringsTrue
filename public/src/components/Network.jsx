@@ -3,14 +3,6 @@ import ReactDOM from "react-dom";
 import { Doughnut } from "react-chartjs-2";
 
 function Network({name, rating, amount, isShowing, setIsShowing}){
-    let oldDiv = document.getElementById("network-root");
-    if(oldDiv){
-        oldDiv.remove();
-    }
-    
-    const networkRoot = document.createElement("div");
-    networkRoot.setAttribute("id", "network-root");
-    document.getElementById("app").append(networkRoot);
     const [chartState, setChartState] = useState({
         datasets: [
             {
@@ -67,7 +59,7 @@ function Network({name, rating, amount, isShowing, setIsShowing}){
   
           </aside>
         </React.Fragment>,
-        networkRoot
+        document.getElementById("network-root")
       );
     } else {
       return null;

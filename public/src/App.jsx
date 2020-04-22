@@ -39,6 +39,7 @@ function App(){
                 </Switch>
             </HashRouter>
             <div id="modal-root"></div>
+            <div id="network-root"></div>
         </div>
     )
 }
