@@ -177,6 +177,7 @@ function Modal({ isShowing, setIsShowing, articleState, setArticleState, setThan
 
           <Doughnut data={chartState} options={options} />
 
+          <div className="sliders">
           <label htmlFor="accuracy">Accuracy</label>
           <input
             id="accuracy"
@@ -198,6 +199,7 @@ function Modal({ isShowing, setIsShowing, articleState, setArticleState, setThan
             value={rangeState.neutrality}
             onChange={(event) => handleRange(event, "neutrality")}
           />
+          </div>
 
           <button className="submit" onClick={() => handleSubmit()}>
             Submit
