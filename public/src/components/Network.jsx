@@ -16,12 +16,12 @@ function Network({name, rating, amount, isShowing, setIsShowing}){
             {
                 label: "Accuracy",
                 data: [rating.accuracy, 100 - rating.accuracy],
-                backgroundColor: ["#008000", "#FFFFFF"],
+                backgroundColor: ["#629C44", "#FFFFFF"],
               },
               {
                 label: "Neutrality",
                 data: [rating.neutrality, 100 - rating.neutrality],
-                backgroundColor: ["#800080", "#FFFFFF"],
+                backgroundColor: ["#633B8E", "#FFFFFF"],
               }
         ]
       });

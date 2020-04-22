@@ -4,14 +4,6 @@ import axios from "axios";
 import { Doughnut } from "react-chartjs-2";
 
 function Modal({ isShowing, setIsShowing, articleState, setArticleState, setThankYouState }) {
-  // let oldDiv = document.getElementById("modal-root");
-  //   if(oldDiv){
-  //       oldDiv.remove();
-  //   }
-  // const modalRoot = document.createElement("div");
-  // modalRoot.setAttribute("id", "modal-root");
-  // document.getElementById("app").append(modalRoot);
-
   const [rangeState, setRangeState] = useState({
     accuracy: 50,
     neutrality: 50
@@ -21,12 +13,12 @@ function Modal({ isShowing, setIsShowing, articleState, setArticleState, setThan
       {
         label: "Accuracy",
         data: [rangeState.accuracy, 100 - rangeState.accuracy],
-        backgroundColor: ["#008000", "#FFFFFF"]
+        backgroundColor: ["#629C44", "#FFFFFF"]
       },
       {
         label: "Neutrality",
         data: [rangeState.neutrality, 100 - rangeState.neutrality],
-        backgroundColor: ["#800080", "#FFFFFF"]
+        backgroundColor: ["#633B8E", "#FFFFFF"]
       }
     ]
   });
@@ -44,12 +36,12 @@ function Modal({ isShowing, setIsShowing, articleState, setArticleState, setThan
           {
             label: "Accuracy",
             data: [e.target.value, 100 - e.target.value],
-            backgroundColor: ["#008000", "#FFFFFF"]
+            backgroundColor: ["#629C44", "#FFFFFF"]
           },
           {
             label: "Neutrality",
             data: [rangeState.neutrality, 100 - rangeState.neutrality],
-            backgroundColor: ["#800080", "#FFFFFF"]
+            backgroundColor: ["#633B8E", "#FFFFFF"]
           }
         ]
       });
@@ -59,12 +51,12 @@ function Modal({ isShowing, setIsShowing, articleState, setArticleState, setThan
           {
             label: "Accuracy",
             data: [rangeState.accuracy, 100 - rangeState.accuracy],
-            backgroundColor: ["#008000", "#FFFFFF"]
+            backgroundColor: ["#629C44", "#FFFFFF"]
           },
           {
             label: "Neutrality",
             data: [e.target.value, 100 - e.target.value],
-            backgroundColor: ["#800080", "#FFFFFF"]
+            backgroundColor: ["#633B8E", "#FFFFFF"]
           }
         ]
       });
@@ -150,12 +142,12 @@ function Modal({ isShowing, setIsShowing, articleState, setArticleState, setThan
         {
           label: "Accuracy",
           data: [50, 50],
-          backgroundColor: ["#008000", "#FFFFFF"]
+          backgroundColor: ["#629C44", "#FFFFFF"]
         },
         {
           label: "Neutrality",
           data: [50, 50],
-          backgroundColor: ["#800080", "#FFFFFF"]
+          backgroundColor: ["#633B8E", "#FFFFFF"]
         }
       ]
     });

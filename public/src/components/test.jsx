@@ -11,12 +11,12 @@ function App() {
 			{
 				label: 'Accuracy',
 				data: [rangeState.accuracy, 100 - rangeState.accuracy],
-				backgroundColor: ['#008000', '#FFFFFF'],
+				backgroundColor: ['#629C44', '#FFFFFF'],
 			},
 			{
 				label: 'Neutrality',
 				data: [rangeState.neutrality, 100 - rangeState.neutrality],
-				backgroundColor: ['#800080', '#FFFFFF'],
+				backgroundColor: ['#633B8E', '#FFFFFF'],
 			},
 		],
 	});
@@ -34,12 +34,12 @@ function App() {
 					{
 						label: 'Accuracy',
 						data: [e.target.value, 100 - e.target.value],
-						backgroundColor: ['#008000', '#FFFFFF'],
+						backgroundColor: ['#629C44', '#FFFFFF'],
 					},
 					{
 						label: 'Neutrality',
 						data: [rangeState.neutrality, 100 - rangeState.neutrality],
-						backgroundColor: ['#800080', '#FFFFFF'],
+						backgroundColor: ['#633B8E', '#FFFFFF'],
 					},
 				],
 			});
@@ -49,12 +49,12 @@ function App() {
 					{
 						label: 'Accuracy',
 						data: [rangeState.accuracy, 100 - rangeState.accuracy],
-						backgroundColor: ['#008000', '#FFFFFF'],
+						backgroundColor: ['#629C44', '#FFFFFF'],
 					},
 					{
 						label: 'Neutrality',
 						data: [e.target.value, 100 - e.target.value],
-						backgroundColor: ['#800080', '#FFFFFF'],
+						backgroundColor: ['#633B8E', '#FFFFFF'],
 					},
 				],
 			});

@@ -23,11 +23,7 @@ mongoose.connect(uristring, {
     useUnifiedTopology: true
 });
 
-db.User.updateMany({},{
-    $set: {
-        dailyRated: []
-    }
-})
+
 
 async function getArticles() {
     let articleLinks = [];
@@ -96,8 +92,14 @@ async function getArticles() {
 function sendArticles(req) {
     db.Article.deleteMany({}).then(() => {
         db.Article.insertMany(req).then(data => {
-                console.log(data.length + " records inserted!");
+            db.User.updateMany({},{
+                $set: {
+                    dailyRated: []
+                }
+            }).then(res => {
+                console.log(data.length + " records inserted and users reset!");
                 process.exit(0);
+            })
             })
             .catch(err => {
                 console.error(err);
