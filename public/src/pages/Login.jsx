@@ -28,6 +28,7 @@ function Login(){
                 history.push("/");
             }
         }).catch(err => {
+            document.getElementById("password").value = "";
             setErrMsg({
                 show: true,
                 msg: err.response.data.message});
@@ -58,7 +59,6 @@ function Login(){
 }
 
 function Err({setErrMsg, message}){
-    document.getElementById("password").value = "";
     return(<div className="error">
         {message}
         <button onClick={() => setErrMsg({show: false, msg: ""})}>Dismiss</button>
