@@ -79,12 +79,12 @@ router.post("/api/login", async (req, res) => {
 
         if(!user){
             console.log("bad un");
-            return res.status(400).send({ message: "The username not registered" });
+            return res.status(400).send({ message: "Username not registered." });
         }
 
         user.comparePassword(req.body.password, (err, match) => {
             if(!match) {
-                res.status(400).send({ message: "The password is invalid" });
+                res.status(401).send({ message: "Password is invalid." });
                 return;
             }
             res.cookie('user', user._id, { signed: true });
