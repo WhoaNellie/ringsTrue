@@ -77,7 +77,7 @@ async function getArticles() {
                         image: articles[i].urlToImage,
                         description: articles[i].description,
                         text: cleanText,
-                        network: articles[i].source.name
+                        network: articles[i].source.name.replace(/\.[^.]*$/gi, "")
                     });
                 }
 

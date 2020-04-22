@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 
 const cookieParser = require('cookie-parser');
 
-
 const User = require("../models/Users");
 const db = require("../models");
 let keys = null;
@@ -154,7 +153,47 @@ router.put("/api/network", (req, res) => {
     })
 });
 
-//find all matching networks drom search
+router.get("/api/all", (req, res) => {
+    db.Network.find({}).then(data => {
+        res.send(data);
+    }
+    )
+});
+
+// get leaderboard rankings
+router.get("/api/leaderboard", (req, res) => {
+    db.Network.find({}).then(data => {
+        console.log(data);
+        let totalRatings = 0;
+        let netArr = [];
+
+        for(let network of data){
+          totalRatings += network.amount;
+        }
+
+        for(let network of data){
+          let n = network.amount;
+
+          let a = network.rating[0].accuracy;
+          let accuracyWeight = Math.pow(Math.pow((100-a),2) + Math.pow((totalRatings - n), 2), 0.5);
+
+          let b = network.rating[0].neutrality;
+          let neutralityWeight = Math.pow(Math.pow((100-b),2) + Math.pow((totalRatings - n), 2), 0.5);
+
+          let overallWeight = (accuracyWeight + neutralityWeight)/2;
+
+          netArr.push({
+            name: network.name,
+            accuracyWeight: accuracyWeight,
+            neutralityWeight: neutralityWeight,
+            overallWeight: overallWeight
+          })
+        }
+        res.send(netArr);
+    })
+})
+
+//find all matching networks from search
 router.post("/api/search", (req, res) => {
     console.log(req.body.name);
     let cleanText = req.body.name.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
