@@ -9,6 +9,10 @@ function Login(){
         username: "",
         password: ""
     });
+    const [errMsg, setErrMsg] = useState({
+        show: false,
+        msg: ""
+    });
 
     const [userState, setUserState] = useContext(UserContext);
 
@@ -23,11 +27,16 @@ function Login(){
                     dailyRated: response.data.dailyRated});
                 history.push("/");
             }
+        }).catch(err => {
+            setErrMsg({
+                show: true,
+                msg: err.response.data.message});
         })
     }
 
     return (
         <main>
+            {errMsg.show && <Err setErrMsg={setErrMsg} message={errMsg.msg}/>}
         <label htmlFor="username">Username</label>
             <input type="text" id="username" onChange={() => setInputState( {...inputState, username: document.getElementById("username").value})}/>
 
@@ -46,6 +55,14 @@ function Login(){
             <button id="login" onClick={() => loginUser()}>Login</button>
         </main>
     )
+}
+
+function Err({setErrMsg, message}){
+    document.getElementById("password").value = "";
+    return(<div className="error">
+        {message}
+        <button onClick={() => setErrMsg({show: false, msg: ""})}>Dismiss</button>
+    </div>)
 }
 
 export default Login;

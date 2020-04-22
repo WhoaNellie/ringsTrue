@@ -22,6 +22,7 @@ function Articles() {
       amount: 0
     });
     const [networkShowing, setNetworkShowing] = useState(false);
+    const [maxShowing, setMaxShowing] = useState(false);
     
 
   function showModal(article) {
@@ -68,6 +69,9 @@ function Articles() {
         name: ''
       })}
       getNetwork={getNetwork}/>}
+
+      {articleState.rated.length > 4 && <MaxArticleCard/>}
+
       {articleState.articleArr.map((article) => {
         return (
           <Card
@@ -137,7 +141,6 @@ function Card({ article, showModal }) {
   );
 }
 
-
 function ThankYouCard({ name, closeCard, getNetwork }){
   return (
     <div className={`thankYouCard`}>
@@ -145,10 +148,26 @@ function ThankYouCard({ name, closeCard, getNetwork }){
 
       <p>That article was from <a href="#" onClick={() => getNetwork(name)}>{name}</a>. Did it meet your expectations?</p>
 
-      <button className="rate-button" onClick={closeCard}>
+      <button className="card__close" onClick={closeCard}>
         X
       </button>
     </div>
   );
+}
+
+function MaxArticleCard(){
+  return (
+    <div className="maxCard" id="maxCard">
+      <h3>You've reviewed 5 articles today.</h3>
+
+      <p>Thank you for your help, come back tomorrow to rate more!</p>
+
+      <button className="card__close" onClick={() => {
+        document.getElementById("maxCard").style.display = "none";
+      }}>
+        X
+      </button>
+    </div>
+  )
 }
 export default Articles;
