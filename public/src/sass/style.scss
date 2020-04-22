@@ -57,7 +57,7 @@ header{
         display: block;
         // margin: 20vw auto 0 auto;
         position: relative;
-        bottom: -22vw;
+        bottom: -45vw;
         left: 25vw;
     }
     
@@ -252,8 +252,10 @@ main{
 
     }
 
-}
+    .cards{
+        margin-top: 15vw;
 
+        
 .card{
     width: 85%;
     overflow: hidden;
@@ -262,9 +264,9 @@ main{
     text-align: center;
     position: relative;
 
-    border-radius: 35px;
     background: #ffffff;
-    box-shadow:  20px 20px 60px #d9d9d9, -20px -20px 60px #ffffff;
+    // box-shadow: 2px 2px 2px gray;
+    box-shadow:  20px 20px 60px #d9d9d9,inset 0px -44px 107px -78px #7b677b;
 
     &.collapsed{
         height: 60vh;
@@ -306,25 +308,31 @@ main{
         position: absolute;
         bottom: 5%;
         right: 8%;
-        width: 80px;
-        border-radius: 15px;
-        background-color: purple;
-        box-shadow: 4px 4px 5px -1px rgba(0,0,0,0.28);
+        width: 25vw;
+        background-color: $base-purple;
+        box-shadow:  10px 10px 28px -10px rgba(138,138,138,1);
         display: inline-block;
         color: white;
+        font-weight: bold;
+        letter-spacing: 1px;
         padding: 1% 5%;
         z-index: 1;
     }
 
     .rate-button{
-        border-radius: 15px;
-        background-color: green;
+        background-color: darken($base-green, $amount: 10);
         box-shadow: 4px 4px 5px -1px rgba(0,0,0,0.28);
+        margin-top: 5vw;
         padding: 1% 5%;
         z-index: 1;
-        position: relative;
         color: white;
+        font-weight: bold;
+        letter-spacing: 1px;
     }
+}
+
+    }
+
 }
 
 .mask{

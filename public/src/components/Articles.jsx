@@ -61,7 +61,7 @@ function Articles() {
   }, []);
 
   return (
-    <React.Fragment>
+    <div className="cards">
       {thankYouState.showing && <ThankYouCard 
       name={thankYouState.name}
       closeCard={() => setThankYouState({
@@ -97,7 +97,7 @@ function Articles() {
                 amount={thankYouState.amount}
             />}
       
-    </React.Fragment>
+    </div>
   );
 }
 
