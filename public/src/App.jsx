@@ -9,6 +9,7 @@ import Registration from "./pages/Registration";
 import Login from './pages/Login';
 import Homepage from './pages/Homepage';
 import Header from './components/Header';
+import Search from './components/Search';
 
 export const UserContext = createContext();
 
@@ -35,6 +36,7 @@ function App(){
                 <Switch>
                     <UserContext.Provider value={[userState, setUserState]}>
                     <Header/>
+                    <Search/>
                         <Route exact path="/" component={Homepage}/>
                         <Route path="/register" component={Registration}/>
                         <Route path="/login" component={Login}/>
