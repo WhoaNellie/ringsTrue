@@ -182,7 +182,7 @@ main .cards {
     text-align: center;
     position: relative;
     background: #ffffff;
-    box-shadow: 20px 20px 60px #d9d9d9,inset 0px -44px 107px -78px #7b677b; }
+    box-shadow: 2px 2px 2px gray, inset 0px -44px 107px -78px #ccb8cc; }
     main .cards .card.collapsed {
       height: 60vh; }
     main .cards .card img {
@@ -209,7 +209,7 @@ main .cards {
       right: 8%;
       width: 25vw;
       background-color: #633B8E;
-      box-shadow: 10px 10px 28px -10px #8a8a8a;
+      box-shadow: 2px 2px 2px gray, 10px 10px 28px -10px gray;
       display: inline-block;
       color: white;
       font-weight: bold;
@@ -218,13 +218,23 @@ main .cards {
       z-index: 1; }
     main .cards .card .rate-button {
       background-color: #4c7835;
-      box-shadow: 4px 4px 5px -1px rgba(0, 0, 0, 0.28);
+      box-shadow: 2px 2px 2px gray, 4px 4px 5px -1px rgba(0, 0, 0, 0.28);
       margin-top: 5vw;
       padding: 1% 5%;
       z-index: 1;
       color: white;
       font-weight: bold;
       letter-spacing: 1px; }
+  main .cards .thankYouCard, main .cards .maxCard {
+    position: relative; }
+    main .cards .thankYouCard .card__close, main .cards .maxCard .card__close {
+      position: absolute;
+      top: 1vw;
+      right: 5vw;
+      background-color: transparent;
+      color: #633B8E;
+      font-weight: bold;
+      padding: 0 1vw; }
 
 .mask {
   background-color: rgba(0, 0, 0, 0.28);

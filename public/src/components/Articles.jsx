@@ -5,7 +5,6 @@ import ReactImageFallback from "react-image-fallback";
 import { UserContext } from "../App";
 import Modal from "./Modal";
 import Network from "./Network";
-import { func } from "prop-types";
 
 function Articles() {
     const Login = useContext(UserContext);
@@ -143,7 +142,7 @@ function Card({ article, showModal }) {
 
 function ThankYouCard({ name, closeCard, getNetwork }){
   return (
-    <div className={`thankYouCard`}>
+    <div className="thankYouCard card">
       <h3>Thank you!</h3>
 
       <p>That article was from <a href="#" onClick={() => getNetwork(name)}>{name}</a>. Did it meet your expectations?</p>
@@ -157,7 +156,7 @@ function ThankYouCard({ name, closeCard, getNetwork }){
 
 function MaxArticleCard(){
   return (
-    <div className="maxCard" id="maxCard">
+    <div className="maxCard card" id="maxCard">
       <h3>You've reviewed 5 articles today.</h3>
 
       <p>Thank you for your help, come back tomorrow to rate more!</p>
