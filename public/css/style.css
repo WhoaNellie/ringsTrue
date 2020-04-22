@@ -150,6 +150,27 @@ main .leaderboard {
       width: 100%; }
     main .leaderboard .leaderboard__accuracy--rank li:nth-child(2n+1) {
       background-color: #eef6e9; }
+  main .leaderboard .leaderboard__category--neutrality {
+    background-color: #633B8E;
+    box-shadow: 2px 2px 2px gray; }
+  main .leaderboard .leaderboard__neutrality--rank {
+    box-shadow: 2px 2px 2px gray; }
+    main .leaderboard .leaderboard__neutrality--rank li {
+      padding: 0.5vw 2.5vw;
+      width: 100%; }
+    main .leaderboard .leaderboard__neutrality--rank li:nth-child(2n+1) {
+      background-color: #e4d9ef; }
+  main .leaderboard .leaderboard__category--overall {
+    background-color: #f3f34b;
+    box-shadow: 2px 2px 2px gray;
+    color: black; }
+  main .leaderboard .leaderboard__overall--rank {
+    box-shadow: 2px 2px 2px gray; }
+    main .leaderboard .leaderboard__overall--rank li {
+      padding: 0.5vw 2.5vw;
+      width: 100%; }
+    main .leaderboard .leaderboard__overall--rank li:nth-child(2n+1) {
+      background-color: #FFFF90; }
 
 .card {
   width: 85%;

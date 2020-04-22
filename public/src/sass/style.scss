@@ -213,6 +213,43 @@ main{
             }
         }
 
+        .leaderboard__category--neutrality{
+            background-color: $base-purple;
+            box-shadow: 2px 2px 2px gray;
+        }        
+
+        .leaderboard__neutrality--rank{
+            box-shadow: 2px 2px 2px gray;
+
+            li{
+                padding: 0.5vw 2.5vw;
+                width: 100%;
+            }
+
+            li:nth-child(2n+1){
+                background-color: lighten($color: $base-purple, $amount: 50);
+            }
+        }
+
+        .leaderboard__category--overall{
+            background-color: #f3f34b;
+            box-shadow: 2px 2px 2px gray;
+            color: black;
+        }        
+
+        .leaderboard__overall--rank{
+            box-shadow: 2px 2px 2px gray;
+
+            li{
+                padding: 0.5vw 2.5vw;
+                width: 100%;
+            }
+
+            li:nth-child(2n+1){
+                background-color: $base-yellow;
+            }
+        }
+
     }
 
 }
