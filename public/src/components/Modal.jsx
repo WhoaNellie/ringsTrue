@@ -25,7 +25,17 @@ function Modal({ isShowing, setIsShowing, articleState, setArticleState, setThan
   const options = {
     events: [],
     tooltips: { enabled: false },
-    hover: { mode: null }
+    hover: { mode: null },
+    responsive: true,
+    maintainAspectRatio: false,
+    layout: {
+      padding: {
+          top: 0,
+          left: 35,
+          right: 35,
+          bottom: 0
+      }
+  }
   };
 
   function handleRange(e, chart) {
