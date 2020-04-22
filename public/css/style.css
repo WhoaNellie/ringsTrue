@@ -37,11 +37,11 @@ header {
     color: #633B8E;
     font-weight: bold;
     text-align: center;
-    width: 25vw;
+    width: 35vw;
     display: block;
     position: relative;
     bottom: -45vw;
-    left: 25vw; }
+    left: calc(65vw / 3); }
 
 h1:before {
   content: "";
@@ -262,7 +262,7 @@ main .cards {
   text-align: center; }
   .modal h3 {
     font-size: calc(0.5rem + 2vw);
-    margin-bottom: 1vh; }
+    margin: 1vh 0; }
   .modal canvas {
     margin: -17vh auto;
     z-index: -1; }
@@ -273,7 +273,7 @@ main .cards {
     font-weight: bold;
     letter-spacing: 1px;
     box-shadow: 2px 2px 2px gray;
-    margin: 2vh auto; }
+    margin: 2vh auto 0 auto; }
   .modal input[type="range"] {
     display: block;
     -webkit-appearance: none;
@@ -299,6 +299,11 @@ main .cards {
     transform: scale(1); }
   .modal label {
     font-size: calc(1rem + 0.5vh); }
+  .modal.network {
+    height: 70vh;
+    top: 15vh; }
+    .modal.network canvas {
+      margin: 0; }
 
 @media only screen and (min-width: 500px) {
   .modal {
