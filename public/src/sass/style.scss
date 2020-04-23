@@ -539,6 +539,37 @@ main {
     }
 }
 
+.req{
+    
+    &.requirements--username{
+        background-color: lighten($color: $base-purple, $amount: 50);
+    }
+
+    &.requirements--password{
+        background-color: lighten($color: $base-green, $amount: 50);
+    }
+
+    padding: 3vh 0 2vw 5vw;
+    
+    ul{
+
+        li{
+            margin: 2vh 10vw;
+        //     &::before{
+        //         content: "o";
+        //         content: "o";
+        //         font-size: 80%;
+        //         font-weight: bold;
+        //         position: absolute;
+        //         top: 20%;
+        // }
+        }
+        
+        
+    }
+}
+
+
 @media only screen and (min-width: 500px) {
     .modal {
         width: 30%;

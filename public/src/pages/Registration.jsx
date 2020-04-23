@@ -63,13 +63,13 @@ function Registration(){
 
             <button id="register" onClick={() => registerUser()}>Register</button>
 
-            <div className="requirements--username">
+            <div className="req requirements--username">
                 <h3>Your Username Must:</h3>
                 <ul>
                 <li>Be at least 6 characters long</li>
                 </ul>
             </div>
-            <div className="requirements--password">
+            <div className=" req requirements--password">
                 <h3>Your Password Must:</h3>
                 <ul>
                 <li>Be at least 8 characters long</li>
@@ -83,7 +83,7 @@ function Registration(){
 function Err({setErrMsg, message}){
     return(<div className="error">
         {message}
-        <button onClick={() => setErrMsg({show: false, msg: ""})}>Dismiss</button>
+        <button onClick={() => setErrMsg({show: false, msg: ""})}>X</button>
     </div>)
 }
 
