@@ -40,6 +40,7 @@ function Registration(){
         <main>
             {errMsg.show && <Err setErrMsg={setErrMsg} message={errMsg.msg}/>}
 
+        <div className="form">
             <label htmlFor="username">Username</label>
             <input type="text" id="username" onChange={() => setProfState( {...profState, username: document.getElementById("username").value})}/>
 
@@ -63,6 +64,8 @@ function Registration(){
 
             <button id="register" onClick={() => registerUser()}>Register</button>
 
+        </div>
+            
             <div className="req requirements--username">
                 <h3>Your Username Must:</h3>
                 <ul>

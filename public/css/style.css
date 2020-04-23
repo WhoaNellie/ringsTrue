@@ -363,13 +363,30 @@ main .cards {
       width: 90%; }
 
 .req {
-  padding: 3vh 0 2vw 5vw; }
+  padding: 3vh 0 2vw 5vw;
+  font-size: calc(1rem + 1vw); }
   .req.requirements--username {
     background-color: #e4d9ef; }
   .req.requirements--password {
     background-color: #eef6e9; }
   .req ul li {
     margin: 2vh 10vw; }
+
+.form {
+  text-align: center;
+  display: flex;
+  flex-direction: column; }
+  .form input {
+    border: 1px solid #966dc2; }
+  .form #register {
+    width: 35vw;
+    height: 13vw;
+    background-color: #4c7835;
+    color: white;
+    font-weight: bold;
+    letter-spacing: 1px;
+    box-shadow: 2px 2px 2px gray;
+    margin: 5vh auto; }
 
 @media only screen and (min-width: 500px) {
   .modal {
