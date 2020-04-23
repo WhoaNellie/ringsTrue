@@ -204,12 +204,12 @@ main {
             }
         }
 
-        .leaderboard__category--accuracy {
+        .leaderboard__category--information {
             background-color: $base-green;
             box-shadow: 2px 2px 2px gray;
         }
 
-        .leaderboard__accuracy--rank {
+        .leaderboard__information--rank {
             box-shadow: 2px 2px 2px gray;
 
             li {
@@ -439,7 +439,7 @@ main {
         transition: .3s ease-in-out;
     }
 
-    #accuracy::-webkit-slider-thumb {
+    #information::-webkit-slider-thumb {
         background-color: $base-green;
     }
 
@@ -499,7 +499,7 @@ main {
                     font-weight: bold;
                     letter-spacing: 1px;
 
-                    &.accuracy{
+                    &.information{
                         background-color: $base-green;
                     }
 
@@ -515,7 +515,7 @@ main {
                 }
 
                 td{
-                    &.accuracy{
+                    &.information{
                         background-color: lighten($color: $base-green, $amount: 50)
                     }
 
