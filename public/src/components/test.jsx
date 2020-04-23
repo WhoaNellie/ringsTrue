@@ -3,14 +3,14 @@ import { Doughnut } from 'react-chartjs-2';
 
 function App() {
 	const [rangeState, setRangeState] = useState({
-		accuracy: 50,
+		information: 50,
 		neutrality: 50,
 	});
 	const [chartState, setChartState] = useState({
 		datasets: [
 			{
-				label: 'Accuracy',
-				data: [rangeState.accuracy, 100 - rangeState.accuracy],
+				label: 'Information',
+				data: [rangeState.information, 100 - rangeState.information],
 				backgroundColor: ['#629C44', '#FFFFFF'],
 			},
 			{
@@ -28,11 +28,11 @@ function App() {
 
 	function handleRange(e, chart) {
 		setRangeState({ ...rangeState, [chart]: e.target.value });
-		if (chart === 'accuracy') {
+		if (chart === 'information') {
 			setChartState({
 				datasets: [
 					{
-						label: 'Accuracy',
+						label: 'Information',
 						data: [e.target.value, 100 - e.target.value],
 						backgroundColor: ['#629C44', '#FFFFFF'],
 					},
@@ -47,8 +47,8 @@ function App() {
 			setChartState({
 				datasets: [
 					{
-						label: 'Accuracy',
-						data: [rangeState.accuracy, 100 - rangeState.accuracy],
+						label: 'Information',
+						data: [rangeState.information, 100 - rangeState.information],
 						backgroundColor: ['#629C44', '#FFFFFF'],
 					},
 					{
@@ -64,15 +64,15 @@ function App() {
 	return (
 		<aside className="modal rating">
 			<Doughnut data={chartState} options={options} />​
-			<label htmlFor="accuracy">Accuracy</label>
+			<label htmlFor="information">Information</label>
 			<input
-				id="accuracy"
-				name="accuracy"
+				id="information"
+				name="information"
 				type="range"
 				min="0"
 				max="100"
-				value={rangeState.accuracy}
-				onChange={(event) => handleRange(event, 'accuracy')}
+				value={rangeState.information}
+				onChange={(event) => handleRange(event, 'information')}
 			/>
 			​<label htmlFor="neutrality">Neutrality</label>
 			<input

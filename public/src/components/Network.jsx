@@ -5,7 +5,7 @@ import axios from 'axios';
 
 function Network({name, rating, amount, isShowing, setIsShowing}){
     const [rankState, setRankState] = useState({
-      accuracyRank: 0,
+      informationRank: 0,
       neutralityRank: 0,
       overallRank: 0,
       totalNetworks: 0
@@ -14,8 +14,8 @@ function Network({name, rating, amount, isShowing, setIsShowing}){
     const [chartState, setChartState] = useState({
         datasets: [
             {
-                label: "Accuracy",
-                data: [rating.accuracy, 100 - rating.accuracy],
+                label: "Information",
+                data: [rating.information, 100 - rating.information],
                 backgroundColor: ["#629C44", "#FFFFFF"],
               },
               {
@@ -49,7 +49,7 @@ function Network({name, rating, amount, isShowing, setIsShowing}){
     useEffect(() => {
       axios.get("/api/all").then(res => {
         let totalRatings = 0;
-        let accuracyArr = [];
+        let informationArr = [];
         let neutralityArr = [];
         let overallArr = [];
 
@@ -59,28 +59,28 @@ function Network({name, rating, amount, isShowing, setIsShowing}){
         for(let network of res.data){
           let n = network.amount;
 
-          let a = network.rating[0].accuracy;
-          let accuracyWeight = Math.pow(Math.pow((100-a),2) + Math.pow((totalRatings - n), 2), 0.5);
-          accuracyArr.push(accuracyWeight);
+          let a = network.rating[0].information;
+          let informationWeight = Math.pow(Math.pow((100-a),2) + Math.pow((totalRatings - n), 2), 0.5);
+          informationArr.push(informationWeight);
 
           let b = network.rating[0].neutrality;
           let neutralityWeight = Math.pow(Math.pow((100-b),2) + Math.pow((totalRatings - n), 2), 0.5);
           neutralityArr.push(neutralityWeight);
 
-          overallArr.push((accuracyWeight + neutralityWeight)/2);
+          overallArr.push((informationWeight + neutralityWeight)/2);
         }
-        let thisAccuracy = Math.pow(Math.pow((100-rating.accuracy),2) + Math.pow((totalRatings - amount), 2), 0.5);
+        let thisAccuracy = Math.pow(Math.pow((100-rating.information),2) + Math.pow((totalRatings - amount), 2), 0.5);
 
         let thisNeutrality = Math.pow(Math.pow((100-rating.neutrality),2) + Math.pow((totalRatings - amount), 2), 0.5);
 
         let thisOverall = (thisAccuracy + thisNeutrality)/2;
 
-        accuracyArr.sort((a,b)=>a-b);
+        informationArr.sort((a,b)=>a-b);
         neutralityArr.sort((a,b)=>a-b);
         overallArr.sort((a,b)=>a-b)
 
         setRankState({...rankState, 
-        accuracyRank: accuracyArr.indexOf(thisAccuracy) + 1,
+        informationRank: informationArr.indexOf(thisAccuracy) + 1,
         neutralityRank: neutralityArr.indexOf(thisNeutrality) + 1,
         overallRank: overallArr.indexOf(thisOverall) + 1,
         totalNetworks: res.data.length})
@@ -101,14 +101,14 @@ function Network({name, rating, amount, isShowing, setIsShowing}){
             <table>
                 <thead>
                     <tr>
-                        <th className="accuracy">Accuracy</th>
+                        <th className="information">Information</th>
                         <th className="neutrality">Neutrality</th>
                         <th className="overall">Overall</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td className="accuracy">#{rankState.accuracyRank}</td>
+                        <td className="information">#{rankState.informationRank}</td>
                         <td className="neutrality">#{rankState.neutralityRank}</td>
                         <td className="overall">#{rankState.overallRank}</td>
                     </tr>

@@ -7,7 +7,7 @@ const schema = new Schema({
         type: String
     },
     rating: [{
-        accuracy: {
+        information: {
             type: Number
         },
         neutrality: {

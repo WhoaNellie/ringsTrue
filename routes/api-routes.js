@@ -175,7 +175,7 @@ router.post("/api/network", (req, res) => {
     db.Network.create({
         name: req.body.name,
         rating: {
-            accuracy: 0,
+            information: 0,
             neutrality: 0
         },
         amount: 0
@@ -219,17 +219,17 @@ router.get("/api/leaderboard", (req, res) => {
         for (let network of data) {
             let n = network.amount;
 
-            let a = network.rating[0].accuracy;
-            let accuracyWeight = Math.pow(Math.pow((100 - a), 2) + Math.pow((totalRatings - n), 2), 0.5);
+            let a = network.rating[0].information;
+            let informationWeight = Math.pow(Math.pow((100 - a), 2) + Math.pow((totalRatings - n), 2), 0.5);
 
             let b = network.rating[0].neutrality;
             let neutralityWeight = Math.pow(Math.pow((100 - b), 2) + Math.pow((totalRatings - n), 2), 0.5);
 
-            let overallWeight = (accuracyWeight + neutralityWeight) / 2;
+            let overallWeight = (informationWeight + neutralityWeight) / 2;
 
             netArr.push({
                 name: network.name,
-                accuracyWeight: accuracyWeight,
+                informationWeight: informationWeight,
                 neutralityWeight: neutralityWeight,
                 overallWeight: overallWeight
             })

@@ -3,7 +3,7 @@ import axios from "axios";
 
 function Leaderboard() {
   const [ranks, setRanks] = useState({
-    accuracyRank: [],
+    informationRank: [],
     neutralityRank: [],
     overallRank: [],
   });
@@ -12,16 +12,16 @@ function Leaderboard() {
 
   useEffect(() => {
     axios.get("/api/leaderboard").then((res) => {
-      let accuracySort = [...res.data];
+      let informationSort = [...res.data];
       let neutralitySort = [...res.data];
       let overallSort = [...res.data];
 
-      accuracySort.sort((a,b) => (a.accuracyWeight > b.accuracyWeight) ? 1: -1);
+      informationSort.sort((a,b) => (a.informationWeight > b.informationWeight) ? 1: -1);
       neutralitySort.sort((a,b) => (a.neutralityWeight > b.neutralityWeight) ? 1: -1);
       overallSort.sort((a,b) => (a.overallWeight > b.overallWeight) ? 1: -1);
 
       setRanks({
-          accuracyRank: accuracySort,
+          informationRank: informationSort,
           neutralityRank: neutralitySort,
           overallRank: overallSort
       });
@@ -33,8 +33,8 @@ function Leaderboard() {
     <div className="leaderboard">
       <h2>Leaderboard</h2>
 
-      <h3 className="leaderboard__category--accuracy">Accuracy</h3>
-      <RankList table="accuracy" ranks={ranks.accuracyRank} showBody={showBody}/>
+      <h3 className="leaderboard__category--information">Information</h3>
+      <RankList table="information" ranks={ranks.informationRank} showBody={showBody}/>
 
       <h3 className="leaderboard__category--neutrality">Neutrality</h3>
       <RankList table="neutrality" ranks={ranks.neutralityRank} showBody={showBody}/>

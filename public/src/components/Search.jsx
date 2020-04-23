@@ -25,7 +25,7 @@ function Search(){
     const [curNetwork, setCurNetwork] = useState({
         name: "",
         rating: {
-            accuracy: "",
+            information: "",
             neutrality: ""
         }, 
         amount: ""

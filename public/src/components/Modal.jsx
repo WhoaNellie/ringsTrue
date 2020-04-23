@@ -5,14 +5,14 @@ import { Doughnut } from "react-chartjs-2";
 
 function Modal({ isShowing, setIsShowing, articleState, setArticleState, setThankYouState }) {
   const [rangeState, setRangeState] = useState({
-    accuracy: 50,
+    information: 50,
     neutrality: 50
   });
   const [chartState, setChartState] = useState({
     datasets: [
       {
-        label: "Accuracy",
-        data: [rangeState.accuracy, 100 - rangeState.accuracy],
+        label: "Information",
+        data: [rangeState.information, 100 - rangeState.information],
         backgroundColor: ["#629C44", "#FFFFFF"]
       },
       {
@@ -40,11 +40,11 @@ function Modal({ isShowing, setIsShowing, articleState, setArticleState, setThan
 
   function handleRange(e, chart) {
     setRangeState({ ...rangeState, [chart]: e.target.value });
-    if (chart === "accuracy") {
+    if (chart === "information") {
       setChartState({
         datasets: [
           {
-            label: "Accuracy",
+            label: "Information",
             data: [e.target.value, 100 - e.target.value],
             backgroundColor: ["#629C44", "#FFFFFF"]
           },
@@ -59,8 +59,8 @@ function Modal({ isShowing, setIsShowing, articleState, setArticleState, setThan
       setChartState({
         datasets: [
           {
-            label: "Accuracy",
-            data: [rangeState.accuracy, 100 - rangeState.accuracy],
+            label: "Information",
+            data: [rangeState.information, 100 - rangeState.information],
             backgroundColor: ["#629C44", "#FFFFFF"]
           },
           {
@@ -99,7 +99,7 @@ function Modal({ isShowing, setIsShowing, articleState, setArticleState, setThan
             name: articleState.activeArticle.network
           });
           oldRating = {
-            accuracy: 0,
+            information: 0,
             neutrality: 0
           };
           oldAmount = 0;
@@ -108,14 +108,14 @@ function Modal({ isShowing, setIsShowing, articleState, setArticleState, setThan
         oldAmount = res.data.amount;
       }
 
-      let newAccuracy = (Number(oldRating.accuracy)*oldAmount + Number(rangeState.accuracy))/(oldAmount + 1);
+      let newAccuracy = (Number(oldRating.information)*oldAmount + Number(rangeState.information))/(oldAmount + 1);
       let newNeutrality = (Number(oldRating.neutrality)*oldAmount + Number(rangeState.neutrality))/(oldAmount + 1);
 
       axios
         .put("/api/network", {
           name: articleState.activeArticle.network,
           rating: {
-            accuracy: newAccuracy,
+            information: newAccuracy,
             neutrality: newNeutrality
           },
           amount: oldAmount + 1
@@ -144,13 +144,13 @@ function Modal({ isShowing, setIsShowing, articleState, setArticleState, setThan
   function handleClose() {
     setIsShowing(false);
     setRangeState({
-      accuracy: 50,
+      information: 50,
       neutrality: 50
     });
     setChartState({
       datasets: [
         {
-          label: "Accuracy",
+          label: "Information",
           data: [50, 50],
           backgroundColor: ["#629C44", "#FFFFFF"]
         },
@@ -178,15 +178,15 @@ function Modal({ isShowing, setIsShowing, articleState, setArticleState, setThan
           <Doughnut data={chartState} options={options} />
 
           <div className="sliders">
-          <label htmlFor="accuracy">Accuracy</label>
+          <label htmlFor="information">Information</label>
           <input
-            id="accuracy"
-            name="accuracy"
+            id="information"
+            name="information"
             type="range"
             min="0"
             max="100"
-            value={rangeState.accuracy}
-            onChange={(event) => handleRange(event, "accuracy")}
+            value={rangeState.information}
+            onChange={(event) => handleRange(event, "information")}
           />
 
           <label htmlFor="neutrality">Neutrality</label>

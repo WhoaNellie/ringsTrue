@@ -141,15 +141,15 @@ main .leaderboard {
     main .leaderboard ol li::before {
       counter-increment: li-count;
       content: counter(li-count) ". "; }
-  main .leaderboard .leaderboard__category--accuracy {
+  main .leaderboard .leaderboard__category--information {
     background-color: #629C44;
     box-shadow: 2px 2px 2px gray; }
-  main .leaderboard .leaderboard__accuracy--rank {
+  main .leaderboard .leaderboard__information--rank {
     box-shadow: 2px 2px 2px gray; }
-    main .leaderboard .leaderboard__accuracy--rank li {
+    main .leaderboard .leaderboard__information--rank li {
       padding: 0.5vw 2.5vw;
       width: 100%; }
-    main .leaderboard .leaderboard__accuracy--rank li:nth-child(2n+1) {
+    main .leaderboard .leaderboard__information--rank li:nth-child(2n+1) {
       background-color: #eef6e9; }
   main .leaderboard .leaderboard__category--neutrality {
     background-color: #633B8E;
@@ -304,7 +304,7 @@ main .cards {
     border-radius: 50%;
     cursor: pointer;
     transition: .3s ease-in-out; }
-  .modal #accuracy::-webkit-slider-thumb {
+  .modal #information::-webkit-slider-thumb {
     background-color: #629C44; }
   .modal #neutrality::-webkit-slider-thumb {
     background-color: #633B8E; }
@@ -343,14 +343,14 @@ main .cards {
         color: white;
         font-weight: bold;
         letter-spacing: 1px; }
-        .modal.network table tr th.accuracy {
+        .modal.network table tr th.information {
           background-color: #629C44; }
         .modal.network table tr th.neutrality {
           background-color: #633B8E; }
         .modal.network table tr th.overall {
           background-color: #f3f34b;
           color: black; }
-      .modal.network table tr td.accuracy {
+      .modal.network table tr td.information {
         background-color: #eef6e9; }
       .modal.network table tr td.neutrality {
         background-color: #e4d9ef; }
