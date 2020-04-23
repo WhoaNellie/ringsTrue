@@ -327,7 +327,8 @@ main .cards {
       position: absolute;
       top: 47vh;
       left: 10%;
-      width: 80%; }
+      width: 80%;
+      font-size: calc(1rem + 1vw); }
     .modal.network table {
       width: 102%;
       position: absolute;
@@ -355,6 +356,11 @@ main .cards {
         background-color: #e4d9ef; }
       .modal.network table tr td.overall {
         background-color: #FFFF90; }
+    .modal.network .ranking__total {
+      position: absolute;
+      top: 70vh;
+      font-size: calc(1rem + 1vw);
+      width: 90%; }
 
 @media only screen and (min-width: 500px) {
   .modal {

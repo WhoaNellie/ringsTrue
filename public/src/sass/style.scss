@@ -477,6 +477,7 @@ main {
             top: 47vh;
             left: 10%;
             width: 80%;
+            font-size: calc(1rem + 1vw);
         }
 
         table{
@@ -527,6 +528,13 @@ main {
                     }
                 }
             }
+        }
+
+        .ranking__total{
+            position: absolute;
+            top: 70vh;
+            font-size: calc(1rem + 1vw);
+            width: 90%;
         }
     }
 }
