@@ -85,8 +85,8 @@ function Registration(){
 
 function Err({setErrMsg, message}){
     return(<div className="error">
-        {message}
-        <button onClick={() => setErrMsg({show: false, msg: ""})}>X</button>
+        <strong>{message}</strong>
+        {/* <button onClick={() => setErrMsg({show: false, msg: ""})}>X</button> */}
     </div>)
 }
 

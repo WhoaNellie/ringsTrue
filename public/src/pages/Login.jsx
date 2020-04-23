@@ -37,7 +37,9 @@ function Login(){
 
     return (
         <main>
-            {errMsg.show && <Err setErrMsg={setErrMsg} message={errMsg.msg}/>}
+            {errMsg.show ? <Err setErrMsg={setErrMsg} message={errMsg.msg}/>:<h2 className="login">Welcome Back!</h2>}
+        
+        <div className="form">
         <label htmlFor="username">Username</label>
             <input type="text" id="username" onChange={() => setInputState( {...inputState, username: document.getElementById("username").value})}/>
 
@@ -54,14 +56,15 @@ function Login(){
             />
 
             <button id="login" onClick={() => loginUser()}>Login</button>
+        </div>
         </main>
     )
 }
 
 function Err({setErrMsg, message}){
     return(<div className="error">
-        {message}
-        <button onClick={() => setErrMsg({show: false, msg: ""})}>Dismiss</button>
+        <strong>{message}</strong>
+        {/* <button onClick={() => setErrMsg({show: false, msg: ""})}>Dismiss</button> */}
     </div>)
 }
 

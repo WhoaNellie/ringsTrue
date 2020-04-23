@@ -102,7 +102,7 @@ router.post("/api/register", async (req, res) => {
 
         } else {
             res.status(401).send({
-                message: "That Username Has Already Been Taken"
+                message: "Username has already been taken."
             });
             return;
         }

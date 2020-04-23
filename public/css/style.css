@@ -372,6 +372,16 @@ main .cards {
   .req ul li {
     margin: 2vh 10vw; }
 
+.error {
+  background-color: #FFFF90;
+  text-align: center;
+  margin: 2vh 0;
+  padding: 1vh 0; }
+
+h2.login {
+  text-align: center;
+  margin-bottom: 5vh; }
+
 .form {
   text-align: center;
   display: flex;
@@ -382,6 +392,15 @@ main .cards {
     width: 35vw;
     height: 13vw;
     background-color: #4c7835;
+    color: white;
+    font-weight: bold;
+    letter-spacing: 1px;
+    box-shadow: 2px 2px 2px gray;
+    margin: 5vh auto; }
+  .form #login {
+    width: 25vw;
+    height: 13vw;
+    background-color: #4a2c6a;
     color: white;
     font-weight: bold;
     letter-spacing: 1px;
