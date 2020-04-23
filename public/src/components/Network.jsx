@@ -26,12 +26,22 @@ function Network({name, rating, amount, isShowing, setIsShowing}){
         ]
       });
 
-    const options = {
-      events: [],
-      tooltips: { enabled: false },
-      hover: { mode: null },
-    };
-  
+      const options = {
+        events: [],
+        tooltips: { enabled: false },
+        hover: { mode: null },
+        responsive: true,
+        maintainAspectRatio: false,
+        layout: {
+          padding: {
+              top: 0,
+              left: 35,
+              right: 35,
+              bottom: 0
+          }
+      }
+    }
+
     function handleClose() {
       setIsShowing(false);
     }
@@ -86,21 +96,21 @@ function Network({name, rating, amount, isShowing, setIsShowing}){
   
             <Doughnut data={chartState} options={options} />
 
-            <div className="network__amount">Number of ratings: {amount}</div>
+            <div className="network__amount">Articles Rated: {amount}</div>
 
             <table>
                 <thead>
                     <tr>
-                        <th>Accuracy</th>
-                        <th>Neutrality</th>
-                        <th>Overall</th>
+                        <th className="accuracy">Accuracy</th>
+                        <th className="neutrality">Neutrality</th>
+                        <th className="overall">Overall</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>{rankState.accuracyRank}</td>
-                        <td>{rankState.neutralityRank}</td>
-                        <td>{rankState.overallRank}</td>
+                        <td className="accuracy">#{rankState.accuracyRank}</td>
+                        <td className="neutrality">#{rankState.neutralityRank}</td>
+                        <td className="overall">#{rankState.overallRank}</td>
                     </tr>
                 </tbody>
             </table>

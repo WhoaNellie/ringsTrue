@@ -85,7 +85,8 @@ h1:before {
   width: 100%; }
   .search .results .results__result {
     padding: 0.5vw 5.5vw; }
-  .search .results .results__result:hover, .search .results .results__result:focus {
+  .search .results .results__result:hover,
+  .search .results .results__result:focus {
     background-color: #cab5e0; }
 
 main .blurb {
@@ -210,7 +211,7 @@ main .cards {
       position: absolute;
       bottom: 5%;
       right: 8%;
-      width: 25vw;
+      width: 30vw;
       background-color: #633B8E;
       box-shadow: 2px 2px 2px gray, 10px 10px 28px -10px gray;
       display: inline-block;
@@ -228,9 +229,11 @@ main .cards {
       color: white;
       font-weight: bold;
       letter-spacing: 1px; }
-  main .cards .thankYouCard, main .cards .maxCard {
+  main .cards .thankYouCard,
+  main .cards .maxCard {
     position: relative; }
-    main .cards .thankYouCard .card__close, main .cards .maxCard .card__close {
+    main .cards .thankYouCard .card__close,
+    main .cards .maxCard .card__close {
       position: absolute;
       top: 1vw;
       right: 5vw;
@@ -259,7 +262,8 @@ main .cards {
   display: flex;
   flex-direction: column;
   padding: 5%;
-  text-align: center; }
+  text-align: center;
+  overflow: hidden; }
   .modal h3 {
     font-size: calc(0.5rem + 2vw);
     position: absolute;
@@ -309,10 +313,48 @@ main .cards {
   .modal label {
     font-size: calc(1rem + 0.5vh); }
   .modal.network {
-    height: 70vh;
-    top: 15vh; }
+    height: 80vh;
+    top: 10vh; }
+    .modal.network h3 {
+      font-size: calc(1rem + 5vw);
+      position: absolute;
+      left: 5%;
+      top: 3vh;
+      width: 90%; }
     .modal.network canvas {
-      margin: 0; }
+      margin: -12vh auto; }
+    .modal.network .network__amount {
+      position: absolute;
+      top: 47vh;
+      left: 10%;
+      width: 80%; }
+    .modal.network table {
+      width: 102%;
+      position: absolute;
+      left: -1%;
+      top: 55vh;
+      table-layout: fixed;
+      border-collapse: collapse; }
+      .modal.network table tr th, .modal.network table tr td {
+        width: 20%; }
+      .modal.network table tr th {
+        font-size: calc(0.5rem + 2.5vw);
+        color: white;
+        font-weight: bold;
+        letter-spacing: 1px; }
+        .modal.network table tr th.accuracy {
+          background-color: #629C44; }
+        .modal.network table tr th.neutrality {
+          background-color: #633B8E; }
+        .modal.network table tr th.overall {
+          background-color: #f3f34b;
+          color: black; }
+      .modal.network table tr td.accuracy {
+        background-color: #eef6e9; }
+      .modal.network table tr td.neutrality {
+        background-color: #e4d9ef; }
+      .modal.network table tr td.overall {
+        background-color: #FFFF90; }
 
 @media only screen and (min-width: 500px) {
   .modal {
