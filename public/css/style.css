@@ -406,9 +406,3 @@ h2.login {
     letter-spacing: 1px;
     box-shadow: 2px 2px 2px gray;
     margin: 5vh auto; }
-
-@media only screen and (min-width: 500px) {
-  .modal {
-    width: 30%;
-    height: 70vh;
-    flex-direction: row; } }
