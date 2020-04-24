@@ -60,6 +60,8 @@ header {
         position: relative;
         bottom: -45vw;
         left: calc(65vw / 3);
+        z-index: 2;
+        text-shadow: 2px 2px lighten($color: $base-purple, $amount: 60);
     }
 
 }
@@ -602,8 +604,17 @@ h2.login{
 @media only screen and (min-width: 500px) {
     header{
         height: auto;
+        margin: 5vh auto;
         svg{
             width: calc(clamp(500px, 60vw, 600px));
+        }
+
+        .logout{
+            position: fixed;
+            width: fit-content;
+            height: fit-content;
+            top: 1vh;
+            left: 1vw;
         }
     }
 
