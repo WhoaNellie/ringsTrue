@@ -7,6 +7,18 @@ import Modal from "./Modal";
 import Network from "./Network";
 
 function Articles() {
+  setTimeout(() => 
+  {
+    let brokens = document.querySelectorAll('img[src="./img/broken.jpg"]');
+    if(brokens.length > 0){
+      for(let i = 0; i < brokens.length; i++){
+        brokens[i].remove();
+      }
+      
+    }
+    
+  },500)
+  
     const Login = useContext(UserContext);
     const [articleState, setArticleState] = useState({
         rated: Login[0].dailyRated,
@@ -22,6 +34,7 @@ function Articles() {
     });
     const [networkShowing, setNetworkShowing] = useState(false);
     const [maxShowing, setMaxShowing] = useState(false);
+    const [brokenImg, setBrokenImg] = useState(false);
     
 
   function showModal(article) {
@@ -58,6 +71,8 @@ function Articles() {
       setArticleState({ ...articleState, articleArr: articleArr });
     });
   }, []);
+
+  
 
   return (
     <div className="cards">
@@ -101,6 +116,9 @@ function Articles() {
 }
 
 function Card({ article, showModal }) {
+  
+ 
+
   const [cardState, setCardState] = useState({
     height: "collapsed",
   });

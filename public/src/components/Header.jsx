@@ -14,7 +14,18 @@ function Header(){
 
     return(
         <header>
-            <h1><a href="/"><span className="rings">rings</span><span className="true">True</span></a></h1>
+            <h1>
+                <svg viewBox="0 0 100 50">
+                <a href="/">
+                <image width="25" href="./img/rings.svg"/>
+                <text className="rings" x="29"y="18">rings</text>
+                <text x="65" y="18" className="true">True</text>
+                </a>
+                </svg>
+            </h1>
+
+            
+
             {userState.loggedIn && <a href="#" className="logout" onClick={logOut}>Log Out</a>}
         </header>
     )

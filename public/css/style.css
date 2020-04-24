@@ -14,24 +14,22 @@ body {
 
 header {
   height: 25vw;
-  padding: 2vw 10vw;
+  padding: 2vw 11vw 2vw 9vw;
   margin: 5vw auto; }
-  header h1 {
-    position: absolute;
-    width: 90vw;
-    left: calc(15vw / 2); }
-    header h1 a {
+  header svg {
+    width: 80vw; }
+    header svg text {
       text-decoration: none;
       position: relative;
-      top: -5vw;
-      left: 2.5vw; }
-      header h1 a span {
-        font-family: "TypoRoundRegularDemo", sans-serif;
-        font-size: 15vw; }
-      header h1 a .rings {
-        color: #633B8E; }
-      header h1 a .true {
-        color: #629C44; }
+      left: -1vw;
+      width: 80vw;
+      display: block;
+      font-family: "TypoRoundRegularDemo", sans-serif;
+      font-size: 13pt; }
+      header svg text.rings {
+        fill: #633B8E; }
+      header svg text.true {
+        fill: #629C44; }
   header .logout {
     text-decoration: none;
     color: #633B8E;
@@ -42,13 +40,6 @@ header {
     position: relative;
     bottom: -45vw;
     left: calc(65vw / 3); }
-
-h1:before {
-  content: "";
-  background-image: url("../../img/rings.svg");
-  width: 20vw;
-  height: 20vw;
-  display: inline-block; }
 
 .search .search__bar {
   display: inline-flex; }
@@ -205,8 +196,12 @@ main .cards {
         text-indent: 0; }
         main .cards .card .article-text p:first-of-type::first-letter {
           font-weight: bold;
-          font-size: 16pt;
-          font-family: serif; }
+          font-size: calc(1rem + 8vw);
+          float: left;
+          font-family: Georgia;
+          line-height: calc(1rem + 2vw);
+          padding-top: 3vw;
+          padding-right: 8px; }
     main .cards .card .read-button {
       position: absolute;
       bottom: 5%;
@@ -406,3 +401,9 @@ h2.login {
     letter-spacing: 1px;
     box-shadow: 2px 2px 2px gray;
     margin: 5vh auto; }
+
+@media only screen and (min-width: 500px) {
+  header svg {
+    width: calc(clamp(500px, 60vw, 1300px));
+    display: block;
+    margin: 0 auto; } }

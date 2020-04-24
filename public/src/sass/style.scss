@@ -24,34 +24,41 @@ body {
 
 header {
     height: 25vw;
-    padding: 2vw 10vw;
+    padding: 2vw 11vw 2vw 9vw;
     margin: 5vw auto;
 
-    h1 {
-        position: absolute;
-        width: 90vw;
-        left: calc(15vw / 2);
+    svg {
+        // position: absolute;
+        width: 80vw;
+        // left: calc(15vw / 2);
 
-        a {
+        text {
             text-decoration: none;
             position: relative;
-            top: -5vw;
-            left: 2.5vw;
+            left: -1vw;
+            width: 80vw;
+            display: block;
+            font-family: "TypoRoundRegularDemo", sans-serif;
+            font-size: 13pt;
 
-            span {
-                font-family: "TypoRoundRegularDemo", sans-serif;
-                font-size: 15vw;
+            &.rings {
+            fill: $base-purple;
             }
 
-            .rings {
-                color: $base-purple;
-            }
-
-            .true {
-                color: $base-green;
+            &.true {
+                fill: $base-green;
             }
         }
     }
+
+    // a:before {
+    //     content: "";
+    //     background-image: url("../../img/rings.svg");
+    //     background-repeat: no-repeat;
+    //     width: 20vw;
+    //     height: 20vw;
+    //     display: inline-block;
+    // }
 
     .logout {
         text-decoration: none;
@@ -69,13 +76,7 @@ header {
 
 }
 
-h1:before {
-    content: "";
-    background-image: url("../../img/rings.svg");
-    width: 20vw;
-    height: 20vw;
-    display: inline-block;
-}
+
 
 
 .search {
@@ -295,6 +296,7 @@ main {
 
                 &+.article-text p:first-of-type {
                     text-indent: 1.5rem !important;
+                    
                 }
             }
 
@@ -312,8 +314,12 @@ main {
 
                     &::first-letter {
                         font-weight: bold;
-                        font-size: 16pt;
-                        font-family: serif;
+                        font-size: calc(1rem + 8vw);
+                        float: left;
+                        font-family: Georgia;
+                        line-height: calc(1rem + 2vw);
+                        padding-top: 3vw;
+                        padding-right: 8px;
                     }
                 }
             }
@@ -607,4 +613,11 @@ h2.login{
 }
 
 @media only screen and (min-width: 500px) {
+    header{
+        svg{
+            width: calc(clamp(500px, 60vw, 1300px));
+            display: block;
+            margin: 0 auto;
+        }
+    }
 }
