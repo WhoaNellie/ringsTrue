@@ -15,7 +15,7 @@ function Header(){
     return(
         <header>
             <h1>
-                <svg viewBox="0 0 100 50">
+                <svg viewBox="0 0 100 25">
                 <a href="/">
                 <image width="25" href="./img/rings.svg"/>
                 <text className="rings" x="29"y="18">rings</text>

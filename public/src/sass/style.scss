@@ -23,14 +23,12 @@ body {
 }
 
 header {
-    height: 25vw;
-    padding: 2vw 11vw 2vw 9vw;
     margin: 5vw auto;
 
     svg {
-        // position: absolute;
-        width: 80vw;
-        // left: calc(15vw / 2);
+        width: 70vw;
+        display: block;
+        margin: 0 auto;
 
         text {
             text-decoration: none;
@@ -51,15 +49,6 @@ header {
         }
     }
 
-    // a:before {
-    //     content: "";
-    //     background-image: url("../../img/rings.svg");
-    //     background-repeat: no-repeat;
-    //     width: 20vw;
-    //     height: 20vw;
-    //     display: inline-block;
-    // }
-
     .logout {
         text-decoration: none;
         color: $base-purple;
@@ -68,7 +57,6 @@ header {
 
         width: 35vw;
         display: block;
-        // margin: 20vw auto 0 auto;
         position: relative;
         bottom: -45vw;
         left: calc(65vw / 3);
@@ -86,7 +74,6 @@ header {
         .search__input {
             border: 1px solid lighten($color: $base-purple, $amount: 20);
             border-right: none;
-            // border-left: none;
             padding: 0 6vw;
             width: 75vw;
             height: 13vw;
@@ -614,10 +601,53 @@ h2.login{
 
 @media only screen and (min-width: 500px) {
     header{
+        height: auto;
         svg{
-            width: calc(clamp(500px, 60vw, 1300px));
-            display: block;
-            margin: 0 auto;
+            width: calc(clamp(500px, 60vw, 600px));
         }
     }
+
+    
+    .search{
+        .search__bar {
+            display: flex;
+            justify-content: center;
+            margin: 0 auto;
+    
+            .search__input{
+                width: calc(clamp(500px, 60vw, 600px));
+                border: 1px solid lighten($color: $base-purple, $amount: 20);
+                height: 10vh;
+                margin-right: 1vw;
+                padding: 0 3vw;
+        
+                &:focus::placeholder{
+                    color: transparent;
+                }
+
+                &::placeholder {
+                    font-size: 3vw;
+                    padding-bottom: 5vw;
+                    text-align: center;
+                }
+            }
+    
+            .search__button {
+                width: 15vw;
+                border: 1px solid darken($color: $base-green, $amount: 10);
+                background-size: 20%;
+                // box-shadow: 2px 2px 2px gray;
+            }
+        }
+
+        .results{
+            width: calc(clamp(500px, 60vw, 600px));
+            left: calc((99% - clamp(500px, 60vw, 600px) - 15vw) / 2);
+
+            .results__result {
+                padding: 0.5vw 2.5vw;
+            }
+        }
+    }
+
 }
