@@ -839,12 +839,30 @@ h2.login{
     }
     
     .modal{
+        width: clamp(400px, 30vw, 600px);
+        height: 90vh;
+        top: 5vh;
+        left: calc((100% - clamp(400px, 30vw, 600px)) / 2);
+
+        h3{
+            font-size: calc(0.5rem + 0.7vw);
+        }
         canvas {
             margin: -10vh auto;
         }
 
-        width: clamp(400px, 30vw, 600px);
-        left: calc((100% - clamp(400px, 30vw, 600px)) / 2);
+        .sliders {
+            position: static;
+            width: 100%;
+            margin: -5vh auto 5vh auto;
+        }
+
+        .submit{
+            width: 20vh;
+            font-size: 4vh;
+            margin: 0 auto;
+            position: static;
+        }
 
         &.network{
             canvas {

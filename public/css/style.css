@@ -562,9 +562,22 @@ h2.login {
       font-size: 2vw; }
   .modal {
     width: clamp(400px, 30vw, 600px);
+    height: 90vh;
+    top: 5vh;
     left: calc((100% - clamp(400px, 30vw, 600px)) / 2); }
+    .modal h3 {
+      font-size: calc(0.5rem + 0.7vw); }
     .modal canvas {
       margin: -10vh auto; }
+    .modal .sliders {
+      position: static;
+      width: 100%;
+      margin: -5vh auto 5vh auto; }
+    .modal .submit {
+      width: 20vh;
+      font-size: 4vh;
+      margin: 0 auto;
+      position: static; }
     .modal.network canvas {
       margin: -10vh auto; }
     .modal.network h3 {
