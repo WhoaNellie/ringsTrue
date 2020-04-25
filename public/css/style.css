@@ -466,7 +466,7 @@ h2.login {
     margin: 0; }
   main h2.leaderboard {
     font-size: 4vw;
-    margin: 5vh auto 0 auto;
+    margin: 7vh auto 0 auto;
     width: fit-content; }
   main .leaderboard {
     display: flex;
@@ -478,4 +478,31 @@ h2.login {
     main .leaderboard .leaderboard__category--information, main .leaderboard .leaderboard__category--neutrality, main .leaderboard .leaderboard__category--overall, main .leaderboard .leaderboard__overall--rank, main .leaderboard .leaderboard__neutrality--rank, main .leaderboard .leaderboard__information--rank {
       box-shadow: none; }
     main .leaderboard ol {
-      font-size: 2vw; } }
+      font-size: 2vw; }
+  .modal {
+    width: clamp(400px, 30vw, 600px);
+    left: calc((100% - clamp(400px, 30vw, 600px)) / 2); }
+    .modal canvas {
+      margin: -10vh auto; }
+    .modal.network canvas {
+      margin: -10vh auto; }
+    .modal.network h3 {
+      font-size: calc(1rem + 2vw); }
+    .modal.network .network__amount {
+      text-align: center;
+      width: 80%;
+      font-size: calc(1rem + 0.7vw); }
+    .modal.network table {
+      width: 102%;
+      position: absolute;
+      left: -1%;
+      top: 55vh;
+      table-layout: fixed;
+      border-collapse: collapse; }
+      .modal.network table tr th {
+        font-size: calc(0.5rem + 0.8vw); }
+    .modal.network .ranking__total {
+      position: static;
+      font-size: calc(1rem + 0.5vw);
+      width: fit-content;
+      margin: 20vh auto 0 auto; } }

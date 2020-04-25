@@ -701,7 +701,7 @@ h2.login{
 
         h2.leaderboard{
             font-size: 4vw;
-            margin: 5vh auto 0 auto;
+            margin: 7vh auto 0 auto;
             width: fit-content;
         }
 
@@ -726,4 +726,51 @@ h2.login{
         }
     }
     
+    .modal{
+        canvas {
+            margin: -10vh auto;
+        }
+
+        width: clamp(400px, 30vw, 600px);
+        left: calc((100% - clamp(400px, 30vw, 600px)) / 2);
+
+        &.network{
+            canvas {
+                margin: -10vh auto;
+            }
+
+            h3{
+                font-size: calc(1rem + 2vw);
+            }
+
+            .network__amount{
+                text-align: center;
+                width: 80%;
+                font-size: calc(1rem + 0.7vw);
+            }
+
+            table{
+                width: 102%;
+                position: absolute;
+                left: -1%;
+                top: 55vh;
+                table-layout: fixed;
+                border-collapse: collapse;
+    
+                tr{
+                    th{
+                        font-size: calc(0.5rem + 0.8vw);
+                    }
+                }
+            }
+
+            .ranking__total{
+                position: static;
+                font-size: calc(1rem + 0.5vw);
+                width: fit-content;
+                margin: 20vh auto 0 auto;
+            }
+    
+        }
+    }
 }
