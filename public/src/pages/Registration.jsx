@@ -65,7 +65,7 @@ function Registration(){
             <button id="register" onClick={() => registerUser()}>Register</button>
 
         </div>
-            
+            <div className="reqs">
             <div className="req requirements--username">
                 <h3>Your Username Must:</h3>
                 <ul>
@@ -79,6 +79,8 @@ function Registration(){
                 <li>Not be included in the <a href="https://en.wikipedia.org/wiki/Wikipedia:10,000_most_common_passwords#Top_100">100 most common passwords</a></li>
                 </ul>
             </div>
+            </div>
+            
         </main>
     )
 }

@@ -38,8 +38,8 @@ header {
     width: 35vw;
     display: block;
     position: relative;
-    bottom: -45vw;
-    left: calc(65vw / 3);
+    bottom: -30vw;
+    left: calc(65vw / 2);
     z-index: 2;
     text-shadow: 2px 2px #fdfdfe; }
 
@@ -434,8 +434,9 @@ h2.login {
         text-align: center; }
     .search .search__bar .search__button {
       width: 15vw;
-      border: 1px solid #4c7835;
-      background-size: 20%; }
+      border: none;
+      background-size: 20%;
+      box-shadow: 2px 2px 2px grey; }
   .search .results {
     width: calc(clamp(500px, 60vw, 600px));
     left: calc((99% - clamp(500px, 60vw, 600px) - 15vw) / 2); }
@@ -464,6 +465,83 @@ h2.login {
         padding: 2vh 2vw; }
   main .cards {
     margin: 0; }
+    main .cards .card {
+      width: 85%;
+      overflow: hidden;
+      margin: 5% auto;
+      padding: 5%;
+      text-align: center;
+      position: relative;
+      background: #ffffff;
+      box-shadow: 2px 2px 2px gray, inset 0px -44px 107px -78px #ccb8cc; }
+      main .cards .card h3 {
+        font-size: calc(1rem + 1.5vw); }
+      main .cards .card.collapsed {
+        height: 20vh;
+        padding: 0; }
+        main .cards .card.collapsed img {
+          width: 40vh;
+          position: absolute;
+          top: 0;
+          left: 10vh; }
+        main .cards .card.collapsed h3 {
+          width: 100%;
+          padding: 1vh 30vh 0 35vh;
+          text-align: left;
+          font-size: calc(1rem + 1vw); }
+        main .cards .card.collapsed .read-button {
+          width: 30vh;
+          height: 10vh;
+          position: absolute;
+          top: 0;
+          right: 0; }
+        main .cards .card.collapsed .article-text {
+          width: 30vh; }
+      main .cards .card img {
+        width: clamp(500px, 60vw, 600px);
+        margin: 0 -10%; }
+      main .cards .card img[src="./img/broken.jpg"] {
+        display: none; }
+        main .cards .card img[src="./img/broken.jpg"] + .article-text p:first-of-type {
+          text-indent: 1.5rem !important; }
+      main .cards .card .article-text {
+        text-align: left; }
+        main .cards .card .article-text p {
+          text-indent: 1.5rem;
+          font-size: calc(1rem + 0.5vw);
+          line-height: 1.6; }
+        main .cards .card .article-text p:first-of-type {
+          text-indent: 0; }
+          main .cards .card .article-text p:first-of-type::first-letter {
+            font-weight: bold;
+            font-size: calc(1rem + 8vw);
+            float: left;
+            font-family: Georgia;
+            line-height: calc(1rem + 2vw);
+            padding-top: 3vw;
+            padding-right: 8px; }
+      main .cards .card .read-button {
+        position: absolute;
+        bottom: 5%;
+        right: 8%;
+        width: 30vw;
+        background-color: #633B8E;
+        box-shadow: 2px 2px 2px gray, 10px 10px 28px -10px gray;
+        display: inline-block;
+        color: white;
+        font-weight: bold;
+        letter-spacing: 1px;
+        padding: 1% 5%;
+        z-index: 1; }
+      main .cards .card .rate-button {
+        background-color: #4c7835;
+        box-shadow: 2px 2px 2px gray, 4px 4px 5px -1px rgba(0, 0, 0, 0.28);
+        margin-top: 5vw;
+        padding: 1% 5%;
+        z-index: 1;
+        color: white;
+        font-weight: bold;
+        letter-spacing: 1px; }
   main h2.leaderboard {
     font-size: 4vw;
     margin: 7vh auto 0 auto;
@@ -505,4 +583,30 @@ h2.login {
       position: static;
       font-size: calc(1rem + 0.5vw);
       width: fit-content;
-      margin: 20vh auto 0 auto; } }
+      margin: 20vh auto 0 auto; }
+  .reqs {
+    display: flex; }
+    .reqs .req {
+      padding: 3vh 5vw;
+      width: 50%; }
+      .reqs .req h3 {
+        text-align: center; }
+    .reqs.requirements--username {
+      background-color: #e4d9ef; }
+    .reqs.requirements--password {
+      background-color: #eef6e9; }
+    .reqs ul li {
+      margin: 2vh 0;
+      font-size: 2vw; }
+  .form {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    width: clamp(500px, 60vw, 600px);
+    margin: 0 auto; }
+    .form input {
+      border: 1px solid #966dc2; }
+    .form #register, .form #login {
+      width: fit-content;
+      height: fit-content;
+      padding: 2vh 2vw; } }
