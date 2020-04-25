@@ -165,14 +165,16 @@ main {
 
     }
 
+    h2.leaderboard {
+        text-align: center;
+        letter-spacing: 1px;
+        font-size: 8vw;
+    }
+
     .leaderboard {
         margin: 5vw 5vw;
 
-        h2 {
-            text-align: center;
-            letter-spacing: 1px;
-            font-size: 8vw;
-        }
+        
 
         h3 {
             font-size: 7vw;
@@ -208,7 +210,7 @@ main {
             }
 
             li:nth-child(2n+1) {
-                background-color: lighten($color: $base-green, $amount: 50);
+                background-color: lighten($color: $base-green, $amount: 40);
             }
         }
 
@@ -693,13 +695,35 @@ h2.login{
     
             }
         }
-        
-
         .cards{
             margin: 0;
         }
 
-        
+        h2.leaderboard{
+            font-size: 4vw;
+            margin: 5vh auto 0 auto;
+            width: fit-content;
+        }
+
+        .leaderboard{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            margin: 0 3vw;
+
+            h3{
+                font-size: 3vw;
+            }
+
+            .leaderboard__category--information, .leaderboard__category--neutrality, .leaderboard__category--overall, .leaderboard__overall--rank, .leaderboard__neutrality--rank, .leaderboard__information--rank{
+                box-shadow: none;
+            }
+
+            ol {
+                font-size: 2vw;
+            }
+
+        }
     }
     
 }

@@ -114,12 +114,13 @@ main .reg-or-log {
     letter-spacing: 1px;
     box-shadow: 2px 2px 2px gray; }
 
+main h2.leaderboard {
+  text-align: center;
+  letter-spacing: 1px;
+  font-size: 8vw; }
+
 main .leaderboard {
   margin: 5vw 5vw; }
-  main .leaderboard h2 {
-    text-align: center;
-    letter-spacing: 1px;
-    font-size: 8vw; }
   main .leaderboard h3 {
     font-size: 7vw;
     text-align: center;
@@ -143,7 +144,7 @@ main .leaderboard {
       padding: 0.5vw 2.5vw;
       width: 100%; }
     main .leaderboard .leaderboard__information--rank li:nth-child(2n+1) {
-      background-color: #eef6e9; }
+      background-color: #d1e6c6; }
   main .leaderboard .leaderboard__category--neutrality {
     background-color: #633B8E;
     box-shadow: 2px 2px 2px gray; }
@@ -462,4 +463,19 @@ h2.login {
         height: fit-content;
         padding: 2vh 2vw; }
   main .cards {
-    margin: 0; } }
+    margin: 0; }
+  main h2.leaderboard {
+    font-size: 4vw;
+    margin: 5vh auto 0 auto;
+    width: fit-content; }
+  main .leaderboard {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 0 3vw; }
+    main .leaderboard h3 {
+      font-size: 3vw; }
+    main .leaderboard .leaderboard__category--information, main .leaderboard .leaderboard__category--neutrality, main .leaderboard .leaderboard__category--overall, main .leaderboard .leaderboard__overall--rank, main .leaderboard .leaderboard__neutrality--rank, main .leaderboard .leaderboard__information--rank {
+      box-shadow: none; }
+    main .leaderboard ol {
+      font-size: 2vw; } }

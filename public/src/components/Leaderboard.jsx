@@ -30,18 +30,27 @@ function Leaderboard() {
   }, []);
 
   return (
+    <React.Fragment>
+    <h2 className="leaderboard">Leaderboard</h2>
     <div className="leaderboard">
-      <h2>Leaderboard</h2>
-
+      <div>
       <h3 className="leaderboard__category--information">Information</h3>
       <RankList table="information" ranks={ranks.informationRank} showBody={showBody}/>
-
+      </div>
+      
+      <div>
       <h3 className="leaderboard__category--neutrality">Neutrality</h3>
-      <RankList table="neutrality" ranks={ranks.neutralityRank} showBody={showBody}/>
+            <RankList table="neutrality" ranks={ranks.neutralityRank} showBody={showBody}/>
 
+      </div>
+
+      <div>
       <h3 className="leaderboard__category--overall">Overall</h3>
-      <RankList table="overall" ranks={ranks.overallRank} showBody={showBody}/>
+            <RankList table="overall" ranks={ranks.overallRank} showBody={showBody}/>
+      </div>
+      
     </div>
+    </React.Fragment>
   );
 }
 
