@@ -479,7 +479,7 @@ h2.login {
         font-size: calc(1rem + 1.5vw); }
       main .cards .card.collapsed {
         width: calc(clamp(500px, 60vw, 600px) + 15vw);
-        height: 20vh;
+        height: 10vw;
         padding: 0; }
         main .cards .card.collapsed img {
           width: 20vw;
