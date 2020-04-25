@@ -479,27 +479,27 @@ h2.login {
         font-size: calc(1rem + 1.5vw); }
       main .cards .card.collapsed {
         width: calc(clamp(500px, 60vw, 600px) + 15vw);
-        height: 10vw;
+        height: 7.5rem;
         padding: 0; }
         main .cards .card.collapsed img {
-          width: 20vw;
+          width: 15rem;
           position: absolute;
           top: 0;
           left: 3vh; }
         main .cards .card.collapsed h3 {
           width: 100%;
-          padding: 1vh 10vw 0 17vw;
+          padding: 1vh 8rem 0 12rem;
           text-align: left;
           font-size: calc(1rem + 0.8vw); }
         main .cards .card.collapsed .read-button {
-          width: 10vw;
+          width: 8rem;
           height: 7vh;
           position: absolute;
           top: 0;
           right: 0;
           font-size: 3vh; }
         main .cards .card.collapsed .article-text {
-          width: 30vh; }
+          display: none; }
       main .cards .card img {
         width: clamp(500px, 60vw, 600px);
         margin: 0 -10%; }
