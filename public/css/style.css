@@ -409,7 +409,7 @@ h2.login {
     height: auto;
     margin: 5vh auto; }
     header svg {
-      width: calc(clamp(500px, 60vw, 600px)); }
+      width: 500px; }
     header .logout {
       position: fixed;
       width: fit-content;
@@ -423,14 +423,13 @@ h2.login {
     .search .search__bar .search__input {
       width: calc(clamp(500px, 60vw, 600px));
       border: 1px solid #966dc2;
-      height: 10vh;
+      height: 8vh;
       margin-right: 1vw;
       padding: 0 3vw; }
       .search .search__bar .search__input:focus::placeholder {
         color: transparent; }
       .search .search__bar .search__input::placeholder {
-        font-size: 3vw;
-        padding-bottom: 5vw;
+        font-size: 2vw;
         text-align: center; }
     .search .search__bar .search__button {
       width: 15vw;
@@ -440,4 +439,27 @@ h2.login {
     width: calc(clamp(500px, 60vw, 600px));
     left: calc((99% - clamp(500px, 60vw, 600px) - 15vw) / 2); }
     .search .results .results__result {
-      padding: 0.5vw 2.5vw; } }
+      padding: 0.5vw 2.5vw; }
+  main .flex {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 5vh;
+    background-color: #e4d9ef;
+    padding: 5vh; }
+    main .flex .blurb {
+      width: 40vw;
+      box-shadow: 2px 2px 2px gray;
+      margin: 0;
+      background-color: #fdfdfe; }
+    main .flex .reg-or-log {
+      width: fit-content;
+      height: fit-content;
+      background-color: transparent;
+      padding: none; }
+      main .flex .reg-or-log .reg-or-log__reg, main .flex .reg-or-log .reg-or-log__log {
+        width: fit-content;
+        height: fit-content;
+        padding: 2vh 2vw; }
+  main .cards {
+    margin: 0; } }
