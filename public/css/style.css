@@ -54,7 +54,7 @@ header {
     border-right: none;
     padding: 0 6vw;
     width: 75vw;
-    height: 6vh; }
+    height: 3rem; }
     .search .search__bar .search__input::placeholder {
       color: #b091d1;
       font-weight: bold;
@@ -63,7 +63,7 @@ header {
       padding-bottom: 6vw; }
   .search .search__bar .search__button {
     width: 25vw;
-    height: 6vh;
+    height: 3rem;
     background-color: #629C44;
     border: 1px solid #4c7835;
     border-left: none;

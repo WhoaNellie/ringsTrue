@@ -80,7 +80,7 @@ header {
             border-right: none;
             padding: 0 6vw;
             width: 75vw;
-            height: 6vh;
+            height: 3rem;
 
             &::placeholder {
                 color: lighten($color: $base-purple, $amount: 30);
@@ -93,7 +93,7 @@ header {
 
         .search__button {
             width: 25vw;
-            height: 6vh;
+            height: 3rem;
             background-color: $base-green;
             border: 1px solid darken($color: $base-green, $amount: 10);
             border-left: none;
