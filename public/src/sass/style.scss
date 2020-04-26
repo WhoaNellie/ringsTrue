@@ -18,6 +18,10 @@ $base-yellow: #FFFF90;
     font-size: 107%;
 }
 
+html {
+    scroll-behavior: smooth;
+  }
+
 body {
     background-color: lighten($color: $base-purple, $amount: 60);
 }

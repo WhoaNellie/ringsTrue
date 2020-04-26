@@ -9,6 +9,9 @@
   font-family: 'Manrope', sans-serif;
   font-size: 107%; }
 
+html {
+  scroll-behavior: smooth; }
+
 body {
   background-color: #fdfdfe; }
 

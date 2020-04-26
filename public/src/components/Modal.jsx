@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
 import { Doughnut } from "react-chartjs-2";
+import {  HashLink as Link } from "react-router-hash-link";
 
 function Modal({
   isShowing,
   setIsShowing,
   articleState,
   setArticleState,
-  setThankYouState,
+  setThankYouState
 }) {
   const [rangeState, setRangeState] = useState({
     information: 50,
@@ -147,7 +148,8 @@ function Modal({
       method: "put",
       data: { dailyRated: tempArr },
       xsrfCookieName: "user",
-    }).then((res) => {});
+    }).then((res) => {
+    });
   }
 
   function handleClose() {
@@ -210,9 +212,12 @@ function Modal({
             />
           </div>
 
-          <button className="submit" onClick={() => handleSubmit()}>
+        <Link to="/#thankyou">
+        <button className="submit" onClick={() => handleSubmit()}>
             Submit
           </button>
+        </Link>
+          
         </aside>
       </React.Fragment>,
       document.getElementById("modal-root")

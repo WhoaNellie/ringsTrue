@@ -1,24 +1,11 @@
-import React, { useEffect, useContext, useState } from "react";
+import React, { useEffect, useContext, useState, useRef } from "react";
 import axios from "axios";
 import ReactImageFallback from "react-image-fallback";
-
 import { UserContext } from "../App";
 import Modal from "./Modal";
 import Network from "./Network";
 
 function Articles() {
-  // setTimeout(() =>
-  // {
-  //   let brokens = document.querySelectorAll('img[src="./img/broken.jpg"]');
-  //   if(brokens.length > 0){
-  //     for(let i = 0; i < brokens.length; i++){
-  //       brokens[i].remove();
-  //     }
-
-  //   }
-
-  // },500)
-
   const Login = useContext(UserContext);
   const [articleState, setArticleState] = useState({
     rated: Login[0].dailyRated,
@@ -33,8 +20,7 @@ function Articles() {
     amount: 0,
   });
   const [networkShowing, setNetworkShowing] = useState(false);
-  const [maxShowing, setMaxShowing] = useState(false);
-  const [brokenImg, setBrokenImg] = useState(false);
+  const cardRef = useRef();
 
   function showModal(article) {
     setArticleState({ ...articleState, activeArticle: article });
@@ -83,6 +69,7 @@ function Articles() {
             })
           }
           getNetwork={getNetwork}
+          cardRef={cardRef}
         />
       )}
 
@@ -103,6 +90,7 @@ function Articles() {
         articleState={articleState}
         setArticleState={setArticleState}
         setThankYouState={setThankYouState}
+        cardRef={cardRef}
         key="modal"
       />
       {networkShowing && (
@@ -161,9 +149,9 @@ function Card({ article, showModal }) {
   );
 }
 
-function ThankYouCard({ name, closeCard, getNetwork }) {
+function ThankYouCard({ name, closeCard, getNetwork, cardRef }) {
   return (
-    <div className="thankYouCard card">
+    <div className="thankYouCard card" id="thankyou">
       <h3>Thank you!</h3>
 
       <p>
