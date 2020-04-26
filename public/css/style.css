@@ -254,6 +254,27 @@ main .cards {
   top: 0;
   left: 0; }
 
+footer {
+  margin: 2vh 0; }
+  footer h4 {
+    font-size: 1rem;
+    text-align: center;
+    margin: 1vh 0; }
+  footer .links {
+    width: 100vw;
+    max-width: 900px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin: 0 auto; }
+    footer .links p {
+      font-size: 1rem; }
+      footer .links p a {
+        color: #633B8E;
+        text-decoration: none; }
+        footer .links p a:hover {
+          text-decoration: underline; }
+
 .modal {
   background: #ffffff;
   z-index: 3;
@@ -440,6 +461,7 @@ h2.login {
         text-align: center; }
     .search .search__bar .search__button {
       width: 15vw;
+      height: 8vh;
       border: none;
       background-size: 20%;
       box-shadow: 2px 2px 2px grey; }
@@ -570,6 +592,9 @@ h2.login {
     main .leaderboard .leaderboard__neutrality--rank,
     main .leaderboard .leaderboard__information--rank {
       box-shadow: none; }
+    main .leaderboard div {
+      flex-basis: 0;
+      flex-grow: 0.3; }
     main .leaderboard ol {
       font-size: 2vw; }
   .modal {

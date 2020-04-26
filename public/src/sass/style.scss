@@ -20,7 +20,7 @@ $base-yellow: #FFFF90;
 
 html {
     scroll-behavior: smooth;
-  }
+}
 
 body {
     background-color: lighten($color: $base-purple, $amount: 60);
@@ -70,9 +70,6 @@ header {
     }
 
 }
-
-
-
 
 .search {
     .search__bar {
@@ -376,6 +373,38 @@ main {
     left: 0;
 }
 
+footer {
+    margin: 2vh 0;
+
+    h4 {
+        font-size: 1rem;
+        text-align: center;
+        margin: 1vh 0;
+    }
+
+    .links {
+        width: 100vw;
+        max-width: 900px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        margin: 0 auto;
+
+        p {
+            font-size: 1rem;
+
+            a {
+                color: $base-purple;
+                text-decoration: none;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}
+
 .modal {
     background: #ffffff;
     z-index: 3;
@@ -656,6 +685,7 @@ h2.login {
 
             .search__button {
                 width: 15vw;
+                height: 8vh;
                 border: none;
                 background-size: 20%;
                 box-shadow: 2px 2px 2px grey;
@@ -848,6 +878,11 @@ h2.login {
             .leaderboard__neutrality--rank,
             .leaderboard__information--rank {
                 box-shadow: none;
+            }
+
+            div {
+                flex-basis: 0;
+                flex-grow: 0.3;
             }
 
             ol {

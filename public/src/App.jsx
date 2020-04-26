@@ -5,6 +5,7 @@ import Registration from "./pages/Registration";
 import Login from "./pages/Login";
 import Homepage from "./pages/Homepage";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 export const UserContext = createContext();
 
@@ -36,6 +37,7 @@ function App() {
           </UserContext.Provider>
         </Switch>
       </HashRouter>
+      <Footer/>
       <div id="modal-root"></div>
       <div id="network-root"></div>
     </div>
