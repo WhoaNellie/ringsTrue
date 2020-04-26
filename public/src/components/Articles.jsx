@@ -135,7 +135,7 @@ function Card({ article, showModal }) {
       
       <ReactImageFallback
         src={article.image} 
-        fallbackImage="./img/placeholder.png"
+        fallbackImage={["./img/placeholder.webp","./img/placeholder.png"]}
         alt={article.description}
         initialImage="./img/largeload.gif"
       />
