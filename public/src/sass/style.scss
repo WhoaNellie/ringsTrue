@@ -40,7 +40,7 @@ header {
             font-size: 13pt;
 
             &.rings {
-            fill: $base-purple;
+                fill: $base-purple;
             }
 
             &.true {
@@ -174,7 +174,7 @@ main {
     .leaderboard {
         margin: 5vw 5vw;
 
-        
+
 
         h3 {
             font-size: 7vw;
@@ -287,7 +287,7 @@ main {
 
                 &+.article-text p:first-of-type {
                     text-indent: 1.5rem !important;
-                    
+
                 }
             }
 
@@ -469,7 +469,7 @@ main {
             margin: -12vh auto;
         }
 
-        .network__amount{
+        .network__amount {
             position: absolute;
             top: 47vh;
             left: 10%;
@@ -477,7 +477,7 @@ main {
             font-size: calc(1rem + 1vw);
         }
 
-        table{
+        table {
             width: 102%;
             position: absolute;
             left: -1%;
@@ -485,49 +485,51 @@ main {
             table-layout: fixed;
             border-collapse: collapse;
 
-            tr{
-                th,td{
+            tr {
+
+                th,
+                td {
                     width: 20%;
                 }
 
-                th{
+                th {
                     font-size: calc(0.5rem + 2.5vw);
                     color: white;
                     font-weight: bold;
                     letter-spacing: 1px;
 
-                    &.information{
+                    &.information {
                         background-color: $base-green;
                     }
 
-                    &.neutrality{
+                    &.neutrality {
                         background-color: $base-purple;
                     }
 
-                    &.overall{
+                    &.overall {
                         background-color: #f3f34b;
                         color: black;
                     }
 
                 }
 
-                td{
-                    &.information{
+                td {
+                    &.information {
                         background-color: lighten($color: $base-green, $amount: 50)
                     }
 
-                    &.neutrality{
+                    &.neutrality {
                         background-color: lighten($color: $base-purple, $amount: 50);
                     }
 
-                    &.overall{
+                    &.overall {
                         background-color: $base-yellow;
                     }
                 }
             }
         }
 
-        .ranking__total{
+        .ranking__total {
             position: absolute;
             top: 70vh;
             font-size: calc(1rem + 1vw);
@@ -536,82 +538,83 @@ main {
     }
 }
 
-.req{
+.req {
     padding: 3vh 0 2vw 5vw;
     font-size: calc(1rem + 1vw);
 
-    &.requirements--username{
+    &.requirements--username {
         background-color: lighten($color: $base-purple, $amount: 50);
     }
 
-    &.requirements--password{
+    &.requirements--password {
         background-color: lighten($color: $base-green, $amount: 50);
     }
 
-    ul{
+    ul {
 
-        li{
+        li {
             margin: 2vh 10vw;
         }
-        
+
     }
 
-    
+
 }
 
-.error{
+.error {
     background-color: $base-yellow;
     text-align: center;
     margin: 2vh 0;
     padding: 1vh 0;
 }
 
-h2.login{
+h2.login {
     text-align: center;
     margin-bottom: 5vh;
 }
 
-.form{
+.form {
     text-align: center;
     display: flex;
     flex-direction: column;
 
-    input{
+    input {
         border: 1px solid lighten($color: $base-purple, $amount: 20);
     }
 
-    #register{
+    #register {
         width: 35vw;
-            height: 13vw;
-            background-color: darken($base-green, $amount: 10);
-            color: white;
-            font-weight: bold;
-            letter-spacing: 1px;
-            box-shadow: 2px 2px 2px gray;
-            margin: 5vh auto;
+        height: 13vw;
+        background-color: darken($base-green, $amount: 10);
+        color: white;
+        font-weight: bold;
+        letter-spacing: 1px;
+        box-shadow: 2px 2px 2px gray;
+        margin: 5vh auto;
     }
 
-    #login{
+    #login {
         width: 25vw;
-            height: 13vw;
-            background-color: darken($base-purple, $amount: 10);
-            color: white;
-            font-weight: bold;
-            letter-spacing: 1px;
-            box-shadow: 2px 2px 2px gray;
-            margin: 5vh auto;
+        height: 13vw;
+        background-color: darken($base-purple, $amount: 10);
+        color: white;
+        font-weight: bold;
+        letter-spacing: 1px;
+        box-shadow: 2px 2px 2px gray;
+        margin: 5vh auto;
     }
 }
 
 @media only screen and (min-width: 500px) {
-    header{
+    header {
         height: auto;
         margin: 5vh auto;
-        svg{
+
+        svg {
             width: 500px;
         }
 
-        .logout{
+        .logout {
             position: fixed;
             width: fit-content;
             height: fit-content;
@@ -620,21 +623,21 @@ h2.login{
         }
     }
 
-    
-    .search{
+
+    .search {
         .search__bar {
             display: flex;
             justify-content: center;
             margin: 0 auto;
-    
-            .search__input{
+
+            .search__input {
                 width: calc(clamp(500px, 60vw, 600px));
                 border: 1px solid lighten($color: $base-purple, $amount: 20);
                 height: 8vh;
                 margin-right: 1vw;
                 padding: 0 3vw;
-        
-                &:focus::placeholder{
+
+                &:focus::placeholder {
                     color: transparent;
                 }
 
@@ -644,7 +647,7 @@ h2.login{
                     text-align: center;
                 }
             }
-    
+
             .search__button {
                 width: 15vw;
                 border: none;
@@ -653,7 +656,7 @@ h2.login{
             }
         }
 
-        .results{
+        .results {
             width: calc(clamp(500px, 60vw, 600px));
             left: calc((99% - clamp(500px, 60vw, 600px) - 15vw) / 2);
 
@@ -666,7 +669,7 @@ h2.login{
 
     main {
 
-        .flex{
+        .flex {
             display: flex;
             justify-content: space-evenly;
             align-items: center;
@@ -674,29 +677,32 @@ h2.login{
             background-color: lighten($color: $base-purple, $amount: 50);
             padding: 5vh;
 
-            .blurb{
+            .blurb {
                 width: 40vw;
                 box-shadow: 2px 2px 2px gray;
                 margin: 0;
                 background-color: lighten($color: $base-purple, $amount: 60);
             }
 
-            .reg-or-log{
+            .reg-or-log {
                 width: fit-content;
                 height: fit-content;
                 background-color: transparent;
                 padding: none;
-    
-                .reg-or-log__reg, .reg-or-log__log {
+
+                .reg-or-log__reg,
+                .reg-or-log__log {
                     width: fit-content;
                     height: fit-content;
                     padding: 2vh 2vw;
                 }
-    
+
             }
         }
-        .cards{
+
+        .cards {
             margin: 0;
+
             .card {
                 width: 85%;
                 overflow: hidden;
@@ -705,25 +711,27 @@ h2.login{
                 text-align: center;
                 position: relative;
                 width: calc(clamp(500px, 60vw, 600px) + 15vw);
-    
+
                 background: #ffffff;
                 box-shadow: 2px 2px 2px gray, inset 0px -44px 107px -78px #ccb8cc;
                 //box-shadow:  20px 20px 60px #d9d9d9,
-    
+
                 h3 {
                     font-size: calc(1rem + 1.5vw);
                 }
-    
+
                 &.collapsed {
                     width: calc(clamp(500px, 60vw, 600px) + 15vw);
                     height: 7.5rem;
                     padding: 0;
-                    img{
+
+                    img {
                         width: 15rem;
                         position: absolute;
                         top: 0;
                         left: 3vh;
                     }
+
                     h3 {
                         width: 100%;
                         padding: 1vh 8rem 0 12rem;
@@ -731,7 +739,7 @@ h2.login{
                         font-size: calc(1rem + 0.8vw);
                     }
 
-                    .read-button{
+                    .read-button {
                         width: 8rem;
                         height: 7vh;
                         position: absolute;
@@ -740,37 +748,37 @@ h2.login{
                         font-size: 3vh;
                     }
 
-                    .article-text{
+                    .article-text {
                         display: none;
                     }
                 }
-    
+
                 img {
                     width: clamp(500px, 60vw, 600px);
                     margin: 0 -10%;
                 }
-    
+
                 img[src="./img/broken.jpg"] {
                     display: none;
-    
+
                     &+.article-text p:first-of-type {
                         text-indent: 1.5rem !important;
-                        
+
                     }
                 }
-    
+
                 .article-text {
                     text-align: left;
-    
+
                     p {
                         text-indent: 1.5rem;
                         font-size: calc(1rem + 0.5vw);
                         line-height: 1.6;
                     }
-    
+
                     p:first-of-type {
                         text-indent: 0;
-    
+
                         &::first-letter {
                             font-weight: bold;
                             font-size: calc(1rem + 8vw);
@@ -782,7 +790,7 @@ h2.login{
                         }
                     }
                 }
-    
+
                 .read-button {
                     position: absolute;
                     bottom: 5%;
@@ -797,7 +805,7 @@ h2.login{
                     padding: 1% 5%;
                     z-index: 1;
                 }
-    
+
                 .rate-button {
                     background-color: darken($base-green, $amount: 10);
                     box-shadow: 2px 2px 2px gray, 4px 4px 5px -1px rgba(0, 0, 0, 0.28);
@@ -811,23 +819,28 @@ h2.login{
             }
         }
 
-        h2.leaderboard{
+        h2.leaderboard {
             font-size: 4vw;
             margin: 7vh auto 0 auto;
             width: fit-content;
         }
 
-        .leaderboard{
+        .leaderboard {
             display: flex;
             flex-direction: row;
             justify-content: space-evenly;
             margin: 0 3vw;
 
-            h3{
+            h3 {
                 font-size: 3vw;
             }
 
-            .leaderboard__category--information, .leaderboard__category--neutrality, .leaderboard__category--overall, .leaderboard__overall--rank, .leaderboard__neutrality--rank, .leaderboard__information--rank{
+            .leaderboard__category--information,
+            .leaderboard__category--neutrality,
+            .leaderboard__category--overall,
+            .leaderboard__overall--rank,
+            .leaderboard__neutrality--rank,
+            .leaderboard__information--rank {
                 box-shadow: none;
             }
 
@@ -837,16 +850,17 @@ h2.login{
 
         }
     }
-    
-    .modal{
+
+    .modal {
         width: clamp(400px, 30vw, 600px);
         height: 90vh;
         top: 5vh;
         left: calc((100% - clamp(400px, 30vw, 600px)) / 2);
 
-        h3{
+        h3 {
             font-size: calc(0.5rem + 0.7vw);
         }
+
         canvas {
             margin: -10vh auto;
         }
@@ -857,101 +871,102 @@ h2.login{
             margin: -5vh auto 5vh auto;
         }
 
-        .submit{
+        .submit {
             width: 20vh;
             font-size: 4vh;
             margin: 0 auto;
             position: static;
         }
 
-        &.network{
+        &.network {
             canvas {
                 margin: -10vh auto;
             }
 
-            h3{
+            h3 {
                 font-size: calc(1rem + 2vw);
             }
 
-            .network__amount{
+            .network__amount {
                 text-align: center;
                 width: 80%;
                 font-size: calc(1rem + 0.7vw);
             }
 
-            table{
+            table {
                 width: 102%;
                 position: absolute;
                 left: -1%;
                 top: 55vh;
                 table-layout: fixed;
                 border-collapse: collapse;
-    
-                tr{
-                    th{
+
+                tr {
+                    th {
                         font-size: calc(0.5rem + 0.8vw);
                     }
                 }
             }
 
-            .ranking__total{
+            .ranking__total {
                 position: static;
                 font-size: calc(1rem + 0.5vw);
                 width: fit-content;
                 margin: 20vh auto 0 auto;
             }
-    
+
         }
     }
 
-    .reqs{
+    .reqs {
         display: flex;
-        
-        .req{
+
+        .req {
             padding: 3vh 5vw;
             width: 50%;
 
-            h3{
+            h3 {
                 text-align: center;
             }
         }
-    
-        &.requirements--username{
+
+        &.requirements--username {
             background-color: lighten($color: $base-purple, $amount: 50);
         }
-    
-        &.requirements--password{
+
+        &.requirements--password {
             background-color: lighten($color: $base-green, $amount: 50);
         }
-    
-        ul{
-            
-            li{
+
+        ul {
+
+            li {
                 margin: 2vh 0;
                 font-size: 2vw;
             }
-            
+
         }
-    
-        
+
+
     }
 
-    
-.form{
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    width: clamp(500px, 60vw, 600px);
-    margin: 0 auto;
 
-    input{
-        border: 1px solid lighten($color: $base-purple, $amount: 20);
-    }
+    .form {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        width: clamp(500px, 60vw, 600px);
+        margin: 0 auto;
 
-    #register, #login{
-        width: fit-content;
-                    height: fit-content;
-                    padding: 2vh 2vw;
+        input {
+            border: 1px solid lighten($color: $base-purple, $amount: 20);
+        }
+
+        #register,
+        #login {
+            width: fit-content;
+            height: fit-content;
+            padding: 2vh 2vw;
+        }
     }
-}
 }

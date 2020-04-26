@@ -1,18 +1,18 @@
-import React from 'react';
+import React from "react";
 import { Link } from "react-router-dom";
 
-function RorL(){
-    return(
+function RorL() {
+  return (
     <div className="reg-or-log">
-        <Link to="/register">
+      <Link to="/register">
         <button className="reg-or-log__reg">Register</button>
-        </Link>
-        <p role="presentation">or</p>
-        <Link to="/login">
-          <button className="reg-or-log__log">Login</button>
-        </Link>
+      </Link>
+      <p role="presentation">or</p>
+      <Link to="/login">
+        <button className="reg-or-log__log">Login</button>
+      </Link>
     </div>
-    )
+  );
 }
 
 export default RorL;

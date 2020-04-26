@@ -7,52 +7,51 @@ import Modal from "./Modal";
 import Network from "./Network";
 
 function Articles() {
-  // setTimeout(() => 
+  // setTimeout(() =>
   // {
   //   let brokens = document.querySelectorAll('img[src="./img/broken.jpg"]');
   //   if(brokens.length > 0){
   //     for(let i = 0; i < brokens.length; i++){
   //       brokens[i].remove();
   //     }
-      
+
   //   }
-    
+
   // },500)
-  
-    const Login = useContext(UserContext);
-    const [articleState, setArticleState] = useState({
-        rated: Login[0].dailyRated,
-        activeArticle: {headline:""},
-        articleArr: []
-    });
-    const [isShowing, setIsShowing] = useState(false);
-    const [thankYouState, setThankYouState] = useState({
-      showing: false,
-      name: '',
-      rating: [],
-      amount: 0
-    });
-    const [networkShowing, setNetworkShowing] = useState(false);
-    const [maxShowing, setMaxShowing] = useState(false);
-    const [brokenImg, setBrokenImg] = useState(false);
-    
+
+  const Login = useContext(UserContext);
+  const [articleState, setArticleState] = useState({
+    rated: Login[0].dailyRated,
+    activeArticle: { headline: "" },
+    articleArr: [],
+  });
+  const [isShowing, setIsShowing] = useState(false);
+  const [thankYouState, setThankYouState] = useState({
+    showing: false,
+    name: "",
+    rating: [],
+    amount: 0,
+  });
+  const [networkShowing, setNetworkShowing] = useState(false);
+  const [maxShowing, setMaxShowing] = useState(false);
+  const [brokenImg, setBrokenImg] = useState(false);
 
   function showModal(article) {
-    setArticleState({ ...articleState, activeArticle: article});
+    setArticleState({ ...articleState, activeArticle: article });
     setIsShowing(true);
   }
 
-  function getNetwork(name){
-    axios.get(`/api/network/${name}`).then(res => {
+  function getNetwork(name) {
+    axios.get(`/api/network/${name}`).then((res) => {
       console.log(res);
       setThankYouState({
         showing: true,
         name: res.data.name,
         rating: res.data.rating,
-        amount: res.data.amount
+        amount: res.data.amount,
       });
       setNetworkShowing(true);
-    })
+    });
   }
 
   useEffect(() => {
@@ -72,19 +71,22 @@ function Articles() {
     });
   }, []);
 
-  
-
   return (
     <div className="cards">
-      {thankYouState.showing && <ThankYouCard 
-      name={thankYouState.name}
-      closeCard={() => setThankYouState({
-        showing: false,
-        name: ''
-      })}
-      getNetwork={getNetwork}/>}
+      {thankYouState.showing && (
+        <ThankYouCard
+          name={thankYouState.name}
+          closeCard={() =>
+            setThankYouState({
+              showing: false,
+              name: "",
+            })
+          }
+          getNetwork={getNetwork}
+        />
+      )}
 
-      {articleState.rated.length > 4 && <MaxArticleCard/>}
+      {articleState.rated.length > 4 && <MaxArticleCard />}
 
       {articleState.articleArr.map((article) => {
         return (
@@ -95,7 +97,7 @@ function Articles() {
           />
         );
       })}
-      <Modal 
+      <Modal
         isShowing={isShowing}
         setIsShowing={setIsShowing}
         articleState={articleState}
@@ -103,43 +105,44 @@ function Articles() {
         setThankYouState={setThankYouState}
         key="modal"
       />
-      {networkShowing && <Network
-                isShowing={networkShowing}
-                setIsShowing={setNetworkShowing}
-                name={thankYouState.name}
-                rating={thankYouState.rating[0]}
-                amount={thankYouState.amount}
-            />}
-      
+      {networkShowing && (
+        <Network
+          isShowing={networkShowing}
+          setIsShowing={setNetworkShowing}
+          name={thankYouState.name}
+          rating={thankYouState.rating[0]}
+          amount={thankYouState.amount}
+        />
+      )}
     </div>
   );
 }
 
 function Card({ article, showModal }) {
-  
- 
-
   const [cardState, setCardState] = useState({
     height: "collapsed",
   });
 
-  let newText = article.text.replace(/&#9608;/g, String.fromCharCode("&#9608;"));
+  let newText = article.text.replace(
+    /&#9608;/g,
+    String.fromCharCode("&#9608;")
+  );
 
-
-  newText = newText.split('\n').map((item, i) => {
-    return <p key={i}>{item}</p>;});
+  newText = newText.split("\n").map((item, i) => {
+    return <p key={i}>{item}</p>;
+  });
 
   return (
     <div className={`card article-${article.id} ${cardState.height}`}>
       <h3>{article.headline}</h3>
-      
+
       <ReactImageFallback
-        src={article.image} 
-        fallbackImage={["./img/placeholder.webp","./img/placeholder.png"]}
+        src={article.image}
+        fallbackImage={["./img/placeholder.webp", "./img/placeholder.png"]}
         alt={article.description}
         initialImage="./img/largeload.gif"
       />
-      
+
       <div className="article-text">{newText}</div>
 
       {cardState.height === "collapsed" && (
@@ -158,12 +161,18 @@ function Card({ article, showModal }) {
   );
 }
 
-function ThankYouCard({ name, closeCard, getNetwork }){
+function ThankYouCard({ name, closeCard, getNetwork }) {
   return (
     <div className="thankYouCard card">
       <h3>Thank you!</h3>
 
-      <p>That article was from <a href="#" onClick={() => getNetwork(name)}>{name}</a>. Did it meet your expectations?</p>
+      <p>
+        That article was from{" "}
+        <a href="#" onClick={() => getNetwork(name)}>
+          {name}
+        </a>
+        . Did it meet your expectations?
+      </p>
 
       <button className="card__close" onClick={closeCard}>
         X
@@ -172,19 +181,22 @@ function ThankYouCard({ name, closeCard, getNetwork }){
   );
 }
 
-function MaxArticleCard(){
+function MaxArticleCard() {
   return (
     <div className="maxCard card" id="maxCard">
       <h3>You've reviewed 5 articles today.</h3>
 
       <p>Thank you for your help, come back tomorrow to rate more!</p>
 
-      <button className="card__close" onClick={() => {
-        document.getElementById("maxCard").style.display = "none";
-      }}>
+      <button
+        className="card__close"
+        onClick={() => {
+          document.getElementById("maxCard").style.display = "none";
+        }}
+      >
         X
       </button>
     </div>
-  )
+  );
 }
 export default Articles;

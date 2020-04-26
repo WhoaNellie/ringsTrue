@@ -334,7 +334,8 @@ main .cards {
       top: 55vh;
       table-layout: fixed;
       border-collapse: collapse; }
-      .modal.network table tr th, .modal.network table tr td {
+      .modal.network table tr th,
+      .modal.network table tr td {
         width: 20%; }
       .modal.network table tr th {
         font-size: calc(0.5rem + 2.5vw);
@@ -459,7 +460,8 @@ h2.login {
       height: fit-content;
       background-color: transparent;
       padding: none; }
-      main .flex .reg-or-log .reg-or-log__reg, main .flex .reg-or-log .reg-or-log__log {
+      main .flex .reg-or-log .reg-or-log__reg,
+      main .flex .reg-or-log .reg-or-log__log {
         width: fit-content;
         height: fit-content;
         padding: 2vh 2vw; }
@@ -556,7 +558,12 @@ h2.login {
     margin: 0 3vw; }
     main .leaderboard h3 {
       font-size: 3vw; }
-    main .leaderboard .leaderboard__category--information, main .leaderboard .leaderboard__category--neutrality, main .leaderboard .leaderboard__category--overall, main .leaderboard .leaderboard__overall--rank, main .leaderboard .leaderboard__neutrality--rank, main .leaderboard .leaderboard__information--rank {
+    main .leaderboard .leaderboard__category--information,
+    main .leaderboard .leaderboard__category--neutrality,
+    main .leaderboard .leaderboard__category--overall,
+    main .leaderboard .leaderboard__overall--rank,
+    main .leaderboard .leaderboard__neutrality--rank,
+    main .leaderboard .leaderboard__information--rank {
       box-shadow: none; }
     main .leaderboard ol {
       font-size: 2vw; }
@@ -622,7 +629,8 @@ h2.login {
     margin: 0 auto; }
     .form input {
       border: 1px solid #966dc2; }
-    .form #register, .form #login {
+    .form #register,
+    .form #login {
       width: fit-content;
       height: fit-content;
       padding: 2vh 2vw; } }
