@@ -135,7 +135,7 @@ function Card({ article, showModal }) {
       
       <ReactImageFallback
         src={article.image} 
-        fallbackImage="./img/broken.jpg"
+        fallbackImage="./img/placeholder.png"
         alt={article.description}
         initialImage="./img/largeload.gif"
       />
