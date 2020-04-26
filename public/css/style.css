@@ -16,7 +16,8 @@ body {
   background-color: #fdfdfe; }
 
 header {
-  margin: 7vw auto 0 auto; }
+  margin: 4vh auto 2vh auto;
+  height: 10vh; }
   header svg {
     width: 70vw;
     display: block;
@@ -41,7 +42,7 @@ header {
     width: 35vw;
     display: block;
     position: relative;
-    bottom: -13vh;
+    bottom: -11vh;
     left: calc(65vw / 2);
     z-index: 2;
     text-shadow: 2px 2px #fdfdfe; }
@@ -53,7 +54,7 @@ header {
     border-right: none;
     padding: 0 6vw;
     width: 75vw;
-    height: 13vw; }
+    height: 6vh; }
     .search .search__bar .search__input::placeholder {
       color: #b091d1;
       font-weight: bold;
@@ -62,6 +63,7 @@ header {
       padding-bottom: 6vw; }
   .search .search__bar .search__button {
     width: 25vw;
+    height: 6vh;
     background-color: #629C44;
     border: 1px solid #4c7835;
     border-left: none;
