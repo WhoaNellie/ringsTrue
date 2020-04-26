@@ -13,7 +13,7 @@ body {
   background-color: #fdfdfe; }
 
 header {
-  margin: 5vw auto; }
+  margin: 7vw auto 0 auto; }
   header svg {
     width: 70vw;
     display: block;
@@ -38,7 +38,7 @@ header {
     width: 35vw;
     display: block;
     position: relative;
-    bottom: -30vw;
+    bottom: -13vh;
     left: calc(65vw / 2);
     z-index: 2;
     text-shadow: 2px 2px #fdfdfe; }

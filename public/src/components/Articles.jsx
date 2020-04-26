@@ -7,17 +7,17 @@ import Modal from "./Modal";
 import Network from "./Network";
 
 function Articles() {
-  setTimeout(() => 
-  {
-    let brokens = document.querySelectorAll('img[src="./img/broken.jpg"]');
-    if(brokens.length > 0){
-      for(let i = 0; i < brokens.length; i++){
-        brokens[i].remove();
-      }
+  // setTimeout(() => 
+  // {
+  //   let brokens = document.querySelectorAll('img[src="./img/broken.jpg"]');
+  //   if(brokens.length > 0){
+  //     for(let i = 0; i < brokens.length; i++){
+  //       brokens[i].remove();
+  //     }
       
-    }
+  //   }
     
-  },500)
+  // },500)
   
     const Login = useContext(UserContext);
     const [articleState, setArticleState] = useState({

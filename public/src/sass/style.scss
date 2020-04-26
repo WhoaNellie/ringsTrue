@@ -23,7 +23,7 @@ body {
 }
 
 header {
-    margin: 5vw auto;
+    margin: 7vw auto 0 auto;
 
     svg {
         width: 70vw;
@@ -58,7 +58,7 @@ header {
         width: 35vw;
         display: block;
         position: relative;
-        bottom: -30vw;
+        bottom: -13vh;
         left: calc(65vw / 2);
         z-index: 2;
         text-shadow: 2px 2px lighten($color: $base-purple, $amount: 60);

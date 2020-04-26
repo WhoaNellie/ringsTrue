@@ -45,8 +45,13 @@ function Search(){
     return(
         <div className="search">
             <div className="search__bar">
+            <label 
+            htmlFor="search__input"
+            style={{textIndent: "-9999px"}}
+            >Search for Network</label>
             <input 
             ref={inputEl} 
+            id="search__input"
             type="text" 
             className="search__input" 
             placeholder="Find a News Network" 

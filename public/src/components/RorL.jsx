@@ -7,7 +7,7 @@ function RorL(){
         <Link to="/register">
         <button className="reg-or-log__reg">Register</button>
         </Link>
-        <p>or</p>
+        <p role="presentation">or</p>
         <Link to="/login">
           <button className="reg-or-log__log">Login</button>
         </Link>
