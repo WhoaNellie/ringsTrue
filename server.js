@@ -8,7 +8,7 @@ const MongoStore = require("connect-mongo")(session);
 
 let keys = null;
 
-if (!process.env.MONGODB_URI) {
+if (!process.env.DB_URI) {
   keys = require("./apiKeys.js");
 }
 const PORT = process.env.PORT || 3000;
