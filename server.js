@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 
 let uristring =
-  process.env.MONGODB_URI || process.env.MONGOLAB_URI || keys.mongoURI;
+  process.env.DB_URI || keys.mongoURI;
 
 let cookie_key = process.env.cookie_key || keys.cookie_key;
 
