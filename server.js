@@ -6,18 +6,18 @@ const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const MongoStore = require("connect-mongo")(session);
 
-let keys = null;
+// let keys = null;
 
-if (!process.env.DB_URI) {
-  keys = require("./apiKeys.js");
-}
+// if (!process.env.DB_URI) {
+//   keys = require("./apiKeys.js");
+// }
 const PORT = process.env.PORT || 3000;
 const app = express();
 
 let uristring =
-  process.env.DB_URI || keys.mongoURI;
+  process.env.DB_URI;
 
-let cookie_key = process.env.cookie_key || keys.cookie_key;
+let cookie_key = process.env.cookie_key;
 
 mongoose.connect(uristring, {
   useNewUrlParser: true,
