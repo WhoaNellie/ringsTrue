@@ -5,16 +5,16 @@ const cookieParser = require("cookie-parser");
 
 const User = require("../models/Users");
 const db = require("../models");
-let keys = null;
+// let keys = null;
 
-if (!process.env.MONGODB_URI) {
-  keys = require("../apiKeys.js");
-}
+// if (!process.env.MONGODB_URI) {
+//   keys = require("../apiKeys.js");
+// }
 
 const router = express.Router();
 
 let uristring =
-  process.env.MONGODB_URI || process.env.MONGOLAB_URI || keys.mongoURI;
+  process.env.DB_URI;
 
 mongoose.connect(uristring, {
   useNewUrlParser: true,
