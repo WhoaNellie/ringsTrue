@@ -1,6 +1,7 @@
 # ringsTrue
-
+![ringsTrue logo](./ringsLogo.png)
 ringsTrue is a news network rating app where anyone can be the judge. You will be asked to critique five anonymized articles a day. Then compare your rating to the network's overall ranking and to your preconcieved notions!
+![ringsTrue rating UI](./ringsGif.gif)
 
 ## Getting Started
 
