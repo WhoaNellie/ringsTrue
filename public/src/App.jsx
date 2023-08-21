@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import Homepage from "./pages/Homepage";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Demo from "./components/Demo";
 
 export const UserContext = createContext();
 
@@ -34,10 +35,11 @@ function App() {
             <Route exact path="/" component={Homepage} />
             <Route path="/register" component={Registration} />
             <Route path="/login" component={Login} />
+            <Route path="/demo" component={Demo} />
           </UserContext.Provider>
         </Switch>
       </HashRouter>
-      <Footer/>
+      <Footer />
       <div id="modal-root"></div>
       <div id="network-root"></div>
     </div>

@@ -1,6 +1,6 @@
 # ringsTrue
 ![ringsTrue logo](./ringsLogo.png)
-ringsTrue is a news network rating app where anyone can be the judge. You will be asked to critique five anonymized articles a day. Then compare your rating to the network's overall ranking and to your preconcieved notions!
+ringsTrue is a news network rating app where anyone can be the judge. You will be asked to critique five anonymized articles a day. Then compare your rating to the network's overall ranking and to your preconceived notions!
 ![ringsTrue rating UI](./ringsGif.gif)
 
 ## Getting Started
@@ -9,7 +9,7 @@ Go to [the hosted website](https://ringstrue.herokuapp.com/) to use the product,
 
 ### Prerequisites
 
-You will need to run 'npm install' in your cloned directory to recieve all the dependencies. Then to work on the project in development mode have two terminals open. In one run 'gulp' to compile the jsx and sass files, it will watch for changes and recompile from then on. In the second terminal, run 'npm run mon' to start the server with nodemon which will restart itself after you change enything outside the public directory. 
+You will need to run 'npm install' in your cloned directory to receive all the dependencies. Then to work on the project in development mode have two terminals open. In one run 'gulp' to compile the jsx and sass files, it will watch for changes and recompile from then on. In the second terminal, run 'npm run mon' to start the server with nodemon which will restart itself after you change anything outside the public directory. 
 
 
 ## Built With

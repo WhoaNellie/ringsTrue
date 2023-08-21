@@ -7,13 +7,37 @@
 
 * {
   font-family: 'Manrope', sans-serif;
-  font-size: 107%; }
+  font-size: 1.1lh; }
+
+h1, h2, h3, h4, h5 {
+  font-family: "TypoRoundRegularDemo", 'Manrope', sans-serif; }
 
 html {
   scroll-behavior: smooth; }
 
 body {
   background-color: #fdfdfe; }
+
+.away-message {
+  padding: 3vh 2vw;
+  font-size: calc(1rem + 1vw);
+  background-color: #e4d9ef;
+  text-align: center; }
+
+button {
+  transition: filter 0.1s ease-in; }
+  button:hover {
+    cursor: pointer;
+    filter: saturate(200%); }
+  button:disabled {
+    cursor: default;
+    filter: saturate(50%); }
+
+input:not(button):disabled {
+  background-color: #ccb8cc;
+  filter: saturate(50%); }
+  input:not(button):disabled + label {
+    color: gray; }
 
 header {
   margin: 4vh auto 2vh auto;
@@ -90,8 +114,7 @@ header {
 main .blurb {
   text-align: left;
   margin: 5vw 5vw;
-  padding: 5vw 5vw;
-  border: 2px double #633B8E; }
+  padding: 5vw 5vw; }
 
 main .reg-or-log {
   width: 100%;
@@ -106,7 +129,7 @@ main .reg-or-log {
     color: white;
     font-weight: bold;
     letter-spacing: 1px;
-    box-shadow: 2px 2px 2px gray; }
+    box-shadow: 2px 2px 2px #633B8E; }
   main .reg-or-log p {
     font-weight: bold;
     color: #bda3d9; }
@@ -117,7 +140,7 @@ main .reg-or-log {
     color: white;
     font-weight: bold;
     letter-spacing: 1px;
-    box-shadow: 2px 2px 2px gray; }
+    box-shadow: 2px 2px 2px #633B8E; }
 
 main h2.leaderboard {
   text-align: center;
@@ -451,7 +474,6 @@ h2.login {
     .search .search__bar .search__input {
       width: calc(clamp(500px, 60vw, 600px));
       border: 1px solid #966dc2;
-      height: 8vh;
       margin-right: 1vw;
       padding: 0 3vw; }
       .search .search__bar .search__input:focus::placeholder {
@@ -460,11 +482,13 @@ h2.login {
         font-size: 2vw;
         text-align: center; }
     .search .search__bar .search__button {
-      width: 15vw;
-      height: 8vh;
       border: none;
-      background-size: 20%;
-      box-shadow: 2px 2px 2px grey; }
+      box-shadow: 2px 2px 2px grey;
+      background-origin: content-box;
+      padding: 8px;
+      aspect-ratio: 16 / 9;
+      width: clamp(100px, 15vw, 300px);
+      background-size: contain; }
   .search .results {
     width: calc(clamp(500px, 60vw, 600px));
     left: calc((99% - clamp(500px, 60vw, 600px) - 15vw) / 2); }
@@ -479,7 +503,7 @@ h2.login {
     padding: 5vh; }
     main .flex .blurb {
       width: 40vw;
-      box-shadow: 2px 2px 2px gray;
+      box-shadow: 2px 2px 2px #633B8E;
       margin: 0;
       background-color: #fdfdfe; }
     main .flex .reg-or-log {

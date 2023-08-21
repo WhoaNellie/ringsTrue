@@ -19,7 +19,7 @@ function Homepage() {
                 ringsTrue is a news network rating app where anyone can be the
                 judge. You will be asked to critique five anonymized articles a
                 day. Then compare your rating to the network's overall ranking
-                and to your preconcieved notions!
+                and to your preconceived notions!
               </p>
             )}
             {Login[0].loggedIn ? <Articles /> : <RorL />}
