@@ -1,13 +1,9 @@
 const mongoose = require("mongoose");
 const axios = require("axios");
-
+require("dotenv").config();
 const db = require("./models");
 
 let keys = null;
-
-if (!process.env.MONGODB_URI) {
-  keys = require("./apiKeys.js");
-}
 
 let uristring =
   process.env.MONGODB_URI || process.env.MONGOLAB_URI || keys.mongoURI;
@@ -38,21 +34,29 @@ async function getArticles() {
       }
 
       for (let i = 0; i < articleLinks.length; i++) {
+        let text;
         try {
-          let text = await axios({
+          const options = {
             method: "GET",
-            url: "https://aylien-text.p.rapidapi.com/extract",
-            headers: {
-              "content-type": "application/octet-stream",
-              "x-rapidapi-host": "aylien-text.p.rapidapi.com",
-              "x-rapidapi-key": scrapeKey,
-            },
+            url: "https://text-extract7.p.rapidapi.com/",
             params: {
               url: articleLinks[i],
             },
-          });
+            headers: {
+              "X-RapidAPI-Key": process.env.scrape_key,
+              "X-RapidAPI-Host": "text-extract7.p.rapidapi.com",
+            },
+          };
 
-          if (text.data.article) {
+          try {
+            const response = await axios.request(options);
+            text = response.data;
+            console.log(response);
+          } catch (error) {
+            console.error(error);
+          }
+
+          if (text?.["raw-text"]) {
             let cleanHead = articles[i].title.replace(/\-[^-]*$/g, "");
 
             let brandVariations = [
@@ -66,7 +70,7 @@ async function getArticles() {
               "gi"
             );
 
-            let cleanText = text.data.article.replace(
+            let cleanText = text["raw-text"].replace(
               filter,
               "&#9608;&#9608;&#9608;&#9608;"
             );

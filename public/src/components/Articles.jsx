@@ -172,7 +172,7 @@ function ThankYouCard({ name, closeCard, getNetwork, cardRef }) {
 function MaxArticleCard() {
   return (
     <div className="maxCard card" id="maxCard">
-      <h3>You've reviewed 5 articles today.</h3>
+      <h3>You've reviewed 5 articles today</h3>
 
       <p>Thank you for your help, come back tomorrow to rate more!</p>
 
