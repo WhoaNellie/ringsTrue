@@ -5,24 +5,23 @@ const compression = require("compression");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const MongoStore = require("connect-mongo")(session);
+require("dotenv").config();
 
-// let keys = null;
-
-// if (!process.env.DB_URI) {
-//   keys = require("./apiKeys.js");
-// }
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 const app = express();
 
-let uristring = process.env.DB_URI;
+let uristring = process.env.MONGODB_URI;
 
 let cookie_key = process.env.cookie_key;
 
-mongoose.connect(uristring, {
-  useNewUrlParser: true,
-  useFindAndModify: false,
-  useUnifiedTopology: true,
-});
+mongoose
+  .connect(uristring, {
+    useNewUrlParser: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("MongoDB has been connected"))
+  .catch((err) => console.log(err));
 
 const db = mongoose.connection;
 

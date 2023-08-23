@@ -13,14 +13,14 @@ const db = require("../models");
 
 const router = express.Router();
 
-let uristring =
-  process.env.DB_URI;
+// let uristring =
+//   process.env.DB_URI;
 
-mongoose.connect(uristring, {
-  useNewUrlParser: true,
-  useFindAndModify: false,
-  useUnifiedTopology: true,
-});
+// mongoose.connect(uristring, {
+//   useNewUrlParser: true,
+//   useFindAndModify: false,
+//   useUnifiedTopology: true,
+// });
 
 //check if login cookie is valid
 router.post("/api/cookie", (req, res) => {
