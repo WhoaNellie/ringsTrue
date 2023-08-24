@@ -1,12 +1,12 @@
 # ringsTrue
 ![ringsTrue logo](./ringsLogo.png)
 
-[ringsTrue](https://ringstrue.nellienelson.com/) is a news network rating app where anyone can be the judge. You will be asked to critique five anonymized articles a day. Then compare your rating to the network's overall ranking and to your preconceived notions!
+[ringsTrue](http://ringstrue.nellienelson.com/) is a news network rating app where anyone can be the judge. You will be asked to critique five anonymized articles a day. Then compare your rating to the network's overall ranking and to your preconceived notions!
 ![ringsTrue rating UI](./ringsGif.gif)
 
 ## Getting Started
 
-Go to [the hosted website](https://ringstrue.nellienelson.com/) to use the product, otherwise clone the repository if you with to edit the project. 
+Go to [the hosted website](http://ringstrue.nellienelson.com/) to use the product, otherwise clone the repository if you with to edit the project. 
 
 ### Prerequisites
 
