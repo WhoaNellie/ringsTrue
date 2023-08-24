@@ -70,10 +70,7 @@ async function getArticles() {
               "gi"
             );
 
-            let cleanText = text["raw-text"].replace(
-              filter,
-              "&#9608;&#9608;&#9608;&#9608;"
-            );
+            let cleanText = text.text.replace(filter, "🟣🟣🟣🟣🟣");
 
             articleData.push({
               id: i,

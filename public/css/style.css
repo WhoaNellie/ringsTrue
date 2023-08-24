@@ -9,7 +9,11 @@
   font-family: 'Manrope', sans-serif;
   font-size: 1.1lh; }
 
-h1, h2, h3, h4, h5 {
+h1,
+h2,
+h3,
+h4,
+h5 {
   font-family: "TypoRoundRegularDemo", 'Manrope', sans-serif; }
 
 html {
@@ -532,7 +536,7 @@ h2.login {
         font-size: calc(1rem + 1.5vw); }
       main .cards .card.collapsed {
         width: calc(clamp(500px, 60vw, 600px) + 15vw);
-        height: 7.5rem;
+        height: fit-content;
         padding: 0; }
         main .cards .card.collapsed img {
           width: 15rem;
@@ -540,10 +544,11 @@ h2.login {
           top: 0;
           left: 3vh; }
         main .cards .card.collapsed h3 {
-          width: 100%;
-          padding: 1vh 8rem 0 12rem;
+          padding: 1rem 8rem 1rem 12rem;
           text-align: left;
-          font-size: calc(1rem + 0.8vw); }
+          font-size: calc(1rem + 0.75vw); }
+        main .cards .card.collapsed .rate-button {
+          display: none; }
         main .cards .card.collapsed .read-button {
           width: 8rem;
           height: 7vh;
@@ -554,8 +559,13 @@ h2.login {
         main .cards .card.collapsed .article-text {
           display: none; }
       main .cards .card img {
-        width: clamp(500px, 60vw, 600px);
-        margin: 0 -10%; }
+        aspect-ratio: 1 / 1;
+        height: 100%;
+        display: block;
+        max-width: 15rem;
+        top: 1rem;
+        object-fit: cover;
+        object-position: left; }
       main .cards .card img[src="./img/broken.jpg"] {
         display: none; }
         main .cards .card img[src="./img/broken.jpg"] + .article-text p:first-of-type {
@@ -574,7 +584,7 @@ h2.login {
             float: left;
             font-family: Georgia;
             line-height: calc(1rem + 2vw);
-            padding-top: 3vw;
+            padding-top: 1rem;
             padding-right: 8px; }
       main .cards .card .read-button {
         position: absolute;

@@ -18,8 +18,13 @@ $base-yellow: #FFFF90;
     font-size: 1.1lh;
 }
 
-h1,h2,h3,h4,h5{
-    font-family: "TypoRoundRegularDemo", 'Manrope', sans-serif;;
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: "TypoRoundRegularDemo", 'Manrope', sans-serif;
+    ;
 }
 
 html {
@@ -30,31 +35,33 @@ body {
     background-color: lighten($color: $base-purple, $amount: 60);
 }
 
-.away-message{
+.away-message {
     padding: 3vh 2vw;
-font-size: calc(1rem + 1vw);
-background-color: #e4d9ef;
-text-align: center;
+    font-size: calc(1rem + 1vw);
+    background-color: #e4d9ef;
+    text-align: center;
 }
 
-button{
+button {
     transition: filter 0.1s ease-in;
-    &:hover{
+
+    &:hover {
         cursor: pointer;
         filter: saturate(200%);
     }
 
-    &:disabled{
+    &:disabled {
         cursor: default;
         filter: saturate(50%);
     }
 }
 
-input:not(button){
-    &:disabled{
+input:not(button) {
+    &:disabled {
         background-color: #ccb8cc;
         filter: saturate(50%);
-        &+label{
+
+        &+label {
             color: gray;
         }
     }
@@ -716,12 +723,12 @@ h2.login {
 
             .search__button {
                 border: none;
-box-shadow: 2px 2px 2px grey;
-background-origin: content-box;
-padding: 8px;
-aspect-ratio: 16 / 9;
-width: clamp(100px, 15vw, 300px);
-background-size: contain;
+                box-shadow: 2px 2px 2px grey;
+                background-origin: content-box;
+                padding: 8px;
+                aspect-ratio: 16 / 9;
+                width: clamp(100px, 15vw, 300px);
+                background-size: contain;
             }
         }
 
@@ -790,7 +797,7 @@ background-size: contain;
 
                 &.collapsed {
                     width: calc(clamp(500px, 60vw, 600px) + 15vw);
-                    height: 7.5rem;
+                    height: fit-content;
                     padding: 0;
 
                     img {
@@ -801,10 +808,13 @@ background-size: contain;
                     }
 
                     h3 {
-                        width: 100%;
-                        padding: 1vh 8rem 0 12rem;
+                        padding: 1rem 8rem 1rem 12rem;
                         text-align: left;
-                        font-size: calc(1rem + 0.8vw);
+                        font-size: calc(1rem + 0.75vw);
+                    }
+
+                    .rate-button {
+                        display: none;
                     }
 
                     .read-button {
@@ -822,8 +832,13 @@ background-size: contain;
                 }
 
                 img {
-                    width: clamp(500px, 60vw, 600px);
-                    margin: 0 -10%;
+                    aspect-ratio: 1 / 1;
+                    height: 100%;
+                    display: block;
+                    max-width: 15rem;
+                    top: 1rem;
+                    object-fit: cover;
+                    object-position: left;
                 }
 
                 img[src="./img/broken.jpg"] {
@@ -853,7 +868,7 @@ background-size: contain;
                             float: left;
                             font-family: Georgia;
                             line-height: calc(1rem + 2vw);
-                            padding-top: 3vw;
+                            padding-top: 1rem;
                             padding-right: 8px;
                         }
                     }
