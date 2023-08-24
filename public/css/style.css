@@ -545,7 +545,8 @@ h2.login {
           max-width: 15rem;
           top: 1rem;
           object-fit: cover;
-          object-position: left; }
+          object-position: left;
+          position: absolute; }
         main .cards .card.collapsed h3 {
           padding: 1rem 8rem 1rem 12rem;
           text-align: left;
@@ -554,11 +555,12 @@ h2.login {
           display: none; }
         main .cards .card.collapsed .read-button {
           width: 8rem;
-          height: 7vh;
           position: absolute;
           top: 0;
           right: 0;
-          font-size: 3vh; }
+          max-height: 7vh;
+          font-size: 1rem;
+          aspect-ratio: 16 / 5; }
         main .cards .card.collapsed .article-text {
           display: none; }
       main .cards .card img {
