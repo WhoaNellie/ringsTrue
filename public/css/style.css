@@ -539,10 +539,13 @@ h2.login {
         height: fit-content;
         padding: 0; }
         main .cards .card.collapsed img {
-          width: 15rem;
-          position: absolute;
-          top: 0;
-          left: 3vh; }
+          aspect-ratio: 1 / 1;
+          height: 100%;
+          display: block;
+          max-width: 15rem;
+          top: 1rem;
+          object-fit: cover;
+          object-position: left; }
         main .cards .card.collapsed h3 {
           padding: 1rem 8rem 1rem 12rem;
           text-align: left;
@@ -559,13 +562,8 @@ h2.login {
         main .cards .card.collapsed .article-text {
           display: none; }
       main .cards .card img {
-        aspect-ratio: 1 / 1;
-        height: 100%;
-        display: block;
-        max-width: 15rem;
-        top: 1rem;
-        object-fit: cover;
-        object-position: left; }
+        width: clamp(500px, 60vw, 600px);
+        margin: 0 -10%; }
       main .cards .card img[src="./img/broken.jpg"] {
         display: none; }
         main .cards .card img[src="./img/broken.jpg"] + .article-text p:first-of-type {

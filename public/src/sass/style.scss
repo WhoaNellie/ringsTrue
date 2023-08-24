@@ -801,10 +801,13 @@ h2.login {
                     padding: 0;
 
                     img {
-                        width: 15rem;
-                        position: absolute;
-                        top: 0;
-                        left: 3vh;
+                        aspect-ratio: 1 / 1;
+                            height: 100%;
+                            display: block;
+                            max-width: 15rem;
+                            top: 1rem;
+                            object-fit: cover;
+                            object-position: left;
                     }
 
                     h3 {
@@ -832,13 +835,8 @@ h2.login {
                 }
 
                 img {
-                    aspect-ratio: 1 / 1;
-                    height: 100%;
-                    display: block;
-                    max-width: 15rem;
-                    top: 1rem;
-                    object-fit: cover;
-                    object-position: left;
+                    width: clamp(500px, 60vw, 600px);
+                        margin: 0 -10%;
                 }
 
                 img[src="./img/broken.jpg"] {
