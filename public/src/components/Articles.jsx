@@ -42,7 +42,7 @@ function Articles() {
 
   useEffect(() => {
     axios.get("/api/articles").then((articles) => {
-      if (articles.data && articles.data.length > 0) {
+      if (articles?.data?.length > 0) {
         let articleArr = [];
         let idArr = [];
 
