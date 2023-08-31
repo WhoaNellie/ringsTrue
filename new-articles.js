@@ -51,12 +51,12 @@ async function getArticles() {
           try {
             const response = await axios.request(options);
             text = response.data;
-            console.log(response);
+            console.log(text.text);
           } catch (error) {
             console.error(error);
           }
 
-          if (text?.["raw-text"]) {
+          if (text?.text) {
             let cleanHead = articles[i].title.replace(/\-[^-]*$/g, "");
 
             let brandVariations = [
@@ -94,6 +94,7 @@ async function getArticles() {
 }
 
 function sendArticles(req) {
+  console.log(req);
   db.Article.deleteMany({})
     .then(() => {
       db.Article.insertMany(req)

@@ -42,18 +42,23 @@ function Articles() {
 
   useEffect(() => {
     axios.get("/api/articles").then((articles) => {
-      let articleArr = [];
-      let idArr = [];
+      if (articles.data && articles.data.length > 0) {
+        let articleArr = [];
+        let idArr = [];
 
-      //get random article ids
-      while (articleArr.length < 5 - Login[0].dailyRated.length) {
-        let randID = Math.floor(Math.random() * articles.data.length);
-        if (!Login[0].dailyRated.includes(randID) && !idArr.includes(randID)) {
-          articleArr.push(articles.data[randID]);
-          idArr.push(randID);
+        //get random article ids
+        for (let i = 0; i < 5 - Login[0].dailyRated.length; i++) {
+          let randID = Math.floor(Math.random() * articles.data.length);
+          if (
+            !Login[0].dailyRated.includes(randID) &&
+            !idArr.includes(randID)
+          ) {
+            articleArr.push(articles.data[randID]);
+            idArr.push(randID);
+          }
         }
+        setArticleState({ ...articleState, articleArr: articleArr });
       }
-      setArticleState({ ...articleState, articleArr: articleArr });
     });
   }, []);
 
