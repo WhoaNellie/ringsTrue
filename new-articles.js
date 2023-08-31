@@ -95,31 +95,33 @@ async function getArticles() {
 
 function sendArticles(req) {
   console.log(req);
-  db.Article.deleteMany({})
-    .then(() => {
-      db.Article.insertMany(req)
-        .then((data) => {
-          db.User.updateMany(
-            {},
-            {
-              $set: {
-                dailyRated: [],
-              },
-            }
-          ).then((res) => {
-            console.log(data.length + " records inserted and users reset!");
-            process.exit(0);
+  if (req.length >= 5) {
+    db.Article.deleteMany({})
+      .then(() => {
+        db.Article.insertMany(req)
+          .then((data) => {
+            db.User.updateMany(
+              {},
+              {
+                $set: {
+                  dailyRated: [],
+                },
+              }
+            ).then((res) => {
+              console.log(data.length + " records inserted and users reset!");
+              process.exit(0);
+            });
+          })
+          .catch((err) => {
+            console.error(err);
+            process.exit(1);
           });
-        })
-        .catch((err) => {
-          console.error(err);
-          process.exit(1);
-        });
-    })
-    .catch((err) => {
-      console.error(err);
-      process.exit(1);
-    });
+      })
+      .catch((err) => {
+        console.error(err);
+        process.exit(1);
+      });
+  }
 }
 
 getArticles();
