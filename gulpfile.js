@@ -24,7 +24,19 @@ function react() {
               use: {
                 loader: "babel-loader",
                 options: {
-                  presets: ["@babel/preset-react"],
+                  presets: [
+                    [
+                      "@babel/preset-react",
+                      {
+                        modules: false,
+                        corejs: 3,
+                        useBuiltIns: "usage",
+                        targets:
+                          "last 2 Chrome versions, last 2 Firefox versions",
+                      },
+                    ],
+                  ],
+                  plugins: ["@babel/plugin-proposal-optional-chaining"], // Add this line to include the optional chaining plugin
                 },
               },
             },
@@ -36,7 +48,7 @@ function react() {
         resolve: {
           extensions: [".js", ".jsx"],
         },
-        mode: "development"
+        mode: "development",
       })
     )
     .pipe(gulp.dest("./public/dist"));
