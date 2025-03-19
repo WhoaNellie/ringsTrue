@@ -14,7 +14,7 @@ const paths = {
   assets: ["public/**/*", "!public/index.html"], // All static assets except index.html
   styles: "styles/**/*.scss", // All Sass files
   scripts: "src/**/*.js", // All JavaScript files
-  dist: "dist/", // Distribution folder
+  dist: "docs/", // Distribution folder
 };
 
 export function clean() {
